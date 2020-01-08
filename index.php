@@ -1,0 +1,5 @@
+<?php
+
+echo "Ethan";
+phpinfo();
+?>
