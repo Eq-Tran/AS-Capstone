@@ -1,5 +1,5 @@
 <?php
 
-echo "Ethan";
+echo "Ethan BRanch add teset";
 phpinfo();
 ?>
