@@ -17,73 +17,60 @@
 
             <div class="col-sm-4" style="width:55%;">
         <div class="panel panel-default" style="border-color: rgba(102,0,204, 1.0);">
-            <div class="panel-heading" style="background-color: rgba(102,0,204, .1);"> Not ASP.NET </div>
+            <div class="panel-heading" style="background-color: rgba(102,0,204, .1);"> Status Reports </div>
                 <div class="panel-body">
             <table class="table" >
                 <thead>
                 <tr>
-                 <th scope="col">Proposal</th>
-                 <th scope="col">Prototype</th>
-                 <th scope="col">Status Reports</th>
+                 <th scope="col">Ethan</th>
+                 <th scope="col">Ian</th>
+                 <th scope="col">Karissa</th>
                 </tr>
             </thead>
             <tbody id="table-body">
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td>
-                </td>
-                
+                <td><a href="">Status 1</a></td>
+                <td><a href="">Status 1</a></td>
+                <td><a href="">Status 1</a></td>
                 </tr>
                 
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
                 
                 <tr>
                 <td></td>
                 <td></td>
-                <td>
-                </td>
+                <td></td>
                 </tr>
+                
                 <tr>
                 <td></td>
                 <td></td>
-                <td>
-                <a</a>
-                <a></a>
-                </td>
+                <td></td>
                 </tr>
+                
                 <tr>
                 <td></td>
                 <td></td>
-                <td>
-                <a</a>
-                <a></a>
-                </td>
+                <td></td>
                 </tr>
+                
                 <tr>
                 <td></td>
                 <td></td>
-                <td>
-                <a</a>
-                <a></a>
-                </td>
+                <td></td>
                 </tr>
+                
                 <tr>
                 <td></td>
                 <td></td>
-                <td>
-                <a</a>
-                <a></a>
-                </td>
-                </tr>
-                <tr>
                 <td></td>
-                <td></td>
-                <td>
-                <a</a>
-                <a></a>
-                </td>
                 </tr>
+                
             </tbody>
             </table>
                     
@@ -110,11 +97,12 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                 <div class="col-sm-4">
                 <div class="panel panel-primary"  >
-                    <div class="panel-heading" style="background-color:rgba(0, 121, 178, .4);"> Learning Resources </div>  
+                    <div class="panel-heading" style="background-color:rgba(0, 121, 178, .4);"> Deliverables </div>  
                     <div class="panel-body">
-                        <li><a href="https://phptherightway.com/">PHP The Right Way</a></li>
-                        <li><a href="https://www.gocit.vn/files/Sitepoint.PHP.and.MySQL.Novice.to.Ninja.5th.Edition-www.gocit.vn.pdf">PHP & MYSQL: From Novice to Ninja</a></li>
-                        <li><a href="https://www.learn-php.org/">PHP Basics</a></li>
+                        <li><a href="">AS Capstone Proposal</a></li>
+                        <li><a href="">AS Capstone Prototype</a></li>
+                        <li><a href="">AS Capstone Database Design</a></li>
+                        <li><a href="">AS Capstone Implementation</a></li>
                     
                     
                     </div>
