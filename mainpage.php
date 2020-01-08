@@ -10,9 +10,9 @@
    
     </head>
     <body>
-        <title>SE266</title>
+        <title>Capstone Winter 2020</title>
         
-        <h1 id="page-header"> Web Development with PHP - Ethan Tran</h1>
+        <h1 id="page-header"> Capstone Deliverable - Ian S, Ethan T, Karissa S</h1>
         <hr>
 
             <div class="col-sm-4" style="width:55%;">
@@ -28,6 +28,7 @@
                 </tr>
             </thead>
             <tbody id="table-body">
+                
                 <tr>
                 <td></td>
                 <td></td>
@@ -35,33 +36,12 @@
                 </td>
                 
                 </tr>
-                <tr>
-                <td></td>
-                <td></td>
-                <td>
-               
-                </td>
-              
-                </tr>
-                <tr>
-                    <td></td>
-                <td></td>
-                <td>
-                   
-                </td>
-                </tr>
-                <tr>
-                <td></td>
-                <td></td>
-                <td>
                 
-                </td>
-                </tr>
+                
                 <tr>
                 <td></td>
                 <td></td>
                 <td>
-
                 </td>
                 </tr>
                 <tr>
@@ -115,7 +95,10 @@
                     <div class="panel panel-danger" style="border-color: rgba(178, 0, 1.0); border: .1em solid rgba(178, 0, 1.0); position: relative; margin-bottom: 10px; ">
                         <!-- ADD LINK TO GITHUB PROFILE HERE -->
                         <div class="panel-heading"  style="color:white;"> My GitHub </div>  
-                        <div class="panel-body" > <li><a href="https://github.com/Eq-Tran/SE266">Link to Repository</a></li></div>
+                        <div class="panel-body" > <li><a href="https://github.com/Eq-Tran/SE266">Capstone Repository</a></li></div>
+                        <div class="panel-body" > <li><a href="https://github.com/Eq-Tran">Ethan's Repository</a></li></div>
+                        <div class="panel-body" > <li><a href="https://github.com/HHarukana">Ian's Repository</a></li></div>
+                        <div class="panel-body" > <li><a href="https://github.com/klsmith6">Karissa's Repository</a></li></div>
                     </div>
                     </div>
           
@@ -138,7 +121,7 @@
                     
                 </div>
                 
-                    <div class="panel panel-warning" style="width:20%; margin-left:10%; border:1px solid rgba(244, 232, 0, 1.0); float:right; margin-right:70%;">
+                    <div class="panel panel-warning" style="width:35%; margin-left:10%; border:1px solid rgba(244, 232, 0, 1.0); float:right; margin-right:70%;">
                    
                         <div class="panel-heading"style="border:1px solid rgba(244, 232, 0, .8);" >Date:</div>
                     
