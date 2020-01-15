@@ -54,9 +54,48 @@ function deleteUser($user_id){
     return($results);
 }
 
+// Show single user
+function showUser($user_id, $first, $last, $email, $uname, $age, $bio, $location){
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("SELECT first, last, email, uname, age, bio, location FROM users WHERE user_id = :user_id");
+    
+    $bindParam = array(
+        
+        ":user_id" => $user_id,
+        
+    );
+    
+    if($statement->execute($bindParam) && $statement->rowCount() > 0){
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        
+    }
+    return($results);
+}
 
+// Show all users
+function showUsers(){
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("SELECT user_id, first, last, email, age, uname, bio, location FROM users ");
+    
+    
+    if($statement->execute() && $statement->rowCount() > 0){
+        
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        
+    }
+    return($results);
+}
 
-$addTest = addUser('Ethan', 'Tran', 'etran@email.neit.edu', 'Eq-Tran', 'test');
+$addTest = showUsers();
 var_dump($addTest);
 
 
