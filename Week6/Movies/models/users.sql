@@ -1,0 +1,9 @@
+CREATE TABLE if not exists users (
+	id INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+        user_name VARCHAR(45) DEFAULT NULL,
+        pass  VARCHAR(45) DEFAULT NULL,
+       
+
+        
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
