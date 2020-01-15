@@ -4,9 +4,9 @@ function getDatabase(){
     
     
     $config = array(
-        'DB_DNS' => "mysql:host=127.0.0.1;port=3306;dbname=capstone",
-        'DB_USER' => 'root',
-        'DB_PASSWORD' => 'password'
+        'DB_DNS' => "mysql:host=ict.neit.edu;port=5500;dbname=se266_008000429",
+        'DB_USER' => 'se266_00800429',
+        'DB_PASSWORD' => '008000429'
     );
         //Creates a database connection and saves it into a variable
     $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);
