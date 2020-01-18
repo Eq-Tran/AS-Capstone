@@ -106,7 +106,7 @@
                     <div class="panel-heading" style="background-color:rgba(102,0,204, .1);border-color: rgba(102,0,204, 1.0)"> Deliverables </div>  
                     <div class="panel-body" style="border-color: rgba(102,0,204, 1.0)">
                         <li><a href="">AS Capstone Proposal</a></li>
-                        <li><a href="">AS Capstone Prototype</a></li>
+                        <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
                         <li><a href="">AS Capstone Database Design</a></li>
                         <li><a href="">AS Capstone Implementation</a></li>
                     
