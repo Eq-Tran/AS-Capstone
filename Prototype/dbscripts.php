@@ -27,11 +27,10 @@ CREATE TABLE `se266_001317108`.`posts` (
 
 CREATE TABLE `posts` (
 
-  `postid` BIGINT(255) NOT NULL,
+  `postid` BIGINT(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `userid` BIGINT(255) NOT NULL,
   `post` VARCHAR(200) NOT NULL,
-  `create_time` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP',
-  PRIMARY KEY (`postid`));
+  `create_time` VARCHAR(45) NOT NULL DEFAULT 'CURRENT_TIMESTAMP');
 
 
 Database Table for Admin Login

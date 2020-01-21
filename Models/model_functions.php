@@ -95,15 +95,16 @@ function showUsers(){
     return($results);
 }
 
-function addPost($post){
+function addPost($post, $userid){
     
     global $db;
     
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post");
+    $statement = $db->prepare("INSERT INTO posts SET post = :post WHERE userid = :userid");
     $bind = array(
         
-        ":post" => $post
+        ":post" => $post,
+        ":userid" => $userid
         
     );
     
@@ -136,8 +137,26 @@ function showPost($postid){
     
     return $results;
 }
-$addTest = showUsers();
+
+function showPosts(){
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("SELECT * FROM posts");
+    
+    if($statement->execute() && $statement->rowCount() > 0){
+        
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+    }
+    
+    return ($results);
+}
+
+/*
+$addTest = showPosts();
+
 var_dump($addTest);
-
-
+ * */
+ 
 ?>
