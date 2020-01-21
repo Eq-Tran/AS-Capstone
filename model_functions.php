@@ -83,7 +83,7 @@ function showUsers(){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT user_id, first, last, email, age, uname, bio, location FROM users ");
+    $statement = $db->prepare("SELECT userid, first, last, email, birthday, uname, bio, location FROM users ");
     
     
     if($statement->execute() && $statement->rowCount() > 0){
@@ -136,7 +136,7 @@ function showPost($postid){
     
     return $results;
 }
-$addTest = showUser(1);
+$addTest = showUsers();
 var_dump($addTest);
 
 
