@@ -2,9 +2,9 @@
         <?php
         
        $config = array(
-            'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=se266_001317108',
-            'DB_USER' => 'se266_001317108',
-            'DB_PASSWORD' => '001317108'
+            'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=se266_ethan',
+            'DB_USER' => 'se266_ethan',
+            'DB_PASSWORD' => 'ethan'
         );
        
         $db = new PDO($config['DB_DNS'], $config['DB_USER'], $config['DB_PASSWORD']);

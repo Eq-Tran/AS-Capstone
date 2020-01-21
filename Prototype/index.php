@@ -1,4 +1,16 @@
 <?php
+    
+    session_start();
+    
+    if(!isset($_SESSION['use'])) 
+       {
+           header('Location: login.php');  
+       }
+          echo "Welcome ";
+          echo $_SESSION['use'];
+
+          echo "<a href='logout.php'> Logout</a> ";
+
 
     include __DIR__. '/model.php';
     include __DIR__. '/function.php';
