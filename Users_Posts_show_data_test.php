@@ -20,6 +20,7 @@
                 <?php endforeach;?>
                 <?php foreach($posts as $p):?>
                 <p>POST ID: <?php echo $p['postid']?></p>
+                <p>User ID: <?php echo $p['uname']?></p>
                 <p>POST BODY: <?php echo $p['post']?></p>
                 <?php endforeach;?>
                 

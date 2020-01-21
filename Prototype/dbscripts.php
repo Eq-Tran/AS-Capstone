@@ -5,7 +5,7 @@ CREATE TABLE `se266_001317108`.`users` (
   `username` VARCHAR(16) NOT NULL,
 
 CREATE TABLE `users` (
-  `userid` INT NOT NULL,
+  `userid` BIGINT NOT NULL,
   `uname` VARCHAR(16) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
