@@ -1,13 +1,13 @@
 <?php
+
+session_start();
     
-    session_start();
-    
-    if(!isset($_SESSION['use'])) 
+    if(!isset($_SESSION['admin'])) 
        {
            header('Location: login.php');  
        }
           echo "Welcome ";
-          echo $_SESSION['use'];
+          echo $_SESSION['admin'];
 
           
 
@@ -19,7 +19,7 @@
     
 ?>
 
-<html lang="en">
+html lang="en">
     
 <head>
     
@@ -34,9 +34,10 @@
 
 <body>
    
-<?php echo "Welcome to Page one";
+<?php echo "Welcome to Admin Page";
  echo "<a href='logout.php'> Logout</a> ";
 ?>
 
 </body>
 </html>
+
