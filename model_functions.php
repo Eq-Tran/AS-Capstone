@@ -11,7 +11,7 @@ function addUser($first, $last, $email, $uname, $pw){
     $results = [];
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pw ");
+    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, password = :pw ");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -55,16 +55,16 @@ function deleteUser($user_id){
 }
 
 // Show single user
-function showUser($user_id, $first, $last, $email, $uname, $age, $bio, $location){
+function showUser($userid){
     
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT first, last, email, uname, age, bio, location FROM users WHERE user_id = :user_id");
+    $statement = $db->prepare("SELECT first, last, email, uname, birthday, bio, location FROM users WHERE userid = :userid");
     
     $bindParam = array(
         
-        ":user_id" => $user_id,
+        ":userid" => $userid,
         
     );
     
@@ -83,7 +83,7 @@ function showUsers(){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT user_id, first, last, email, age, uname, bio, location FROM users ");
+    $statement = $db->prepare("SELECT userid, first, last, email, birthday, uname, bio, location FROM users ");
     
     
     if($statement->execute() && $statement->rowCount() > 0){
@@ -95,6 +95,47 @@ function showUsers(){
     return($results);
 }
 
+function addPost($post){
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("INSERT INTO posts SET post = :post");
+    $bind = array(
+        
+        ":post" => $post
+        
+    );
+    
+    if($statement->execute($bind) && $statement->rowCount() > 0){
+        
+        $results = "post added";
+        
+        
+    }
+    return $results; 
+}
+
+function showPost($postid){
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("SELECT post FROM posts WHERE postid = :postid");
+    $bind = array(
+        
+        ":postid" => $postid
+        
+    );
+    
+    if($statement->execute($bind) && $statement->rowCount() > 0){
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        
+    }
+    
+    return $results;
+}
 $addTest = showUsers();
 var_dump($addTest);
 

@@ -1,20 +1,33 @@
+<<<<<<< HEAD
 Database Table for User Login
 CREATE TABLE `se266_001317108`.`users` (
   `userid` BIGINT(255) NOT NULL,
   `username` VARCHAR(16) NOT NULL,
+=======
+CREATE TABLE `users` (
+  `userid` INT NOT NULL,
+  `uname` VARCHAR(16) NOT NULL,
+>>>>>>> 01ec1a86db1e04d123d21d48e97e5c0be1b45bce
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
-  `firstname` VARCHAR(45) NOT NULL,
-  `middlename` VARCHAR(45),
-  `lastname` VARCHAR(45) NOT NULL,
+  `first` VARCHAR(45) NOT NULL,
+  `middle` VARCHAR(45),
+  `last` VARCHAR(45) NOT NULL,
   `birthday` DATE,
+  `location` VARCHAR(45),
   `profile_image` LONGBLOB,
-  `image_test` VARCHAR(45),
-  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `image_test` VARCHAR(45)
   PRIMARY KEY (`userid`));
 
+<<<<<<< HEAD
 Database Table for User Posts
 CREATE TABLE `se266_001317108`.`posts` (
+=======
+
+
+
+CREATE TABLE `posts` (
+>>>>>>> 01ec1a86db1e04d123d21d48e97e5c0be1b45bce
   `postid` BIGINT(255) NOT NULL,
   `userid` BIGINT(255) NOT NULL,
   `post` VARCHAR(200) NOT NULL,
