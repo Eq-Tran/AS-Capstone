@@ -1,5 +1,5 @@
 <?php
-
+    include_once (__DIR__ . '/Models/model_function.php');
 
 ?>
 <!doctype html>
