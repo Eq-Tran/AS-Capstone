@@ -93,18 +93,45 @@ function showUsers(){
     return($results);
 }
 
-$addTest = showUsers(1);
-var_dump($addTest);
+/*$addTest = showUsers(1);
+var_dump($addTest);*/
 
-function checkLogin ($user, $pass) {
+function checkLogin ($uname, $password) {
        global $db;
        
        $results = [];
-       $stmt = $db->prepare("SELECT * FROM users WHERE username = :user AND pass = :pass");
+       $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user AND password = :pass");
        
        $binds = array(
-           ":userame" => $user,
-           ":password" => $pass
+           ":user" => $uname,
+           ":pass" => $pass
+       
+        );
+       
+       if($stmt->execute($binds) && $stmt->rowCount() > 0){
+          
+          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          
+       }
+       else{
+           
+           return (false);
+           
+       }
+       
+       
+       return ($results);
+   }
+   
+   function checkAdminLogin ($adminuser, $adminpass) {
+       global $db;
+       
+       $results = [];
+       $stmt = $db->prepare("SELECT * FROM uadminlogin WHERE adminuser = :user AND adminpass = :pass");
+       
+       $binds = array(
+           ":user" => $adminuser,
+           ":pass" => $adminpass
        
         );
        
