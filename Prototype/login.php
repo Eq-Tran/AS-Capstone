@@ -30,30 +30,19 @@
                 
             }
             
-            if(isset($_POST['adminlogin']))
-            {
-                $uname = $_POST["user"];
-            
-            $password = $_POST["pass"];
-            
-            
-            $result = checkAdminLogin($adminuser, $adminpass);
-            if($results = true){
-                
-                $_SESSION['admin'] = $adminuser;
-                
-                
-                header('Location: admintestpage.php');
-                
-            }
-            }
-            
             else
             {
                 echo "Wrong Username or Password";
             }
-            
         }
+            
+       
+         
+        
+            
+            
+            
+        
         
        
         if (isPostRequest())
