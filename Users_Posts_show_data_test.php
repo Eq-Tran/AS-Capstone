@@ -18,6 +18,7 @@
                 <p>USERName: <?php echo $u['uname']?></p>
                 
                 <?php endforeach;?>
+                <hr>
                 <?php foreach($posts as $p):?>
                 <p>POST ID: <?php echo $p['postid']?></p>
                 <p>User ID: <?php echo $p['userid']?></p>

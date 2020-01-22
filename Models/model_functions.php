@@ -153,6 +153,7 @@ function showPosts(){
     return ($results);
 }
 
+// needs to be linked to posts and users to get the username of the poster
 function getPostnameById($userid){
     
     
