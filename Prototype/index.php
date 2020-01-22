@@ -4,10 +4,13 @@
     
     if(!isset($_SESSION['use'])) 
        {
-           header('Location: login.php');  
-       }
-          echo "Welcome ";
-          echo $_SESSION['use'];
+        header("Location: index.php");
+       }    
+    else{
+        header("Location: login.php");
+    }   
+       
+          
 
           
 

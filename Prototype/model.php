@@ -123,7 +123,7 @@ function checkLogin ($uname, $password) {
        return ($results);
    }
    
-   function checkAdminLogin ($adminuser, $adminpass) {
+   /*function checkAdminLogin ($adminuser, $adminpass) {
        global $db;
        
        $results = [];
@@ -148,7 +148,7 @@ function checkLogin ($uname, $password) {
        
        
        return ($results);
-   }
+   }*/
 ?> 
     
     
