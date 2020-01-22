@@ -1,15 +1,15 @@
     <?php
     
-        session_start();
+        
         include __DIR__ . '/model.php';
         include __DIR__ . '/function.php';
         
         
         //User/Admin Login Session
-        /*if(isset($_SESSION['use']))
+        if(isset($_SESSION['use']))
         {
              header('Location: index.php');
-        }*/
+        }
         
         
         if(isset($_POST['login']))
@@ -20,7 +20,7 @@
             $password = $_POST["pass"];
             
             
-            $result = checkLogin($uname, $password);
+            $results = checkLogin($uname, $password);
             if($results = true){
                 
                 $_SESSION['use'] = $uname;
@@ -30,33 +30,16 @@
                 
             }
             
-            if(isset($_POST['adminlogin']))
-            {
-                $uname = $_POST["user"];
-            
-            $password = $_POST["pass"];
-            
-            
-            $result = checkAdminLogin($adminuser, $adminpass);
-            if($results = true){
-                
-                $_SESSION['admin'] = $adminuser;
-                
-                
-                header('Location: admintestpage.php');
-                
-            }
-            }
-            
             else
             {
+                
                 echo "Wrong Username or Password";
+                
             }
-            
         }
         
        
-        if (isPostRequest())
+       /* if (isPostRequest())
     {
         
         $username = filter_input(INPUT_POST, 'Username');
@@ -71,7 +54,7 @@
         $create_time = filter_input(INPUT_POST, 'Date');
         $results = addUser ($username, $email, $pass, $firstname, $middlename, $lastname, $birthday, $profile_image, $image_test, $create_time);
         
-    }
+    }*/
         
     ?>
 
