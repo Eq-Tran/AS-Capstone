@@ -34,19 +34,19 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function deleteUser($user_id){
+function deleteUser($userid){
     
     global $db;
     
     $results = [];
     
-    $statement = $db->prepare("DELETE FROM users WHERE user_id = :user_id");
+    $statement = $db->prepare("DELETE FROM users WHERE userid = :userid");
     
     $bindParam = array(
-        ":user_id" => $user_id,
+        ":userid" => $userid,
     );
     
-    if($statement->execute($bindParam) && $statement->rowCount > 0){
+    if($statement->execute($bindParam) && $statement->rowCount() > 0){
                 
          $results = "User Deleted";
                 
@@ -83,7 +83,7 @@ function showUsers(){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT userid, first, last, email, birthday, uname, bio, location FROM users ");
+    $statement = $db->prepare("SELECT * FROM users ");
     
     
     if($statement->execute() && $statement->rowCount() > 0){
@@ -100,7 +100,7 @@ function addPost($post, $userid){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post WHERE userid = :userid");
+    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid");
     $bind = array(
         
         ":post" => $post,
@@ -153,10 +153,43 @@ function showPosts(){
     return ($results);
 }
 
-/*
-$addTest = showPosts();
+// needs to be linked to posts and users to get the username of the poster
+function getPostnameById($userid){
+    
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("SELECT uname FROM users WHERE userid  = :userid");
+    
+    $bind = array(
+        
+        ":userid" => $userid
+        
+    );
+    
+    if($statement->execute($bind) && $statement->rowCount() > 0){
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        
+    }
+    return ($results['uname']);
+}
 
-var_dump($addTest);
- * */
+//$delUser = deleteUser(2);
+//var_dump($delUser);
+
+//$userTest = addUser("User4", "user4", "user4@user.xom", "User4", "password4");
+//var_dump($userTest);
+
+//$postTest = addPost("this is a test post", 1);
+//var_dump($postTest);
+
+//$showPost = showPosts();
+//var_dump($showPost);
+
+$showpostUname = getPostnameById(1);
+var_dump($showpostUname);
  
 ?>
