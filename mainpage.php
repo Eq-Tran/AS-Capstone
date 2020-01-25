@@ -34,45 +34,63 @@
             <tbody id="table-body">
                 
                 <tr>
-                <td><a href="">Status 1</a></td>
-                <td><a href="">Status 1</a></td>
-                <td><a href="">Status 1</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Tran/AS-Capstone_Report1.pdf">Status 1</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Shippee/Shippee_Status1.pdf">Status 1</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Smith/Smith_Status1.pdf">Status 1</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 2</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Shippee/Shippee_Status_2.pdf">Status 2</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Smith/Smith_Status2.pdf">Status 2</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 3</a></td>
+                <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Shippee/Shippee_Status_3.pdf">Status 3</a></td>
+                <td><a href="">Status 3</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 4</a></td>
+                <td><a href="">Status 4</a></td>
+                <td><a href="">Status 4</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 5</a></td>
+                <td><a href="">Status 5</a></td>
+                <td><a href="">Status 5</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 5</a></td>
+                <td><a href="">Status 5</a></td>
+                <td><a href="">Status 5</a></td>
                 </tr>
                 
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="">Status 6</a></td>
+                <td><a href="">Status 6</a></td>
+                <td><a href="">Status 6</a></td>
+                </tr>
+
+                <tr>
+                <td><a href="">Status 7</a></td>
+                <td><a href="">Status 7</a></td>
+                <td><a href="">Status 7</a></td>
+                </tr>
+
+                <tr>
+                <td><a href="">Status 8</a></td>
+                <td><a href="">Status 8</a></td>
+                <td><a href="">Status 8</a></td>
+                </tr>
+
+                <tr>
+                <td><a href="">Status 9</a></td>
+                <td><a href="">Status 9</a></td>
+                <td><a href="">Status 9</a></td>
                 </tr>
                 
             </tbody>
@@ -88,9 +106,9 @@
                         <div class="panel-heading"  style="background-color: rgba(102,0,204, .1);"> Team Github Repositories </div>  
                         <div class="panel-body">
                          <li><a href="https://github.com/Eq-Tran/AS-Capstone">Capstone Repository</a></li>
-                         <li><a href="https://github.com/Eq-Tran">Ethan's Repository</a></li>
-                         <li><a href="https://github.com/HHarukana">Ian's Repository</a></li>
-                         <li><a href="https://github.com/klsmith6">Karissa's Repository</a></li>
+                         <li><a href="https://github.com/Eq-Tran">Ethan's Git Profile</a></li>
+                         <li><a href="https://github.com/HHarukana">Ian's Git Profile</a></li>
+                         <li><a href="https://github.com/klsmith6">Karissa's Git Profile</a></li>
                         </div>
                     </div>
                     </div>
@@ -105,9 +123,10 @@
                 <div class="panel panel-default"  style="border-color: rgba(102,0,204, 1.0)">
                     <div class="panel-heading" style="background-color:rgba(102,0,204, .1);border-color: rgba(102,0,204, 1.0)"> Deliverables </div>  
                     <div class="panel-body" style="border-color: rgba(102,0,204, 1.0)">
-                        <li><a href="">AS Capstone Proposal</a></li>
+                        <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/IS_ET_KS_Capstone%20Proposal.pdf">AS Capstone Proposal</a></li>
                         <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
-                        <li><a href="">AS Capstone Database Design</a></li>
+                        <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design</a></li>
+                        <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_Tech_Spec.pdf">AS Technical Specification</a></li>
                         <li><a href="">AS Capstone Implementation</a></li>
                     
                     
