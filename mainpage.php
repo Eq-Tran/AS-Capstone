@@ -127,6 +127,7 @@
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/IS_ET_KS_Capstone%20Proposal.pdf">AS Capstone Proposal</a></li>
                         <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design</a></li>
+                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design Diagram</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_Tech_Spec.pdf">AS Technical Specification</a></li>
                         <li><a href="">AS Capstone Implementation</a></li>
                     
@@ -311,6 +312,7 @@
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/IS_ET_KS_Capstone%20Proposal.pdf">AS Capstone Proposal</a></li>
                         <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design</a></li>
+                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/DB-Design-Diagram.mwb">AS Capstone Database Design Diagram</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_Tech_Spec.pdf">AS Technical Specification</a></li>
                         <li><a href="">AS Capstone Implementation</a></li>
                     
