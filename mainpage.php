@@ -49,7 +49,7 @@
                 <tr>
                 <td><a href="">Status 3</a></td>
                 <td><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Status_Reports/Shippee/Shippee_Status_3.pdf">Status 3</a></td>
-                <td><a href="">Status 3</a></td>
+                <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith%20week3-%20Status.pdf">Status 3</a></td>
                 </tr>
                 
                 <tr>
