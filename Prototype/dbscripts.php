@@ -48,3 +48,7 @@ CREATE TABLE `se266_001317108`.`comments` (
   `comment` VARCHAR(255) NULL,
   PRIMARY KEY (`commentid`));
 
+Database Query for INNER JOIN Users/Posts
+SELECT posts.userid, posts.postid, posts.post, users.uname
+FROM posts
+INNER JOIN users ON posts.userid = users.userid;
