@@ -1,24 +1,21 @@
 <?php
-    
+  
     session_start();
-    
-    if(!isset($_SESSION['use'])) 
-       {
-        header("Location: index.php");
-       }    
-    else{
-        header("Location: login.php");
-    }   
-       
-          
-
-          
-
-
     include __DIR__. '/model.php';
     include __DIR__. '/function.php';
     
+    if(!isset($_SESSION['use']))
+    {
+        header('Location:login.php');
+    }
     
+    echo "Hello ";
+    echo $_SESSION['use'];
+    echo "<a href='logout.php'> Logout</a> ";
+    
+    
+     
+       
     
 ?>
 
@@ -37,9 +34,21 @@
 
 <body>
    
-<?php echo "Welcome to Page one";
- echo "<a href='logout.php'> Logout</a> ";
-?>
+ <br>
+ <br>
+ <br>
+ <br>
+    <?php 
+        echo "Welcome User";
+        
+    ?>
+ <br>
+ <br>
+ <br>
+ <br>
+    <?php
+        echo "ONLY ADMINS SEE THIS";
+    ?>
 
 </body>
 </html>
