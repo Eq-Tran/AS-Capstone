@@ -23,9 +23,9 @@
             
             if($results == true )
             {
-                if($check['admin'] == 1){
+                if($check == 1){
                     echo 'here';
-                    exit();
+                    
                 $_SESSION['use'] = $uname;
                 header('Location: index.php');
                 }
