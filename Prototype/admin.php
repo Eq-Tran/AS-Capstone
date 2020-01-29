@@ -1,25 +1,26 @@
 <?php
 
-session_start();
-    
-    if(!isset($_SESSION['admin'])) 
-       {
-           header('Location: login.php');  
-       }
-          echo "Welcome ";
-          echo $_SESSION['admin'];
-
-          
-
-
+ 
+    session_start();
     include __DIR__. '/model.php';
     include __DIR__. '/function.php';
     
+    if(!isset($_SESSION['admin']))
+    {
+        header('Location:login.php');
+    }
     
+    echo "Hello ";
+    echo $_SESSION['admin'];
+    echo "<a href='logout.php'> Logout</a> ";
+    
+    
+     
+       
     
 ?>
 
-html lang="en">
+<html lang="en">
     
 <head>
     
@@ -34,9 +35,23 @@ html lang="en">
 
 <body>
    
-<?php echo "Welcome to Admin Page";
- echo "<a href='logout.php'> Logout</a> ";
-?>
+ <br>
+ <br>
+ <br>
+ <br>
+    <?php 
+    /*Test for user login after login works*/
+        echo "Welcome User";
+        
+    ?>
+ <br>
+ <br>
+ <br>
+ <br>
+    <?php
+    /*Test for Admin Cred after login works*/
+        echo "ONLY ADMINS SEE THIS";
+    ?>
 
 </body>
 </html>

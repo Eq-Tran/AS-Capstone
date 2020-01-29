@@ -96,6 +96,7 @@ function showUsers(){
 /*$addTest = showUsers(1);
 var_dump($addTest);*/
 
+//check for username and pass in databse
 function checkLogin ($uname, $password) {
        global $db;
        
@@ -104,7 +105,7 @@ function checkLogin ($uname, $password) {
        
        $binds = array(
            ":user" => $uname,
-           ":pass" => $pass
+           ":pass" => $password
        
         );
        
@@ -123,22 +124,29 @@ function checkLogin ($uname, $password) {
        return ($results);
    }
    
-   /*function checkAdminLogin ($adminuser, $adminpass) {
+   ;
+   
+   //check for admin credentials
+   function checkUserCred ($uname)
+   {
        global $db;
        
-       $results = [];
-       $stmt = $db->prepare("SELECT * FROM uadminlogin WHERE adminuser = :user AND adminpass = :pass");
+       $check = [];
+       $stmt = $db->prepare("SELECT admin from users WHERE uname =:user");
        
        $binds = array(
-           ":user" => $adminuser,
-           ":pass" => $adminpass
+           ":user" => $uname,
        
         );
        
        if($stmt->execute($binds) && $stmt->rowCount() > 0){
           
-          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          
+          $check = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          foreach($check as $row)
+          {
+              $admin= $row['admin'];
+          }
+          return ($admin);
        }
        else{
            
@@ -147,8 +155,8 @@ function checkLogin ($uname, $password) {
        }
        
        
-       return ($results);
-   }*/
+       
+   }
 ?> 
     
     
