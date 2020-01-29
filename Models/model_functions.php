@@ -153,30 +153,51 @@ function showPosts(){
     return ($results);
 }
 
-// needs to be linked to posts and users to get the username of the poster
-function getPostnameById($userid){
-    
+function showuserPost($userid){
     
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT uname FROM users WHERE userid  = :userid");
-    
-    $bind = array(
-        
+    $statement = $db->prepare("
+            SELECT posts.userid, posts.postid, posts.post, users.uname
+            FROM users
+            INNER JOIN posts ON posts.userid = users.userid
+            WHERE posts.userid = :userid;
+    ");
+   
+    $binds = array(
         ":userid" => $userid
-        
-    );
+    );       
     
-    if($statement->execute($bind) && $statement->rowCount() > 0){
+    if($statement->execute($binds) && $statement->rowCount() > 0){
         
         $results = $statement->fetch(PDO::FETCH_ASSOC);
-        
-        
     }
-    return ($results['uname']);
+    
+    return($results);
 }
 
+function showAllUserPosts(){
+    
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("
+            SELECT posts.userid, posts.postid, posts.post, users.uname
+            FROM users
+            INNER JOIN posts ON posts.userid = users.userid;
+    ");
+   
+  
+    if($statement->execute() && $statement->rowCount() > 0){
+        
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    return($results);
+}
+
+<<<<<<< HEAD
 function checkLogin ($uname, $password) {
        global $db;
        
@@ -237,6 +258,11 @@ function checkLogin ($uname, $password) {
        
        
    }
+=======
+
+
+
+>>>>>>> c2fab162c32c6ee47cd79dad063a0af1e4cc70fb
 
 //$delUser = deleteUser(2);
 //var_dump($delUser);
@@ -250,7 +276,13 @@ function checkLogin ($uname, $password) {
 //$showPost = showPosts();
 //var_dump($showPost);
 
+<<<<<<< HEAD
 //$showpostUname = getPostnameById(1);
 //var_dump($showpostUname);
 
+=======
+//$showPostinfo = showAllUserPosts();
+//var_dump($showPostinfo);
+ 
+>>>>>>> c2fab162c32c6ee47cd79dad063a0af1e4cc70fb
 ?>
