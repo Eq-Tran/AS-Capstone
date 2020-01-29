@@ -19,7 +19,10 @@ session_start();
     $first = filter_input(INPUT_GET, 'first');
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
-    $profile = showUser($userid);
+    //addfind user id
+    $profile = showUser($_SESSION['admin']);
+    
+    var_dump($profile)
 ?>
 <html lang="en">
     
