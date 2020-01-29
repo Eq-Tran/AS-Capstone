@@ -1,16 +1,17 @@
 <?php
-  
+
+ 
     session_start();
     include __DIR__. '/model.php';
     include __DIR__. '/function.php';
     
-    if(!isset($_SESSION['use']))
+    if(!isset($_SESSION['admin']))
     {
         header('Location:login.php');
     }
     
     echo "Hello ";
-    echo $_SESSION['use'];
+    echo $_SESSION['admin'];
     echo "<a href='logout.php'> Logout</a> ";
     
     
@@ -34,13 +35,6 @@
 
 <body>
    
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="username">Username:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="team" placeholder="Username" name="Username">
-      </div>
-    </div>
-    
  <br>
  <br>
  <br>
@@ -55,8 +49,10 @@
  <br>
  <br>
     <?php
-    
+    /*Test for Admin Cred after login works*/
+        echo "ONLY ADMINS SEE THIS";
     ?>
 
 </body>
 </html>
+

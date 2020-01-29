@@ -96,6 +96,7 @@ function showUsers(){
 /*$addTest = showUsers(1);
 var_dump($addTest);*/
 
+//check for username and pass in databse
 function checkLogin ($uname, $password) {
        global $db;
        
@@ -125,6 +126,7 @@ function checkLogin ($uname, $password) {
    
    ;
    
+   //check for admin credentials
    function checkUserCred ($uname)
    {
        global $db;
@@ -140,7 +142,11 @@ function checkLogin ($uname, $password) {
        if($stmt->execute($binds) && $stmt->rowCount() > 0){
           
           $check = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          return ($check);
+          foreach($check as $row)
+          {
+              $admin= $row['admin'];
+          }
+          return ($admin);
        }
        else{
            
