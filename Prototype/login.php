@@ -18,13 +18,11 @@
             $password = filter_input(INPUT_POST,'pass');
             
             $results = checkLogin($uname, $password);
-            
             $check = checkUserCred($uname);
             
-            if($results == true )
+            if($results == true)
             {
-                if($check == 1){
-                    echo 'here';
+                if($check == 0){
                     
                 $_SESSION['use'] = $uname;
                 header('Location: index.php');
@@ -32,15 +30,15 @@
                 
                 else
                 {
-                    echo "Banana";
+                    echo "Wrong Username  or Password Admin";
                     
                 }
             }
             else
             {
                 echo "Wrong Username  or Password";
-                var_dump ($results);
-                var_dump($check);
+                
+                
             }
             
         }
