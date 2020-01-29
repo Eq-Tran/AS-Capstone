@@ -197,7 +197,7 @@ function showAllUserPosts(){
     return($results);
 }
 
-<<<<<<< HEAD
+
 function checkLogin ($uname, $password) {
        global $db;
        
@@ -258,11 +258,11 @@ function checkLogin ($uname, $password) {
        
        
    }
-=======
 
 
 
->>>>>>> c2fab162c32c6ee47cd79dad063a0af1e4cc70fb
+
+
 
 //$delUser = deleteUser(2);
 //var_dump($delUser);
@@ -276,13 +276,13 @@ function checkLogin ($uname, $password) {
 //$showPost = showPosts();
 //var_dump($showPost);
 
-<<<<<<< HEAD
+
 //$showpostUname = getPostnameById(1);
 //var_dump($showpostUname);
 
-=======
+
 //$showPostinfo = showAllUserPosts();
 //var_dump($showPostinfo);
  
->>>>>>> c2fab162c32c6ee47cd79dad063a0af1e4cc70fb
+
 ?>
