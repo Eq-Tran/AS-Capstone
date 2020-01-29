@@ -2,8 +2,8 @@
 
  
     session_start();
-    include __DIR__. '/model.php';
-    include __DIR__. '/function.php';
+    include __DIR__. '/Models/model_functions.php';
+    include __DIR__. '/Models/post_request_functions.php';
     
     if(!isset($_SESSION['admin']))
     {
@@ -14,7 +14,8 @@
     echo $_SESSION['admin'];
     echo "<a href='logout.php'> Logout</a> ";
     
-    
+    $userid = filter_input(INPUT_GET, 'userid');
+    $showUser =showUser($userid);
      
        
     
@@ -34,10 +35,6 @@
 </head>
 
 <body>
-   
- <br>
- <br>
- <br>
  <br>
     <?php 
     /*Test for user login after login works*/
@@ -45,13 +42,38 @@
         
     ?>
  <br>
- <br>
- <br>
- <br>
     <?php
     /*Test for Admin Cred after login works*/
         echo "ONLY ADMINS SEE THIS";
     ?>
+ <br>
+ 
+ <table class="table">
+     <thread>
+         <tr>
+             <th>userid</th>
+             <th>uname</th>
+             <th>email</th>
+             <th>first</th>
+             <th>middle</th>
+             <th>last</th>
+             <th>birthday</th>
+             <th>location</th>
+             <th>profileimage</th>
+         </tr>
+     </thread>
+ </table>
+ 
+<tbody>
+    <tr>
+       <td><?php echo $movie['movie_id']; ?></td>
+                    <td><?php echo $movie['movie_name']; ?></td>
+                    <td><?php echo $movie['movie_description']; ?></td>
+                    <td><?php echo $movie['movie_year']; ?></td>
+                    <td><?php echo $movie['movie_rating']; ?></td>
+                    <td><?php echo $movie['avg_rating']; ?></td> 
+    </tr>
+</tbody>
 
 </body>
 </html>

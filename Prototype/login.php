@@ -1,8 +1,8 @@
     <?php
     
         session_start();
-        include __DIR__ . '/model.php';
-        include __DIR__ . '/function.php';
+        include_once (__DIR__ . '/Models/model_functions.php');
+        include_once (__DIR__ . '/Models/post_request_functions.php');
         
         $login = filter_input(INPUT_POST,'login');
         

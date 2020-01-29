@@ -177,6 +177,67 @@ function getPostnameById($userid){
     return ($results['uname']);
 }
 
+function checkLogin ($uname, $password) {
+       global $db;
+       
+       $results = [];
+       $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user AND password = :pass");
+       
+       $binds = array(
+           ":user" => $uname,
+           ":pass" => $password
+       
+        );
+       
+       if($stmt->execute($binds) && $stmt->rowCount() > 0){
+          
+          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          
+       }
+       else{
+           
+           return (false);
+           
+       }
+       
+       
+       return ($results);
+   }
+   
+   ;
+   
+   //check for admin credentials
+   function checkUserCred ($uname)
+   {
+       global $db;
+       
+       $check = [];
+       $stmt = $db->prepare("SELECT admin from users WHERE uname =:user");
+       
+       $binds = array(
+           ":user" => $uname,
+       
+        );
+       
+       if($stmt->execute($binds) && $stmt->rowCount() > 0){
+          
+          $check = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          foreach($check as $row)
+          {
+              $admin= $row['admin'];
+          }
+          return ($admin);
+       }
+       else{
+           
+           return (false);
+           
+       }
+       
+       
+       
+   }
+
 //$delUser = deleteUser(2);
 //var_dump($delUser);
 
