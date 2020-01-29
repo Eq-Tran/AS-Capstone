@@ -4,36 +4,54 @@
         include __DIR__ . '/model.php';
         include __DIR__ . '/function.php';
         
+        $login = filter_input(INPUT_POST,'login');
         
-        //User/Admin Login Session
+        //User/Admin Login Session (Admin, username:ian, password:ian)(normal user username:User2, password:password2)
+        
+        if(isset($_SESSION['admin']))
+        {
+           header('Location:index.php');
+        } 
+          
         if(isset($_SESSION['use']))
         {
-            header('Location:index.php');
-        }
+           header('Location:index.php');
+        } 
         
-        if(isset($_POST['login']))
+        if(isset($login))
         {
             
             $uname = filter_input(INPUT_POST,'user');
             $password = filter_input(INPUT_POST,'pass');
             
+            //model for login
             $results = checkLogin($uname, $password);
+            //model for admin cred
             $check = checkUserCred($uname);
             
+            //checks username and password
             if($results == true)
             {
-                if($check == 0){
-                    
-                $_SESSION['use'] = $uname;
-                header('Location: index.php');
+                //checks for tiny int 1 for admin (Admin is stored as TinyINT(4) 0 is user, 1 is admin)
+                if($check == 1){
+                 
+                //set session name to Username    
+                $_SESSION['admin'] = $uname;
+                //redirect to index.php
+                header('Location:admin.php');
                 }
                 
+                //no admin
                 else
                 {
-                    echo "Wrong Username  or Password Admin";
                     
+                $_SESSION['use'] = $uname;
+                header('Location:index.php');
+                
                 }
             }
+            
+            //login credentials wrong
             else
             {
                 echo "Wrong Username  or Password";
