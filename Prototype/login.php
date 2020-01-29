@@ -1,6 +1,6 @@
     <?php
     
-        
+        session_start();
         include __DIR__ . '/model.php';
         include __DIR__ . '/function.php';
         
@@ -8,34 +8,39 @@
         //User/Admin Login Session
         if(isset($_SESSION['use']))
         {
-             header('Location: index.php');
+            header('Location:index.php');
         }
-        
         
         if(isset($_POST['login']))
         {
             
-            $uname = $_POST["user"];
-            
-            $password = $_POST["pass"];
-            
+            $uname = filter_input(INPUT_POST,'user');
+            $password = filter_input(INPUT_POST,'pass');
             
             $results = checkLogin($uname, $password);
-            if($results = true){
-                
+            $check = checkUserCred($uname);
+            
+            if($results == true)
+            {
+                if($check == 0){
+                    
                 $_SESSION['use'] = $uname;
-                
-                
                 header('Location: index.php');
+                }
+                
+                else
+                {
+                    echo "Wrong Username  or Password Admin";
+                    
+                }
+            }
+            else
+            {
+                echo "Wrong Username  or Password";
+                
                 
             }
             
-            else
-            {
-                
-                echo "Wrong Username or Password";
-                
-            }
         }
         
        
