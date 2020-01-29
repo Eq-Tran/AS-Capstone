@@ -1,8 +1,8 @@
 <?php
   
     session_start();
-    include (__DIR__ . '/Models/model_functions.php');
-    include (__DIR__ . '/Models/post_request_functions.php');
+    include (__DIR__ . '/../Models/model_functions.php');
+    include (__DIR__ . '/../Models/post_request_functions.php');
     
     if(!isset($_SESSION['use']))
     {

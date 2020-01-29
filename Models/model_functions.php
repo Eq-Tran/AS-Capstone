@@ -250,7 +250,7 @@ function checkLogin ($uname, $password) {
 //$showPost = showPosts();
 //var_dump($showPost);
 
-$showpostUname = getPostnameById(1);
-var_dump($showpostUname);
- 
+//$showpostUname = getPostnameById(1);
+//var_dump($showpostUname);
+
 ?>

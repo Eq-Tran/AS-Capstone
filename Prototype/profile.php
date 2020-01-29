@@ -1,7 +1,6 @@
 <?php
 
- 
-    session_start();
+session_start();
     include __DIR__. '/../Models/model_functions.php';
     include __DIR__. '/../Models/post_request_functions.php';
     
@@ -21,16 +20,12 @@
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
     $profile = showUser($userid);
-      
-       
-    
 ?>
-
 <html lang="en">
     
 <head>
     
-  <title>Test Front Page</title>
+  <title>Test Profile Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -40,19 +35,6 @@
 </head>
 
 <body>
- <br>
-    <?php 
-    /*Test for user login after login works*/
-        echo "Welcome User";
-        
-    ?>
- <br>
- <br>
-    <?php
-    /*Test for Admin Cred after login works*/
-        echo "ONLY ADMINS SEE THIS";
-    ?>
- <br>
  
  <table class="table">
      <thread>
@@ -69,7 +51,7 @@
  
 <tbody>
     <tr>
-       <td><?php echo $_SESSION['userid']; ?></td>
+       <td><?php echo $profile['userid']; ?></td>
                     <td><?php echo $profile['uname']; ?></td>
                     <td><?php echo $profile['email']; ?></td>
                     <td><?php echo $profile['first']; ?></td>
@@ -80,4 +62,3 @@
 
 </body>
 </html>
-
