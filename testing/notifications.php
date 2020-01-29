@@ -2,11 +2,14 @@
   session_start();
   include __DIR__ . '/model/modelFriend.php';
   include __DIR__ . '/include/includes.php';
-  
-  
-    $requestNum = request_notification($_SESSION['loggedOn'], false);
-    $friendNum = getAllFriends($_SESSION['loggedOn'], false);
-    $allrequests = request_notification($_SESSION['loggedOn'], true);
+  $myId= $_SESSION['userid'];
+  echo $myId;
+  //Counts the number of notifications that the user has
+    $requestNum = request_notification($myId, false);
+    //friend number counts the number of friends
+    $friendNum = getAllFriends($myId, false);
+    $allrequests = request_notification($myId, true);
+    
 ?>
 
 <!DOCTYPE html>
@@ -38,22 +41,27 @@
          echo " friend requests";
         if ($requestNum > 0)
         {                
-            echo '<div class="user_box">
+            echo '
+            <form action="notifications.php" method="post">
+            <div class="user_box">
             <div class="user_info">
-            <table class="table table-striped">
+            <table class="table table-striped" >
             <tr>
             <th>Name</th>
-            <th>Request</th>
+            <th></th>
+            <th></th>
             </tr>';
             foreach($allrequests as $row)
             {
                 echo '
                 <tr>
-                <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->username.'</a></span></td>
-                <td>Request</td>
+                <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
+                <td><button class= "btn btn-success" type="submit" name="friendResponse" value="accept">Accept</button></td>
+                <td><button class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</button></td>
             </div>';
             }
-        
+            echo '</form>';
+            
         }
         else{
             echo '<h4>You have no friend reuests today</h4>';

@@ -4,7 +4,7 @@
   include __DIR__ . '/include/includes.php';
   $user = filter_input(INPUT_GET, 'user');
   $_SESSION['loggedOn'];
-  $myId = $_SESSION['id'];
+  $myId = $_SESSION['userid'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -5,7 +5,7 @@ session_start();
   include __DIR__ . '/model/modelFriend.php';
   include __DIR__ . '/include/includes.php';
     
-  $myId= $_SESSION['loggedOn'];
+  $myId= $_SESSION['userid'];
   echo $myId;
   $friendId = filter_input(INPUT_GET, 'friendId');
   send_friend_request($myId, $friendId);

@@ -30,7 +30,7 @@ function findUser($User) {
     $binds = array();
     $sql = "SELECT * FROM users WHERE 0=0 ";
     if ($User != "") {
-         $sql .= " AND username LIKE :username";
+         $sql .= " AND uname LIKE :username";
          $binds['username'] = '%'.$User.'%';
     }
    
@@ -53,7 +53,7 @@ function findUserId($User) {
     $binds = array();
     $sql = "SELECT * FROM users WHERE 0=0 ";
     if ($User != "") {
-         $sql .= " AND username LIKE :username";
+         $sql .= " AND uname LIKE :username";
          $binds['username'] = '%'.$User.'%';
     }
    
@@ -65,7 +65,7 @@ function findUserId($User) {
     
         foreach ($results as $row)
         {
-            $id = $row['id'];
+            $id = $row['userid'];
         }
     }
     //var_dump($results);
@@ -84,7 +84,7 @@ function getuserinfo($user)
         ":user" => $user,
 
     );
-    $stmt = $db ->prepare("SELECT id FROM users WHERE username = :user");
+    $stmt = $db ->prepare("SELECT userid FROM users WHERE uname = :user");
     $stmt -> execute();
     
     if ( $stmt->execute() && $stmt->rowCount() > 0 ) 
@@ -100,7 +100,7 @@ function checkLogin($user, $pass)
 {
     global $db;
 
-    $stmt = $db->prepare("SELECT * FROM users WHERE username = :user and user_password = :pass");
+    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user and password = :pass");
 
     $results = [];
 
@@ -131,7 +131,7 @@ function send_friend_request($myId, $friendId)
 {
     global $db;
 
-    $stmt = $db->prepare("INSERT INTO `friend_request`(sender, receiver) VALUES(?,?)");
+    $stmt = $db->prepare("INSERT INTO friend_request (sender, receiver) VALUES(?,?)");
     $stmt->execute([$myId, $friendId]);
 
 
@@ -141,7 +141,7 @@ function request_notification($myId, $sendData)
 {
     global $db;
 
-    $stmt = $db->prepare("SELECT sender, username FROM `friend_request` JOIN users ON friend_request.sender = users.id WHERE receiver = ?");
+    $stmt = $db->prepare("SELECT sender, uname FROM `friend_request` JOIN users ON friend_request.sender = users.userid WHERE receiver = ?");
     $stmt->execute([$myId]);
     if($sendData){
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -176,7 +176,9 @@ function getAllFriends($myId, $sendData)
 {
     global $db;
     $stmt = $db -> prepare("SELECT * FROM `friends` WHERE user_one = :myId OR user_two = :myId");
-    $binds = array("myId"=> $myId);
+    $binds = array(
+        ":myId" => $myId
+    );
     if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
     {
         if($sendData){
@@ -186,13 +188,13 @@ function getAllFriends($myId, $sendData)
             foreach($users as $row)
             {
                 if($row->user_one == $myId){
-                    $userStmt = $db->prepare("SELECT id, username FROM `users` WHERE id = ?");
+                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = ?");
                     $userStmt ->execute([$row->user_two]);
                     //array push pushes one or more items to an array to be stored
                     array_push($results, $userStmt->fetch(PDO::FETCH_OBJ));
                 }
                 else{
-                    $userStmt = $db->prepare("SELECT id, username FROM `users` WHERE id = ?");
+                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = ?");
                     $userStmt ->execute([$row->user_one]);
                     //array push pushes one or more items to an array to be stored
                     array_push($results, $userStmt->fetch(PDO::FETCH_OBJ));

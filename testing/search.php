@@ -3,7 +3,7 @@
   include __DIR__ . '/model/modelFriend.php';
   include __DIR__ . '/include/includes.php';
   $_SESSION['loggedOn'];
-  $myId= $_SESSION['id'];
+  $myId= $_SESSION['userid'];
   $err = "";
   $User = filter_input(INPUT_POST,'username');
   $friendId = '';
@@ -11,12 +11,14 @@
   $results = findUser($User);
   $friendId= filter_input(INPUT_GET, 'friendId');
   
+  //this is here for testing purposes--making sure that it is grabbing correct id numbers
   echo "My Id is: ";
   echo $myId;
-  echo "<br> My friends id id: ";
+  echo "<br> My friends id is: ";
   echo $friendId;
-  var_dump($_SESSION['id']);
-  var_dump($myId);
+  
+  //var_dump($_SESSION['userid']);
+  //var_dump($myId);
   send_friend_request($myId, $friendId);
     
 ?>
@@ -69,9 +71,9 @@
           <tbody>
             <?php foreach($results as $row):?>
               <tr>
-              <td><?php echo $row['id']; ?></td>
-              <td><?php echo $row['username']; ?></td>
-              <td><a href="search.php?friendId=<?php echo $row['id']; ?>" class ="btn btn-success" name="friendId">Add Friend</a></td>
+              <td><?php echo $row['userid']; ?></td>
+              <td><?php echo $row['uname']; ?></td>
+              <td><a href="search.php?friendId=<?php echo $row['userid']; ?>" class ="btn btn-success" name="friendId">Add Friend</a></td>
 
               </tr>
             <?php endforeach; ?>

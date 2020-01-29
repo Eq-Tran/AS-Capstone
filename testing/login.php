@@ -27,7 +27,7 @@ $err = "";
        {
          $_SESSION['loggedOn'] = true;
          $myId = findUserId($user);
-         $_SESSION['id']= $myId;
+         $_SESSION['userid']= $myId;
 
          header('Location: search.php');
        }
