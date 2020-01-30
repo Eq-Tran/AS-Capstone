@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-    include __DIR__. '/../Models/model_functions.php';
-    include __DIR__. '/../Models/post_request_functions.php';
+    include __DIR__. '/../../Models/model_functions.php';
+    include __DIR__. '/../../Models/post_request_functions.php';
     
     if(!isset($_SESSION['admin']))
     {
@@ -20,9 +20,9 @@ session_start();
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
     //addfind user id
-    $profile = showUser($_SESSION['admin']);
+    $p = showUser($_SESSION['admin']);
     
-    var_dump($profile)
+    echo $p;
 ?>
 <html lang="en">
     
@@ -54,12 +54,14 @@ session_start();
  
 <tbody>
     <tr>
-       <td><?php echo $profile['userid']; ?></td>
+                    <?php foreach($p as $profile):?>
+                    <td><?php echo $profile['userid']; ?></td>
                     <td><?php echo $profile['uname']; ?></td>
                     <td><?php echo $profile['email']; ?></td>
                     <td><?php echo $profile['first']; ?></td>
                     <td><?php echo $profile['middle']; ?></td>
                     <td><?php echo $profile['last']; ?></td> 
+                    <?php endforeach;?>
     </tr>
 </tbody>
 

@@ -259,15 +259,19 @@ function checkLogin ($uname, $password) {
        
    }
    
-   function findUserId($User) {
+   /*
+    * 
+    * COMMENTED OUT FOR TESTING 
+    * 
+   function findUserId($user) {
     global $db;
     $results = [];
     $id = "";
     $binds = array();
     $sql = "SELECT * FROM users WHERE 0=0 ";
-    if ($User != "") {
-         $sql .= " AND username LIKE :username";
-         $binds['username'] = '%'.$User.'%';
+    if ($user != "") {
+         $sql .= " AND uname LIKE :user";
+         $binds['uname'] = '%'.$user.'%';
     }
    
     $stmt = $db->prepare($sql);
@@ -286,8 +290,7 @@ function checkLogin ($uname, $password) {
     return ($id);
 }
 
-
-
+*/
 
 
 
