@@ -151,7 +151,7 @@ function request_notification($myId, $sendData)
     }
 }
 //this is used to delete you and friend off of friend request table and add you to friends table
-function make_friends($myId, $friendId)
+function makeFriends($myId, $friendId)
 {
     global $db;
 
