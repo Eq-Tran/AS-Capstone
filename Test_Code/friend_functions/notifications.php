@@ -9,7 +9,25 @@
     //friend number counts the number of friends
     $friendNum = getAllFriends($myId, false);
     $allrequests = request_notification($myId, true);
-    
+    $response = filter_input(INPUT_GET, 'response');
+            
+    if (isPostRequest())
+    {
+
+        
+        echo $response;
+        if ($response == 'accept')
+        {
+            echo 'accepted friend request';
+            $friendId = filter_input(INPUT_GET, 'friendId');
+            echo '<br> Your friends ID: ' . $friendId;
+        }
+        else if ($response == 'deny'){
+
+            echo 'deny friend Request';
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -50,15 +68,17 @@
             <th>Name</th>
             <th></th>
             <th></th>
+            <th></th>
             </tr>';
             foreach($allrequests as $row)
             {
                 echo '
                 <tr>
                 <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
-                <td><button class= "btn btn-success" type="submit" name="friendResponse" value="accept">Accept</button></td>
-                <td><button class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</button></td>
+                <td><a href="notifications.php?friendId='.$row->sender.'&response=accept" class= "btn btn-success" type="submit" name="friendResponse" value="accept">Accept</a></td>
+                <td><a href="notifications.php?friendId='.$row->sender.'&response=deny" class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</a></td>
             </div>';
+                
             }
             echo '</form>';
             
@@ -66,6 +86,9 @@
         else{
             echo '<h4>You have no friend reuests today</h4>';
         }
+        //echo $_POST['friendResponse'];
+
+
         ?>
     </div>
 </body>
