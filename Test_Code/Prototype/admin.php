@@ -2,8 +2,8 @@
 
  
     session_start();
-    include __DIR__. '/../Models/model_functions.php';
-    include __DIR__. '/../Models/post_request_functions.php';
+    include __DIR__. '/../../Models/model_functions.php';
+    include __DIR__. '/../../Models/post_request_functions.php';
     
     if(!isset($_SESSION['admin']))
     {
@@ -51,32 +51,8 @@
     <?php
     /*Test for Admin Cred after login works*/
         echo "ONLY ADMINS SEE THIS";
+        echo "<a href='profile.php'> Profile</a> ";
     ?>
- <br>
- 
- <table class="table">
-     <thread>
-         <tr>
-             <th>userid</th>
-             <th>uname</th>
-             <th>email</th>
-             <th>first</th>
-             <th>middle</th>
-             <th>last</th>             
-         </tr>
-     </thread>
- </table>
- 
-<tbody>
-    <tr>
-       <td><?php echo $_SESSION['userid']; ?></td>
-                    <td><?php echo $profile['uname']; ?></td>
-                    <td><?php echo $profile['email']; ?></td>
-                    <td><?php echo $profile['first']; ?></td>
-                    <td><?php echo $profile['middle']; ?></td>
-                    <td><?php echo $profile['last']; ?></td> 
-    </tr>
-</tbody>
 
 </body>
 </html>

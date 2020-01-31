@@ -258,9 +258,39 @@ function checkLogin ($uname, $password) {
        
        
    }
+   
+   /*
+    * 
+    * COMMENTED OUT FOR TESTING 
+    * 
+   function findUserId($user) {
+    global $db;
+    $results = [];
+    $id = "";
+    $binds = array();
+    $sql = "SELECT * FROM users WHERE 0=0 ";
+    if ($user != "") {
+         $sql .= " AND uname LIKE :user";
+         $binds['uname'] = '%'.$user.'%';
+    }
+   
+    $stmt = $db->prepare($sql);
+      
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        foreach ($results as $row)
+        {
+            $id = $row['id'];
+        }
+    }
+    //var_dump($results);
+    //echo $id;
+    return ($id);
+}
 
-
-
+*/
 
 
 
