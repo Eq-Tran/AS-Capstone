@@ -55,7 +55,7 @@
                 <tr>
                 <td><a href="">Status 4</a></td>
                 <td><a href="">Status 4</a></td>
-                <td><a href="">Status 4</a></td>
+                <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status4.pdf">Status 4</a></td>
                 </tr>
                 
                 <tr>
