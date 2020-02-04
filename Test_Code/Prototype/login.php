@@ -40,7 +40,7 @@
                 
                     
                 //set session name to userid    
-                $_SESSION['admin'] = $userid;
+                $_SESSION['admin'] = $results['userid'];
                 //redirect to index.php
                 header('Location:admin.php');
                     
@@ -54,7 +54,7 @@
                 {
                 
                 
-                $_SESSION['use'] = $userid;
+                $_SESSION['use'] = $results['userid'];
                 header('Location:index.php');
                 
                 }

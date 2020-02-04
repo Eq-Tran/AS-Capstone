@@ -17,11 +17,13 @@ session_start();
     $uname = filter_input(INPUT_GET, 'uname');
     $email = filter_input(INPUT_GET, 'email');
     $first = filter_input(INPUT_GET, 'first');
-    $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
+    $birthday = filter_input(INPUT_GET, 'birthday');
+    $bio = filter_input(INPUT_GET, 'bio');
+    $location = filter_input(INPUT_GET, 'location');
     
-    $p = showUser($_SESSION['admin']);
-   
+    $profile = showUser($_SESSION['admin']);
+    
     
 ?>
 <html lang="en">
@@ -42,26 +44,28 @@ session_start();
  <table class="table">
      <thread>
          <tr>
-             <th>userid</th>
-             <th>uname</th>
+             <th>First</th>
+             <th>Last</th>
              <th>email</th>
-             <th>first</th>
-             <th>middle</th>
-             <th>last</th>             
+             <th>uname</th>
+             <th>birthday</th>
+             <th>bio</th>
+             <th>location</th>             
          </tr>
      </thread>
  
  
     <tbody>
         <tr>
-                    <?php foreach($p as $profile):?>
-                    <td><?php echo $profile['userid']; ?></td>
-                    <td><?php echo $profile['uname']; ?></td>
-                    <td><?php echo $profile['email']; ?></td>
+                    
                     <td><?php echo $profile['first']; ?></td>
-                    <td><?php echo $profile['middle']; ?></td>
-                    <td><?php echo $profile['last']; ?></td> 
-                    <?php endforeach;?>
+                    <td><?php echo $profile['last']; ?></td>
+                    <td><?php echo $profile['email']; ?></td>
+                    <td><?php echo $profile['uname']; ?></td>
+                    <td><?php echo $profile['birthday']; ?></td>
+                    <td><?php echo $profile['bio']; ?></td>
+                    <td><?php echo $profile['location']; ?></td> 
+                    
         </tr>
     </tbody>
 </table>

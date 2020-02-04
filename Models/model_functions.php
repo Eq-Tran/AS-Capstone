@@ -88,7 +88,7 @@ function showUsers(){
     
     if($statement->execute() && $statement->rowCount() > 0){
         
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
         
         
     }
@@ -211,7 +211,7 @@ function checkLogin ($uname, $password) {
        
        if($stmt->execute($binds) && $stmt->rowCount() > 0){
           
-          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $results = $stmt->fetch(PDO::FETCH_ASSOC);
           
        }
        else{
