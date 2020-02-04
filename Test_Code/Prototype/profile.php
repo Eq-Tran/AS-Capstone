@@ -19,10 +19,10 @@ session_start();
     $first = filter_input(INPUT_GET, 'first');
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
-    //addfind user id
-    $p = showUser($_SESSION['admin']);
     
-    echo $p;
+    $p = showUser($_SESSION['admin']);
+   
+    
 ?>
 <html lang="en">
     
@@ -50,10 +50,10 @@ session_start();
              <th>last</th>             
          </tr>
      </thread>
- </table>
  
-<tbody>
-    <tr>
+ 
+    <tbody>
+        <tr>
                     <?php foreach($p as $profile):?>
                     <td><?php echo $profile['userid']; ?></td>
                     <td><?php echo $profile['uname']; ?></td>
@@ -62,8 +62,8 @@ session_start();
                     <td><?php echo $profile['middle']; ?></td>
                     <td><?php echo $profile['last']; ?></td> 
                     <?php endforeach;?>
-    </tr>
-</tbody>
-
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>

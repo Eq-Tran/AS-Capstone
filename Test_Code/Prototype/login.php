@@ -20,32 +20,41 @@
         
         if(isset($login))
         {
-            
+                    
             $uname = filter_input(INPUT_POST,'user');
             $password = filter_input(INPUT_POST,'pass');
+            
             
             //model for login
             $results = checkLogin($uname, $password);
             //model for admin cred
             $check = checkUserCred($uname);
+            //model for user info
+            $store = showUser($userid);
             
             //checks username and password
             if($results == true)
             {
                 //checks for tiny int 1 for admin (Admin is stored as TinyINT(4) 0 is user, 1 is admin)
                 if($check == 1){
-                 
-                //set session name to Username    
-                $_SESSION['admin'] = $uname;
+                
+                    
+                //set session name to userid    
+                $_SESSION['admin'] = $userid;
                 //redirect to index.php
                 header('Location:admin.php');
+                    
+                    
+                    
                 }
+                
                 
                 //no admin
                 else
                 {
-                    
-                $_SESSION['use'] = $uname;
+                
+                
+                $_SESSION['use'] = $userid;
                 header('Location:index.php');
                 
                 }

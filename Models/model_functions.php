@@ -197,7 +197,6 @@ function showAllUserPosts(){
     return($results);
 }
 
-
 function checkLogin ($uname, $password) {
        global $db;
        
@@ -225,7 +224,7 @@ function checkLogin ($uname, $password) {
        return ($results);
    }
    
-   ;
+   
    
    //check for admin credentials
    function checkUserCred ($uname)
@@ -258,6 +257,33 @@ function checkLogin ($uname, $password) {
        
        
    }
+   
+   function findUserId($User) {
+    global $db;
+    $results = [];
+    $id = "";
+    $binds = array();
+    $sql = "SELECT * FROM users WHERE 0=0 ";
+    if ($User != "") {
+         $sql .= " AND uname LIKE :username";
+         $binds['username'] = '%'.$User.'%';
+    }
+   
+    $stmt = $db->prepare($sql);
+      
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        foreach ($results as $row)
+        {
+            $id = $row['userid'];
+        }
+    }
+    //var_dump($results);
+    //echo $id;
+    return ($id);
+    }
    
    /*
     * 
