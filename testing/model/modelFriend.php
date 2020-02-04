@@ -127,7 +127,7 @@ function userinfo()
 }
 
 //this is to send a friend request to another friend
-function send_friend_request($myId, $friendId)
+function sendFriendRequest($myId, $friendId)
 {
     global $db;
 
@@ -137,7 +137,7 @@ function send_friend_request($myId, $friendId)
 
 }
 //this is used to count the amount of friend requests you have to be used as a notification
-function request_notification($myId, $sendData)
+function requestNotification($myId, $sendData)
 {
     global $db;
 
@@ -154,22 +154,37 @@ function request_notification($myId, $sendData)
 function makeFriends($myId, $friendId)
 {
     global $db;
+    $stmt = $db->prepare("INSERT INTO friends (user_one, user_two) VALUES( ?, ?)");
+    $stmt->execute([$myId, $friendId]);
 
-    $stmt = $db->prepare("DELETE FROM `friend_request` WHERE (sender = :myId AND receiver = :friendId) OR (sender = :friendId AND receiver = :myId)");
     
-
+    if ($stmt->rowCount() > 0) 
+    {
+        $results = deleteFromRequests($myId, $friendId);
+    }
+    else{
+        $results = "did not leave make friends function";
+    }
+    return($results);
+}
+//this function deletes the request from request table
+function deleteFromRequests($myId, $friendId)
+{
+    global $db;
+    $stmt = $db->prepare("DELETE FROM friend_request WHERE (sender = :myId AND receiver = :friendId OR sender = :friendId) AND (receiver = :myId)");
     $binds = array(
         ":myId" => $myId,
         ":friendId" => $friendId
-
     );
-    
-    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
+    var_dump($binds);
+    if ($stmt->execute($binds))
     {
-        $stmt = $db->prepare("INSERT INTO `friends`(user_one, user_two) VALUES(?, ?)");
-        $stmt->execute([$myId, $friendId]);
+        $results = 'Data added to friends list';
     }
-
+    else{
+        $results = 'couldnt add friend';
+    }
+    return($results);
 }
 //this gets all of the people in database you are friends with
 function getAllFriends($myId, $sendData)
