@@ -29,7 +29,7 @@ function getDatabase(){
 }
 
 $db = getDatabase();
-var_dump($db);
+//var_dump($db);
 
 
 
