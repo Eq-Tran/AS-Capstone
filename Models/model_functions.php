@@ -35,7 +35,7 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function updateProfile($first, $last, $birthday, $bio, $location){
+function updateProfile($first, $last, $birthday, $bio, $location, $userid){
     
     global $db;
  
@@ -44,7 +44,7 @@ function updateProfile($first, $last, $birthday, $bio, $location){
     
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, birthday = :birthday, bio = :bio, location = :location ");
+    $statement  = $db->prepare("UPDATE users SET first = :first, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -53,7 +53,8 @@ function updateProfile($first, $last, $birthday, $bio, $location){
         ":last" => $last,
         ":birthday" => $birthday,
         ":bio" => $bio,
-        ":location" => $location
+        ":location" => $location,
+        ":userid" => $userid   
     );
     
     // Conditonal to create validation when insert is successful

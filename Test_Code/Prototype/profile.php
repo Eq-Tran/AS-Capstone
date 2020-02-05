@@ -27,9 +27,10 @@
         $birthday = filter_input(INPUT_POST, 'birthday');
         $bio = filter_input(INPUT_POST, 'bio');
         $location = filter_input(INPUT_POST, 'location');
-        $results = updateProfile($first, $last, $birthday, $bio, $location);
-        var_dump($results);
+        $results = updateProfile($first, $last, $birthday, $bio, $location, $userid);
+        
     }
+    
     
     echo "Hello ", $profile['uname'];
     echo "<a href='logout.php'> Logout</a> ";
@@ -86,7 +87,7 @@
 
     <h1>Profile Update</h1>
     
-    <form method="post" action = "profile.php">
+    <form name ="profileupdate" method="post" action = "profile.php">
     
         <div class="form-element">
             <label>First Name: </label>

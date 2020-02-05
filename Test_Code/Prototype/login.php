@@ -81,7 +81,7 @@
                 $uname = filter_input(INPUT_POST, 'uname');
                 $pw = filter_input(INPUT_POST, 'pass');
                 $results = addUser($first, $last, $email, $uname, $pw);
-                var_dump($results);
+                
             }
 ?>
 
