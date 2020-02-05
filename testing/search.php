@@ -19,7 +19,7 @@
   
   //var_dump($_SESSION['userid']);
   //var_dump($myId);
-  send_friend_request($myId, $friendId);
+  sendFriendRequest($myId, $friendId);
     
 ?>
 
