@@ -171,18 +171,32 @@ function makeFriends($myId, $friendId)
 function deleteFromRequests($myId, $friendId)
 {
     global $db;
-    $stmt = $db->prepare("DELETE FROM friend_request WHERE (sender = :myId AND receiver = :friendId OR sender = :friendId) AND (receiver = :myId)");
+    $results=[];
+    //statement works in sql tested multiple times
+    $sql = "DELETE FROM friend_request WHERE (sender = :myId AND receiver = :friendId) OR (sender = :friendId AND receiver = :myId)";
+    $stmt = $db->prepare($sql);
+    
+    //this binds array was not working for some reason. not sure why?
     $binds = array(
         ":myId" => $myId,
-        ":friendId" => $friendId
+        ":friendId" => $friendId 
     );
+
+    //found this way to bind parameters online, didnt work
+    //$stmt->bindParam(':myId', $myId);
+    //$stmt->bindParam(':friendId', $friendId);
+
+    //var dump was displaying corrrect values-- does not explain why stmt didnt execute
     var_dump($binds);
+    //$results = $stmt->execute($binds);
+    //var_dump($results);
+    //$stmt -> execute($binds);
     if ($stmt->execute($binds))
     {
-        $results = 'Data added to friends list';
+        $results = 'Data deleted from friend requests';
     }
     else{
-        $results = 'couldnt add friend';
+        $results = 'couldnt delete from friend requests';
     }
     return($results);
 }

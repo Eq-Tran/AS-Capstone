@@ -59,11 +59,12 @@
             </tr>';
             foreach($allrequests as $row)
             {
+                
                 echo '
                 <tr>
                 <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
                 <td><a href="notifications.php?response=accept&friendId=' .$row->sender .'" class= "btn btn-success" type="submit" name="friendResponse" value="accept">Accept</a></td>
-                <td><a href="notifications.php?response=deny" class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</a></td>
+                <td><a href="notifications.php?response=deny&friendId=' .$row->sender .'" class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</a></td>
             </div>';
                 
             }
@@ -87,11 +88,13 @@
                 //testing to make sure we are grabbing the correct friend ID
                 echo '<br> Your friends ID: ' . $friendId;
                $friends= makeFriends($myId, $friendId);
-               echo $friends;
+               //echo $friends;
             }
             else if ($response === 'deny'){
-    
-                echo 'deny friend Request';
+                echo $friendId;
+                $results = deleteFromRequests($myId, $friendId);
+                //var_dump($results);
+                echo $results;
             }
 
         }
