@@ -1,5 +1,6 @@
-    <?php
+<?php
     
+        
         session_start();
          include __DIR__. '/../../Models/model_functions.php';
          include __DIR__. '/../../Models/post_request_functions.php';
@@ -40,7 +41,7 @@
                 
                     
                 //set session name to userid    
-                $_SESSION['admin'] = $userid;
+                $_SESSION['admin'] = $results['userid'];
                 //redirect to index.php
                 header('Location:admin.php');
                     
@@ -54,7 +55,7 @@
                 {
                 
                 
-                $_SESSION['use'] = $userid;
+                $_SESSION['use'] = $results['userid'];
                 header('Location:index.php');
                 
                 }
@@ -69,10 +70,19 @@
             }
             
         }
-        
-
-        
-    ?>
+    
+        //Pass is comign in null, Information not going to Database
+        if(isPostRequested())
+            {
+                $first = filter_input(INPUT_POST, 'first');
+                $last = filter_input(INPUT_POST, 'last');
+                $email = filter_input(INPUT_POST, 'email');
+                $uname = filter_input(INPUT_POST, 'uname');
+                $pass = filter_input(INPUT_POST, 'password');
+                $results = addUser('$first', '$last', '$email', '$uname', '$pass');
+                var_dump($results);
+            }
+?>
 
 <html lang="en">
 <head>
@@ -89,7 +99,7 @@
     <h1>Capstone Login</h1>
     
     
-<form method="post" name="signin" action = "login.php">
+<form name="signin" action = "login.php" method="post">
     
     <div class="form-element">
         <label>Username: </label>
@@ -104,11 +114,48 @@
     <button type="submit" name="login" value="login">Log In</button>
 </form>
     
-
-    </div>
-  </form>
-</div>
+    <h1>Capstone Sign Up</h1>
     
-</body>
+    <form method="post" name="signup" action = "login.php">
+    
+        <div class="form-element">
+            <label>First Name: </label>
+            <input type="text" name="first" required />
+        </div>
+    <br>
+        <div class="form-element">
+            <label>Last Name: </label>
+            <input type="text" name="last" required />
+        </div>
+    <br>
+        <div class="form-element">
+            <label>Email: </label>
+            <input type="text" name="email" required />
+        </div>
+    <br>
+        <div class="form-element">
+            <label>Username: </label>
+            <input type="text" name="uname" required />
+        </div>
+    <br>
+        <div class="form-element">
+            <label>Password: </label>
+            <input type="text" name="pass" required />
+        </div>
+    <br>
+            <div class="form-group">        
+                <div class="">
+                    <button type="submit" class="btn btn-default">Sign Up</button>
+                    <?php
+                        if (isPostRequested()) 
+                        {
+                            echo "Signed up";
+                            
+                        }
+                    ?>
+                </div>
+            </div>       
+        </form>
+    </body>
 </html>
 

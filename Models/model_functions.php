@@ -3,7 +3,7 @@
 
 include (__DIR__ .'/databaseconnect.php');
 
-function addUser($first, $last, $email, $uname, $pw){
+function addUser($first, $last, $email, $uname, $password){
     
     global $db;
  
@@ -11,7 +11,7 @@ function addUser($first, $last, $email, $uname, $pw){
     $results = [];
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, password = :pw ");
+    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, password = :password ");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -20,9 +20,10 @@ function addUser($first, $last, $email, $uname, $pw){
         ":last" => $last,
         ":email" => $email,
         ":uname" => $uname,
-        ":pw" => $pw
+        ":password" => $password
     );
     
+    var_dump($bindParams);
     // Conditonal to create validation when insert is successful
     if($statement->execute($bindParams) && $statement->rowCount() > 0){
         
@@ -88,7 +89,7 @@ function showUsers(){
     
     if($statement->execute() && $statement->rowCount() > 0){
         
-        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
         
         
     }
@@ -211,7 +212,7 @@ function checkLogin ($uname, $password) {
        
        if($stmt->execute($binds) && $stmt->rowCount() > 0){
           
-          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          $results = $stmt->fetch(PDO::FETCH_ASSOC);
           
        }
        else{

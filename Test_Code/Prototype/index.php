@@ -1,8 +1,8 @@
 <?php
   
     session_start();
-    include (__DIR__ . '/../Models/model_functions.php');
-    include (__DIR__ . '/../Models/post_request_functions.php');
+    include (__DIR__ . '/../../Models/model_functions.php');
+    include (__DIR__ . '/../../Models/post_request_functions.php');
     
     if(!isset($_SESSION['use']))
     {
@@ -42,7 +42,7 @@
     <?php 
     /*Test for user login after login works*/
         echo "Welcome User";
-        
+        echo "<a href='profile.php'> Profile</a> ";
     ?>
  <br>
  <br>
