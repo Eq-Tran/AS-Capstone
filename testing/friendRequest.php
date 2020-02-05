@@ -8,7 +8,7 @@ session_start();
   $myId= $_SESSION['userid'];
   echo $myId;
   $friendId = filter_input(INPUT_GET, 'friendId');
-  send_friend_request($myId, $friendId);
+  sendFriendRequest($myId, $friendId);
   
   
   var_dump($_GET['friendId']);

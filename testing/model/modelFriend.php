@@ -100,7 +100,7 @@ function checkLogin($user, $pass)
 {
     global $db;
 
-    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user and password = :pass");
+    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user and pw = :pass");
 
     $results = [];
 
@@ -160,7 +160,7 @@ function makeFriends($myId, $friendId)
     
     if ($stmt->rowCount() > 0) 
     {
-        $results = deleteFromRequests($myId, $friendId);
+        $results= deleteFromRequests($myId, $friendId);
     }
     else{
         $results = "did not leave make friends function";
@@ -171,33 +171,32 @@ function makeFriends($myId, $friendId)
 function deleteFromRequests($myId, $friendId)
 {
     global $db;
-    $results=[];
+    $results = [];
+    $sql="SELECT id from friend_request WHERE (sender = ? AND receiver = ?) OR (sender = ? AND receiver = ?)";
     //statement works in sql tested multiple times
-    $sql = "DELETE FROM friend_request WHERE (sender = :myId AND receiver = :friendId) OR (sender = :friendId AND receiver = :myId)";
+    //$sql = "DELETE FROM friend_request WHERE sender = :myId, receiver = :friendId OR sender = :friendId, receiver = :myId";
     $stmt = $db->prepare($sql);
-    
-    //this binds array was not working for some reason. not sure why?
-    $binds = array(
-        ":myId" => $myId,
-        ":friendId" => $friendId 
-    );
 
-    //found this way to bind parameters online, didnt work
-    //$stmt->bindParam(':myId', $myId);
-    //$stmt->bindParam(':friendId', $friendId);
-
-    //var dump was displaying corrrect values-- does not explain why stmt didnt execute
-    var_dump($binds);
-    //$results = $stmt->execute($binds);
-    //var_dump($results);
-    //$stmt -> execute($binds);
-    if ($stmt->execute($binds))
+    if ($stmt->execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
     {
-        $results = 'Data deleted from friend requests';
+        //$results = 'Data deleted from friend requests';
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($results as $row)
+        {
+            $requestId =  $row['id'];
+            $sql2 = "DELETE FROM friend_request WHERE id = :id";
+            $stmt2 = $db->prepare($sql2);
+            $binds = array(":id" => $requestId);
+
+        }
+        if($stmt2->execute($binds) && $stmt2->rowCount() > 0)
+        {
+            $results = 'request deleted from request lists';
+        }
     }
     else{
         $results = 'couldnt delete from friend requests';
-    }
+    };
     return($results);
 }
 //this gets all of the people in database you are friends with

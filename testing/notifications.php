@@ -12,9 +12,10 @@
     $response = filter_input(INPUT_GET, 'response');
     $friendId = intval(filter_input(INPUT_GET, 'friendId'));
     //echo $response;
-            
-
-
+      
+    //this works but doesnt refresh the first time
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +30,11 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <title>Notification Page</title>
+   
+    
 </head>
 <body>
-    <div class="container">
+    <div id="nav" class="container">
         <nav>
             <ul>
                 <li><a href="search.php">search</a></li>
@@ -39,7 +42,7 @@
             </ul>
         </nav>
     </div>
-    <div class="container">
+    <div class="container" id="content">
         <?php
          echo "You Have ";
          echo $requestNum;
@@ -47,10 +50,10 @@
         if ($requestNum > 0)
         {                
             echo '
-            <form action="notifications.php" method="post">
+            <form action="notifications.php" id="form">
             <div class="user_box">
             <div class="user_info">
-            <table class="table table-striped" >
+            <table id="table" class="table table-striped" >
             <tr>
             <th>Name</th>
             <th></th>
@@ -63,8 +66,8 @@
                 echo '
                 <tr>
                 <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
-                <td><a href="notifications.php?response=accept&friendId=' .$row->sender .'" class= "btn btn-success" type="submit" name="friendResponse" value="accept">Accept</a></td>
-                <td><a href="notifications.php?response=deny&friendId=' .$row->sender .'" class= "btn btn-danger" type="submit" name="friendResponse"  value="deny">Deny</a></td>
+                <td><a href="notifications.php?response=accept&friendId=' .$row->sender .'" class= "btn btn-success" type="submit" name="friendResponse" id=button value="accept" >Accept</a></td>
+                <td><a href="notifications.php?response=deny&friendId=' .$row->sender .'" class= "btn btn-danger" type="submit" name="friendResponse" id=button value="deny" >Deny</a></td>
             </div>';
                 
             }
@@ -87,19 +90,23 @@
 
                 //testing to make sure we are grabbing the correct friend ID
                 echo '<br> Your friends ID: ' . $friendId;
-               $friends= makeFriends($myId, $friendId);
-               //echo $friends;
+                $friends= makeFriends($myId, $friendId);
+                echo $friends;
+                
             }
             else if ($response === 'deny'){
-                echo $friendId;
+                echo "deny friend request";
+                echo '<br> Your friends ID: ' . $friendId;
                 $results = deleteFromRequests($myId, $friendId);
                 //var_dump($results);
                 echo $results;
+                
             }
-
         }
-
+            
         ?>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src = "file.js"></script>
 </body>
 </html>
