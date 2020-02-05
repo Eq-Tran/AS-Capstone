@@ -9,6 +9,7 @@ function addUser($first, $last, $email, $uname, $password){
  
     // Results var to store validation string
     $results = [];
+    
  
     // Database query string
     $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, password = :password ");

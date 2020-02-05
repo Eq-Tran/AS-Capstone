@@ -79,7 +79,7 @@
                 $email = filter_input(INPUT_POST, 'email');
                 $uname = filter_input(INPUT_POST, 'uname');
                 $pass = filter_input(INPUT_POST, 'password');
-                $results = addUser('$first', '$last', '$email', '$uname', '$pass');
+                $results = addUser($first, $last, $email, $uname, $pass);
                 var_dump($results);
             }
 ?>
