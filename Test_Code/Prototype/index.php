@@ -9,8 +9,7 @@
         header('Location:login.php');
     }
     
-    echo "Hello ";
-    echo $_SESSION['use'];
+    
     echo "<a href='logout.php'> Logout</a> ";
     
     
@@ -41,15 +40,14 @@
  <br>
     <?php 
     /*Test for user login after login works*/
-        echo "Welcome User";
-        echo "<a href='profile.php'> Profile</a> ";
+        echo "From here you can choose to see your profile";
     ?>
  <br>
  <br>
  <br>
  <br>
     <?php
-    
+    echo "<a href='profile.php'> Profile</a> ";
     ?>
 
 </body>

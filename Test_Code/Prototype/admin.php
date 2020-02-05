@@ -10,9 +10,8 @@
         header('Location:login.php');
     }
     
-    echo "Hello ";
-    echo $_SESSION['admin'];
-    echo "<a href='logout.php'> Logout</a> ";
+    
+    
     
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
@@ -22,7 +21,8 @@
     $last = filter_input(INPUT_GET, 'last');
     $profile = showUser($userid);
       
-       
+    echo "Hello ", $profile['uname'];
+    echo "<a href='logout.php'> Logout</a> ";   
     
 ?>
 

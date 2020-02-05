@@ -3,15 +3,16 @@
 
 include (__DIR__ .'/databaseconnect.php');
 
-function addUser($first, $last, $email, $uname, $password){
+function addUser($first, $last, $email, $uname, $pw){
     
     global $db;
  
     // Results var to store validation string
     $results = [];
+    
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, password = :password ");
+    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pass ");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -20,14 +21,46 @@ function addUser($first, $last, $email, $uname, $password){
         ":last" => $last,
         ":email" => $email,
         ":uname" => $uname,
-        ":password" => $password
+        ":pass" => $pw
     );
     
-    var_dump($bindParams);
     // Conditonal to create validation when insert is successful
     if($statement->execute($bindParams) && $statement->rowCount() > 0){
         
         $results = "User Added!";
+       
+    }
+    
+    // Returns results value if condition is met
+    return($results);
+}
+
+function updateProfile($first, $last, $birthday, $bio, $location, $userid){
+    
+    global $db;
+ 
+    // Results var to store validation string
+    $results = [];
+    
+ 
+    // Database query string
+    $statement  = $db->prepare("UPDATE users SET first = :first, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
+    
+    // Array binding function variables to database columns
+    $bindParams = array(
+        
+        ":first" => $first,
+        ":last" => $last,
+        ":birthday" => $birthday,
+        ":bio" => $bio,
+        ":location" => $location,
+        ":userid" => $userid   
+    );
+    
+    // Conditonal to create validation when insert is successful
+    if($statement->execute($bindParams) && $statement->rowCount() > 0){
+        
+        $results = "User Updated!";
        
     }
     
@@ -198,15 +231,15 @@ function showAllUserPosts(){
     return($results);
 }
 
-function checkLogin ($uname, $password) {
+function checkLogin ($uname, $pw) {
        global $db;
        
        $results = [];
-       $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user AND password = :pass");
+       $stmt = $db->prepare("SELECT * FROM users WHERE uname = :user AND pw = :pass");
        
        $binds = array(
            ":user" => $uname,
-           ":pass" => $password
+           ":pass" => $pw
        
         );
        

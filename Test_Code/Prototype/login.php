@@ -23,11 +23,12 @@
         {
                     
             $uname = filter_input(INPUT_POST,'user');
-            $password = filter_input(INPUT_POST,'pass');
+            $pw = filter_input(INPUT_POST,'pass');
+            
             
             
             //model for login
-            $results = checkLogin($uname, $password);
+            $results = checkLogin($uname, $pw);
             //model for admin cred
             $check = checkUserCred($uname);
             //model for user info
@@ -71,16 +72,16 @@
             
         }
     
-        //Pass is comign in null, Information not going to Database
+        //Sign up isPostRequest
         if(isPostRequested())
             {
                 $first = filter_input(INPUT_POST, 'first');
                 $last = filter_input(INPUT_POST, 'last');
                 $email = filter_input(INPUT_POST, 'email');
                 $uname = filter_input(INPUT_POST, 'uname');
-                $pass = filter_input(INPUT_POST, 'password');
-                $results = addUser('$first', '$last', '$email', '$uname', '$pass');
-                var_dump($results);
+                $pw = filter_input(INPUT_POST, 'pass');
+                $results = addUser($first, $last, $email, $uname, $pw);
+                
             }
 ?>
 
@@ -116,7 +117,7 @@
     
     <h1>Capstone Sign Up</h1>
     
-    <form method="post" name="signup" action = "login.php">
+    <form method="post" action = "login.php">
     
         <div class="form-element">
             <label>First Name: </label>
@@ -149,9 +150,12 @@
                     <?php
                         if (isPostRequested()) 
                         {
+                            
                             echo "Signed up";
                             
                         }
+                        
+                        
                     ?>
                 </div>
             </div>       
