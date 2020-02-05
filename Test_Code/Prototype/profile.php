@@ -9,6 +9,8 @@ session_start();
         header('Location:login.php');
     }
     
+   
+    
     echo "Hello ";
     echo $_SESSION['admin'];
     echo "<a href='logout.php'> Logout</a> ";
