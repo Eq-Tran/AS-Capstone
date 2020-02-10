@@ -15,7 +15,32 @@
       
     //this works but doesnt refresh the first time
     
+    if (isGetReq())
+    {
+
+        
+        //echo $response;
+        if ($response === 'accept')
+        {
+            echo 'accepted friend request';
+            //$friendId = filter_input(INPUT_GET, 'friendId');
+
+            //testing to make sure we are grabbing the correct friend ID
+            echo '<br> Your friends ID: ' . $friendId;
+            $friends= makeFriends($myId, $friendId);
+            echo $friends;
     
+        }
+        else if ($response === 'deny'){
+            echo "deny friend request";
+            echo '<br> Your friends ID: ' . $friendId;
+            $results = deleteFromRequests($myId, $friendId);
+            //var_dump($results);
+            echo $results;
+            
+        }
+        //header("location: notifications.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +72,7 @@
          echo "You Have ";
          echo $requestNum;
          echo " friend requests";
+
         if ($requestNum > 0)
         {                
             echo '
@@ -78,31 +104,7 @@
             echo '<h4>You have no friend reuests today</h4>';
         }
         //echo $_POST['friendResponse'];
-        if (isGetReq())
-        {
-    
-            
-            //echo $response;
-            if ($response === 'accept')
-            {
-                echo 'accepted friend request';
-                //$friendId = filter_input(INPUT_GET, 'friendId');
 
-                //testing to make sure we are grabbing the correct friend ID
-                echo '<br> Your friends ID: ' . $friendId;
-                $friends= makeFriends($myId, $friendId);
-                echo $friends;
-                
-            }
-            else if ($response === 'deny'){
-                echo "deny friend request";
-                echo '<br> Your friends ID: ' . $friendId;
-                $results = deleteFromRequests($myId, $friendId);
-                //var_dump($results);
-                echo $results;
-                
-            }
-        }
             
         ?>
     </div>

@@ -1,9 +1,10 @@
 $(document).ready(function(){
     //$('#content').load('notifications.php');
 
-    $('#button').click(function(){
+    $('isGetReq').click(function(){
         //alert ("works");
-        $("#container").load("notifications.php")
+        location.reload(true);
+        alert("reloaded page");
 
     });
 });
