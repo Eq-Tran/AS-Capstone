@@ -6,8 +6,6 @@
   echo $myId;
   //Counts the number of notifications that the user has
     $requestNum = requestNotification($myId, false);
-    //friend number counts the number of friends
-    $friendNum = getAllFriends($myId, false);
     $allrequests = requestNotification($myId, true);
     $response = filter_input(INPUT_GET, 'response');
     $friendId = intval(filter_input(INPUT_GET, 'friendId'));

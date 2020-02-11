@@ -3,15 +3,16 @@
 
 include (__DIR__ . '/db.php');
 //this function will grab users from the table
-function getusers()
+function getusers($myId)
 {
     global $db;
     
     $results = [];
-    $stmt = $db ->prepare("SELECT * FROM users");
-    $stmt -> execute();
+    $stmt = $db ->prepare("SELECT * FROM users WHERE 0=0 AND NOT userid = :id");
+    $binds = array(":id" => $myId);
+    $stmt -> execute($binds);
     
-    if ( $stmt->execute() && $stmt->rowCount() > 0 ) 
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
     {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         
@@ -23,15 +24,19 @@ function getusers()
 
 
 //this function will search through the database and find all that fit the criteria
-function findUser($User) {
+function findUser($User, $myId) {
     global $db;
     $results = [];
     
     $binds = array();
-    $sql = "SELECT * FROM users WHERE 0=0 ";
+    $sql = "SELECT * FROM users WHERE 0=0 AND NOT userid = :id";
     if ($User != "") {
          $sql .= " AND uname LIKE :username";
          $binds['username'] = '%'.$User.'%';
+         $binds = array(
+            ':username' => $User,
+            ':id' => $myId
+         );
     }
    
     $stmt = $db->prepare($sql);
@@ -212,21 +217,24 @@ function getAllFriends($myId, $sendData)
     {
         if($sendData){
             $results = [];
-            $users = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach($users as $row)
             {
                 if($row->user_one == $myId){
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = ?");
+                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $binds = array(
+                        ':id' -> $myId
+                    );
                     $userStmt ->execute([$row->user_two]);
                     //array push pushes one or more items to an array to be stored
-                    array_push($results, $userStmt->fetch(PDO::FETCH_OBJ));
+                    $results = array($userStmt->fetch(PDO::FETCH_OBJ));
                 }
                 else{
                     $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = ?");
                     $userStmt ->execute([$row->user_one]);
                     //array push pushes one or more items to an array to be stored
-                    array_push($results, $userStmt->fetch(PDO::FETCH_OBJ));
+                    $results = array($userStmt->fetch(PDO::FETCH_OBJ));
                 }
                 return $results;
 

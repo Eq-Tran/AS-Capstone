@@ -5,11 +5,20 @@
   $_SESSION['loggedOn'];
   $myId= $_SESSION['userid'];
   $err = "";
-  $User = filter_input(INPUT_POST,'username');
   $friendId = '';
   $results=[];
-  $results = findUser($User);
+  //
+  $results = getAllFriends($myId, true);
+  var_dump($results);
+  //$results = getusers($myId);
   $friendId= filter_input(INPUT_GET, 'friendId');
+  
+  if (isPostRequest())
+  {
+    $User = filter_input(INPUT_POST,'username');
+    $results = findUser($User,$myId);
+  }
+  
   
   //this is here for testing purposes--making sure that it is grabbing correct id numbers
   echo "My Id is: ";
@@ -17,7 +26,7 @@
   echo "<br> My friends id is: ";
   echo $friendId;
   
-  //var_dump($_SESSION['userid']);
+  //var_dump($results);
   //var_dump($myId);
   sendFriendRequest($myId, $friendId);
     
@@ -62,6 +71,7 @@
 
           </div>
         </div>
+        
         <table class="table table-striped">
           <thead>
               <th>ID</th>
