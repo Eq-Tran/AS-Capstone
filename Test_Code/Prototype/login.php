@@ -11,7 +11,7 @@
         
         if(isset($_SESSION['admin']))
         {
-           header('Location:index.php');
+           header('Location:admin.php');
         } 
           
         if(isset($_SESSION['use']))
@@ -32,7 +32,7 @@
             //model for admin cred
             $check = checkUserCred($uname);
             //model for user info
-            $store = showUser($userid);
+            //$store = showUser($userid);
             
             //checks username and password
             if($results == true)
@@ -87,12 +87,13 @@
 
 <html lang="en">
 <head>
-  <title>Capstone Login</title>
+  <title>Go Login Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="../../CSS/styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -117,6 +118,7 @@
     
     <h1>Capstone Sign Up</h1>
     
+    <div class ="signup">
     <form method="post" action = "login.php">
     
         <div class="form-element">
@@ -143,10 +145,10 @@
             <label>Password: </label>
             <input type="text" name="pass" required />
         </div>
-    <br>
+    <br>    
             <div class="form-group">        
                 <div class="">
-                    <button type="submit" class="btn btn-default">Sign Up</button>
+                    <button type="submit" class="btnSign">Sign Up</button>
                     <?php
                         if (isPostRequested()) 
                         {
@@ -160,6 +162,7 @@
                 </div>
             </div>       
         </form>
+      </div>  
     </body>
 </html>
 

@@ -7,11 +7,11 @@
     
     if(!isset($_SESSION['admin']))
     {
-        header('Location:login.php');
+        header('Location:admin.php');
     }
     
     
-    
+    $profile = showUser($_SESSION['admin']);
     
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
@@ -19,7 +19,7 @@
     $first = filter_input(INPUT_GET, 'first');
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
-    $profile = showUser($userid);
+    
       
     echo "Hello ", $profile['uname'];
     echo "<a href='logout.php'> Logout</a> ";   
@@ -51,7 +51,7 @@
     <?php
     /*Test for Admin Cred after login works*/
         echo "ONLY ADMINS SEE THIS";
-        echo "<a href='profile.php'> Profile</a> ";
+        $show = showAllUserPosts();
     ?>
 
 </body>
