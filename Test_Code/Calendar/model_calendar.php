@@ -1,71 +1,80 @@
 <?php
 
-class Calendar {
+class Calendar
+{
     
-    
-    /******** Calendar Class ********/
-    
-    /*
-     *  
-    $totalDaysInMonth = date("t");
-    $currDayInMonth = date("j");
-    $lastDayInMonth = $totalDaysInMonth;
-    $numOfWeeksInMonth = (int)($totalDaysInMonth / 7);
-    $numOfDaysInWeek = (int)($totalDaysInMonth / 4);
-
-     var_dump($numOfWeeksInMonth);
-     var_dump($numOfDaysInWeek);
-     * 
-     */
-    
-    private $dayLabels = array("Mon","Tue","Wed","Thu","Fri","Sat","Sun");
-    private $currYear = 0;
-    private $currMonth = 0;
-    private $currDay = 0;
-    private $firOfMonth = 0;
-    private $currDate = null;
-    private $naviHref = null;
-    private $daysinMon = null;
-    
-     public function __construct(){
-        
+     public function __construct(){     
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
-        echo 'this class "' . __CLASS__. '"was created';
+    }
+ 
+    /* Class Properties */
+    private $Curryear = 0;
+    private $Currmonth = 0;
+    private $DayLabels = array("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun");
+    private $DaysinMonth = 0;
+    private $CurrDate = null;
+    private $naviHref = null;
+    
+    
+    /* Class Functions */
+    
+    public function daysInMonth($month = null, $year = null){
+        
+        if($month == null){
+            
+            $month = date("m", time());
+            
+        }
+        if($year == null){
+            
+            $year = date("Y", time());
+        }
+        
+        return date("t", strtotime($year . '-' . $month . '01'));
+    }
+ 
+    public function weekInMonth($month = null, $year = null){
+        
+        if($month == null){
+            
+            $month = date("m", time());
+            
+        }
+        if($year == null){
+            
+            $year = date("Y", time());
+        }
+        
+        $daysInMonth = $this->daysInMonth($month, $year);
+        $numOfWeeks = ($daysInMonth % 7 == 0 ? 0: 1) + intval($daysInMonth / 7);
+        $lastDayInMonth = date("N", strtotime($year . '-' . $month .'-'. $daysInMonth));
+        $firstDayInMonth = date("N", strtotime($year . '-' . $month .'-01'));
+        
+        if($lastDayInMonth > $firstDayInMonth){
+            
+            $numOfWeeks++;
+            
+        }
+        return ($numOfWeeks);
     }
     
-    public function showCalendar(){
+    public function createNavLabels(){
         
-        $year = date("Y", time());
-        $month = date("m", time());
+        $content = '';
         
-        $this->currYear = $year;
-        $this->currMonth = $month;
-        $this->daysinMon = $this->calculateDaysinMonth($month, $year);
+        foreach($this->DayLabels as $index => $label){
+            
+            $content .= '<li class="'.($label == 6?'end title':'start title') . 'title">' .$label.'</li>';
+            
+        }
+        
+        return ($content);
     }
     
-    private function calculateDaysinMonth($month, $year){
-        
-        $year = date("Y", time());
-        $month = date("m", time());
-        
-        return date("t", strtotime($year . '-' . $month  .'-01'));
-        
-    }
     
-    private function createNav(){
-        
-        //Ternary Operator if currMonth == 12 return 1 else return currMonth + 1
-       $nxtMonth =  $this->currMonth == 12?1:intval($this->currMonth) + 1;
-       $nxtYear = $this->currMonth == 12?intval($this->curryear) + 1:$this->currYear;
-       $preMonth = $this->currMonth == 12?1:intval($this->currMonth) - 1; 
-       $preYear = $this->currMonth == 12?intval($this->currYear) - 1:$this->currYear; 
-       $nav =  '<div class="navHeader">'.
-                   '<a class="prev" href="'. $this->naviHref . '?month='.sprintf('%02d', $preMonth).'&year='.$preYear.'">Prev</a>'.
-                   '<span class="title">'.date("Y","m", strtotime($this->currYear.'-'.$this->currMonth.'-1')).'</span>'.
-                   '<a class="prev" href="'. $this->naviHref . '?month='.sprintf('%02d', $nxtMonth).'&year='.$nxtYear.'">Next</a>';
-       return($nav);
-    }
-
 }
-$obj = new Calendar();
+
+$cal = new Calendar();
+
+echo $cal->createNavLabels();
 ?>

@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+
+
+
+
+
+body
+{
+	background-color: #f3f1ed;
+	width: 1440px;
+	height: 1025px;
+	
+}	
+
+header a
+{
+	margin-top: .3%;
+	display: block;
+	float: right;
+	
+}
+
+.signup
+{
+    background-color: #cab891;
+    
+}
+
+.form-element
+{
+    color: #000000;
+}
+
+.logo
+{
+	margin-top: 2.3%;
+	width: 480px;
+	height: 90px;
+	align-items: center;
+	padding-top: .3%;
+	padding-left: .3%;
+}
+
+.navbar
+{
+	display: block;
+	min-width: 100%;
+	min-height: 5%;
+	background-color:#ECBB5C;
+	position: absolute;
+	z-index: 2;
+	
+	
+}
+
+
+
+.vl
+{
+	border-left: 3px solid black;
+	position: absolute;
+	padding-bottom: 5.5%;
+	left: 75%;
+	top: 25%;
+
+}
+
+.signsheets
+{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	z-index: 1;
+	padding-top: 10%;
+	
+
+}
+
+.searchSheet
+{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	z-index: 1;
+	padding-top: 8%;
+
+}
+
+.mealPage
+{
+	display: flex;
+	position: absolute;
+	width: 90%;
+	height: 100%;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	
+}
+
+.divFood
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	max-width: 30%;
+	max-height: 40%;
+	padding: -2%;
+	
+
+}
+
+.btn
+{
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+}
+
+.foodImg
+{
+	height: 55%;
+	width: 55%;
+	min-height: 55%;
+	min-width: 55%;
+	margin: 6px;
+	padding: 6px;
+	border: 10px solid #2A222D;
+	border-radius: 4px;
+	border-color: #2A222D;
+	  
+
+}
+
+#imgHelp
+{
+	color: #2A222D;
+	width: 191px;
+	height: 191px;
+}
+
+#search
+{
+
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+
+}
+
+#txtSearch
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 700px;
+	height: 39px;
+	
+}
+
+
+#username
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+}
+
+#txtuser
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 260px;
+	height: 39px;
+}
+
+#password
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+}
+#txtpass
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 260px;
+	height: 39px;
+}
+
+#firstName
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+}
+#txtFirst
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 260px;
+	height: 39px;
+}
+
+#lastName
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+}
+#txtLast
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 260px;
+	height: 39px;
+}
+
+#age
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 202px;
+	text-align: right;
+}
+#txtAge
+{
+	background-color: #FFFFFF;
+	border: 3px solid #2A222D;
+	width: 260px;
+	height: 39px;
+}
+
+#txtHelp
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 692px;
+	text-align: center;
+}
+
+.txtFood
+{
+	color: #BC0402;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 52px;
+	width: 692px;
+	text-align: center;
+}
+
+.btnFood
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+.searchBox
+{
+	background-color: white;
+	border: 5px solid #2A222D;
+	width: 85%;
+	height: 70%;
+	align-content: center;
+	margin-top: 2%;
+	
+}
+
+#thankYou
+{
+	background-color: #ECBB5C;
+	border: 5px solid #2A222D;
+	width: 35%;
+	height: 50%;
+	align-content: center;
+	
+}
+
+
+
+#staticRecipt
+{
+	background-color: rgba(255, 110, 105, 0.34);
+	width: 345px;
+	height: 913px;
+}
+
+#smile1
+{
+	display: block;
+	width: 219px;
+	height: 219px;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+
+	
+}
+
+.pText
+{
+	color: #2A222D;
+	font-family: 'Abril Fatface', cursive;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 33px;
+	text-align: center;
+	
+}
+
+
+
+
+/* THIS IS WHERE BTN HELP IS FIND ME!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+#btnHelp
+{
+	display: flex;
+	color: #2A222D;
+  	font-family: 'Abril Fatface', cursive;
+  	font-size: 26px;
+  	font-weight: 400;
+  	line-height: 33px;
+  	width: 82px;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 4.0%;
+	margin-right: 10%;
+	position: relative;
+	z-index: 10;
+}
+
+#btnHelpRe
+{
+
+	display: flex;
+	color: #2A222D;
+  	font-family: 'Abril Fatface', cursive;
+  	font-size: 26px;
+  	font-weight: 400;
+  	line-height: 33px;
+  	width: 82px;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 4.0%;
+	margin-right: 10%;
+	position: relative;
+	z-index: 10;
+	visibility: hidden;
+
+}
+
+#btnLogout
+{
+
+	display: flex;
+	color: #2A222D;
+  	font-family: 'Abril Fatface', cursive;
+  	font-size: 26px;
+  	font-weight: 400;
+  	line-height: 33px;
+  	width: 82px;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 4.0%;
+	margin-right: 10%;
+	position: relative;
+	z-index: 10;
+
+}
+
+#btnLogoutRe
+{
+
+	display: flex;
+	color: #2A222D;
+  	font-family: 'Abril Fatface', cursive;
+  	font-size: 26px;
+  	font-weight: 400;
+  	line-height: 33px;
+  	width: 82px;
+	text-align: left;
+	justify-content: flex-end;
+	padding: 4.0%;
+	margin-right: 10%;
+	position: relative;
+	z-index: 10;
+	visibility: hidden;
+
+}
+
+#btnLogin
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnAdmin
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnSign
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #73549c;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnCreate
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnBack
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnResume
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+#btnLogPay
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+.btnSearch
+{
+	font-family: 'Abril Fatface', cursive;
+	background-color: #FF6E69;
+	border: 5px solid #2A222D;
+	width: 168px;
+	height: 60px;
+}
+
+.sideBar
+{
+	height:100%;
+	width:15%;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color:rgba(255, 110, 105, 0.34);
+	overflow-x:hidden;
+	padding-top: 20px;
+	transition: 0.5s;
+
+
+}
+

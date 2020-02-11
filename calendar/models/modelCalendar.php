@@ -180,7 +180,7 @@ class Calendar {
         // find number of days in this month
         $daysInMonths = $this->_daysInMonth($month,$year);
          
-        $numOfweeks = ($daysInMonths%7==0?0:1) + intval($daysInMonths/7);
+        $numOfweeks = ($daysInMonths%7==0?0:1) + intval($daysInMonths/7); // if days in month mod 7 == 0 (even) is true return even if false( == 1 ) return odd;
          
         $monthEndingDay= date('N',strtotime($year.'-'.$month.'-'.$daysInMonths));
          

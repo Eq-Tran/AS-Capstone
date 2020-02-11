@@ -6,10 +6,11 @@
     
     if(!isset($_SESSION['use']))
     {
-        header('Location:login.php');
+        header("Location:profile.php");
     }
     
     $profile = showUser($_SESSION['use']);
+    
     
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
@@ -22,12 +23,13 @@
     
     if(isPostRequested())
     {
+        $userid = $_SESSION['use'];
         $first = filter_input(INPUT_POST, 'first');
         $last = filter_input(INPUT_POST, 'last');
         $birthday = filter_input(INPUT_POST, 'birthday');
         $bio = filter_input(INPUT_POST, 'bio');
         $location = filter_input(INPUT_POST, 'location');
-        $results = updateProfile($first, $last, $birthday, $bio, $location, $userid);
+        $results = updateProfile($userid, $first, $last, $birthday, $bio, $location);
         
     }
     
@@ -91,12 +93,12 @@
     
         <div class="form-element">
             <label>First Name: </label>
-            <input type="text" name="first" required />
+            <input type="text" name="first" value="<?php echo $profile['first']; ?>"/>
         </div>
     <br>
         <div class="form-element">
             <label>Last Name: </label>
-            <input type="text" name="last" required />
+            <input type="text" name="last" value="<?php echo $profile['last']; ?>"/>
         </div>
     <br>
         <div class="form-element">
@@ -122,6 +124,7 @@
                         {
                             
                             echo "Profile Updated";
+                            echo "<meta http-equiv='refresh' content='0'>";
                             
                         }
                         

@@ -35,7 +35,7 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function updateProfile($first, $last, $birthday, $bio, $location, $userid){
+function updateProfile($userid, $first, $last, $birthday, $bio, $location){
     
     global $db;
  
@@ -49,12 +49,13 @@ function updateProfile($first, $last, $birthday, $bio, $location, $userid){
     // Array binding function variables to database columns
     $bindParams = array(
         
+        ":userid" => $userid,
         ":first" => $first,
         ":last" => $last,
         ":birthday" => $birthday,
         ":bio" => $bio,
-        ":location" => $location,
-        ":userid" => $userid   
+        ":location" => $location
+           
     );
     
     // Conditonal to create validation when insert is successful
@@ -187,7 +188,7 @@ function showPosts(){
     return ($results);
 }
 
-function showuserPost($userid){
+function showUserPost($userid){
     
     global $db;
     
