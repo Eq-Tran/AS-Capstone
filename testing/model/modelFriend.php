@@ -192,6 +192,7 @@ function deleteFromRequests($myId, $friendId)
         if($stmt2->execute($binds) && $stmt2->rowCount() > 0)
         {
             $results = 'request deleted from request lists';
+            header("Refresh: 0;");
         }
     }
     else{
