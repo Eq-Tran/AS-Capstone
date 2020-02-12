@@ -10,7 +10,7 @@
     
     $profile = showUser($_SESSION['use']);
     
-    
+    // Add Image get
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
     $email = filter_input(INPUT_GET, 'email');
@@ -22,6 +22,7 @@
     
     if(isPostRequested())
         {
+            //add image post
             $userid = $_SESSION['use'];
             $first = filter_input(INPUT_POST, 'first');
             $last = filter_input(INPUT_POST, 'last');
@@ -67,11 +68,11 @@
         
         </div>
         
-        <div class="bodycontent">
+        <div class="content1">
         
         <div class ="proimg">
                     
-                    
+                    <!-- Add Image -->
                     <td><?php echo $profile['birthday']; ?></td>
                     <td><?php echo $profile['location']; ?></td> 
                     
@@ -95,7 +96,7 @@
         <div id="updatecollapse" class="collapse">
     
             <form name ="profileupdate" method="post" action = "profile.php">
-    
+                <!-- Add Image Update -->
                 <div class="form-element">
                     <label>First Name: </label>
                     <input type="text" name="first" value="<?php echo $profile['first']; ?>"/>
@@ -143,6 +144,8 @@
     
         </div>
         
+        </div> 
+        
         <div class ="proposts">
             
             <div class ="addpost">
@@ -155,7 +158,7 @@
             
         </div>
             
-        </div>    
+           
         
     </body>
     
