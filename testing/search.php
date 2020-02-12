@@ -9,11 +9,13 @@
   $results=[];
   //
   $results = getAllFriends($myId, true);
-  var_dump($results);
+  $friendsNum = getAllFriends($myId, false);
+  echo $friendsNum;
+  //var_dump($results);
   //$results = getusers($myId);
   $friendId= filter_input(INPUT_GET, 'friendId');
   
-  if (isPostRequest())
+  if (isPostRequest('search'))
   {
     $User = filter_input(INPUT_POST,'username');
     $results = findUser($User,$myId);
@@ -82,8 +84,11 @@
             <?php foreach($results as $row):?>
               <tr>
               <td><?php echo $row['userid']; ?></td>
-              <td><?php echo $row['uname']; ?></td>
-              <td><a href="search.php?friendId=<?php echo $row['userid']; ?>" class ="btn btn-success" name="friendId">Add Friend</a></td>
+              <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
+              <?php if (isPostRequest() && checkFriends($myId, $row['userid']) == false){
+                echo "<td><a href='search.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+              } ?>
+              
 
               </tr>
             <?php endforeach; ?>
