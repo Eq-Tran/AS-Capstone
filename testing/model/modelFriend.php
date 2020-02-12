@@ -224,15 +224,18 @@ function getAllFriends($myId, $sendData)
                 if($row->user_one == $myId){
                     $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
                     $binds = array(
-                        ':id' -> $myId
+                        ':id' => [$row->user_two]
                     );
-                    $userStmt ->execute([$row->user_two]);
+                    $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
                     $results = array($userStmt->fetch(PDO::FETCH_OBJ));
                 }
                 else{
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = ?");
-                    $userStmt ->execute([$row->user_one]);
+                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $binds = array(
+                        ':id' => [$row->user_two]
+                    );
+                    $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
                     $results = array($userStmt->fetch(PDO::FETCH_OBJ));
                 }
