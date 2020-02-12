@@ -64,6 +64,7 @@ class Calendar
         
         foreach($this->DayLabels as $index => $label){
             
+            // 
             $content .= '<li class="'.($label == 6?'end title':'start title') . 'title">' .$label.'</li>';
             
         }
