@@ -209,43 +209,54 @@ function deleteFromRequests($myId, $friendId)
 function getAllFriends($myId, $sendData)
 {
     global $db;
-    $stmt = $db -> prepare("SELECT * FROM `friends` WHERE user_one = :myId OR user_two = :myId");
-    $binds = array(
-        ":myId" => $myId
-    );
-    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
+    $stmt = $db -> prepare("SELECT * FROM `friends` WHERE user_one = ? OR user_two = ?");
+    
+   echo "inside get all friends function";
+    if ( $stmt->execute([$myId, $myId]) && $stmt->rowCount() > 0 ) 
     {
-        if($sendData){
+        echo "statement binded";
+        if($sendData == true){
             $results = [];
+            $users = [];
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            //var_dump($myId);
+            //var_dump($users);
             foreach($users as $row)
             {
-                if($row->user_one == $myId){
+                
+                //var_dump($row);
+                if($row['user_one'] == $myId){
+                    
                     $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
-                    $binds = array(
-                        ':id' => [$row->user_two]
-                    );
+                    $binds=array(":id"=> $row['user_two']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
-                    $results = array($userStmt->fetch(PDO::FETCH_OBJ));
+                    //$results = array($userStmt->fetch(PDO::FETCH_ASSOC));
+                    //return $results;
+                    //echo "User one";
                 }
                 else{
+                    //echo "user two";
+                    
                     $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
-                    $binds = array(
-                        ':id' => [$row->user_two]
-                    );
+                    $binds = array(":id" => $row['user_one']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
-                    $results = array($userStmt->fetch(PDO::FETCH_OBJ));
+                    
+                    //return $results;
                 }
-                return $results;
-
+                $results[] =  $userStmt->fetch(PDO::FETCH_ASSOC);
+                
+                
             }
-
+            return ($results);
+            
+            
         }
         else{
+            echo "total number of friends you have: ";
             return $stmt->rowCount();
+
         }
 
     }
@@ -267,5 +278,32 @@ function getFriendRequests($myId, $friendId)
     }
 }
 
+//this function will check if the user if friends with person(so you can search for friends and people not in your friends list)
+//will only return true or false(for add button)
+function checkFriends($myId, $friendId)
+{
+    global $db;
+    $sql = "SELECT * from friends where user_one = ? and user_two = ? OR user_one = ? and user_two = ?";
+    $stmt = $db ->prepare($sql);
+    if($stmt -> execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
+//this funciton will delete people off of your friends list
+function deleteFriends($myId, $friendId)
+{
+    global $db;
+    $sql = "DELETE * from friends where user_one = ? and user_two = ? OR user_one = ? and user_two = ?";
+    $stmt = $db ->prepare($sql);
+    if($stmt -> execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
+    {
+        echo "Friend Deleted";
+    }
+
+}
 ?>
