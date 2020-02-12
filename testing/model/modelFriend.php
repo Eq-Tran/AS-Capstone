@@ -224,7 +224,7 @@ function getAllFriends($myId, $sendData)
                 if($row->user_one == $myId){
                     $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
                     $binds = array(
-                        ':id' -> $myId
+                        ':id' => $myId
                     );
                     $userStmt ->execute([$row->user_two]);
                     //array push pushes one or more items to an array to be stored
