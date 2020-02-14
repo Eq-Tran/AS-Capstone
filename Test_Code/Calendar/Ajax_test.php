@@ -64,7 +64,7 @@
             };
             
             // Specify the request type and the URL you want to get the information from.
-            xmlhttp.open("GET", "AjaxDataPage.php?$arr['Ethan']['Username']", true);
+            xmlhttp.open("GET", "AjaxDataPage.php?", true);
             // Send the request.
             xmlhttp.send();
         

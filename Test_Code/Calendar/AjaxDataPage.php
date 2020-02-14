@@ -1,7 +1,7 @@
 <?php
 
-    include (__DIR__ . '/../../Models/model_functions.php');
-    include (__DIR__ . '/../../post_request_functions.php');
+    //include (__DIR__ . '/../../Models/model_functions.php');
+    //include (__DIR__ . '/../../post_request_functions.php');
     
     // need to figure out how to pull data from a function and load it into the box on the ajax test page.
     // need to figure out how to create a function that allows you to add to the box as an event.
@@ -16,7 +16,7 @@
         
         
     );
-   
+   echo $arr;
 
 ?>
 <!doctype html>
@@ -30,6 +30,7 @@
             <form method="GET">
                 <textarea class="textarea" name="textarea"></textarea>
                 <input type="submit" placeholder="submit" name="button1">
+                <p>hello</p>
             </form>
         </div>
     </body>
