@@ -69,6 +69,8 @@
             xmlhttp.send();
             //comment here
             // adding another comment here for git branching assignment.
+            //AJAX stuff here
+            //More stuff
         
     }
     
