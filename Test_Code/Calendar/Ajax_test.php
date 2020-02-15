@@ -67,6 +67,7 @@
             xmlhttp.open("GET", "AjaxDataPage.php?", true);
             // Send the request.
             xmlhttp.send();
+            //comment here
         
     }
     
