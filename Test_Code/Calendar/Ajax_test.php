@@ -68,6 +68,7 @@
             // Send the request.
             xmlhttp.send();
             //comment here
+            // adding another comment here for git branching assignment.
         
     }
     
