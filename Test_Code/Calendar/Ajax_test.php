@@ -70,12 +70,7 @@
             //comment here
             // adding another comment here for git branching assignment.
             //AJAX stuff here
-<<<<<<< HEAD
-            //More stuffasdfasdf
-=======
-            //More stuff
-            //sadfsadfasdfsdfaasdf
->>>>>>> Tran
+            //merge conflict
         
     }
     
