@@ -64,18 +64,18 @@
             };
             
             // Specify the request type and the URL you want to get the information from.
-            xmlhttp.open("GET", "AjaxDataPage.php?", true);
+            xmlhttp.open("GET", "AjaxDataPage.php?x=5&y=6.", true);
             // Send the request.
             xmlhttp.send();
             //comment here
             // adding another comment here for git branching assignment.
             //AJAX stuff here
-<<<<<<< HEAD
+
             //More stuffasdfasdf
-=======
+
             //More stuff
             //sadfsadfasdfsdfaasdf
->>>>>>> Tran
+
         
     }
     

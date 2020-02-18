@@ -5,6 +5,7 @@ class Calendar
     
      public function __construct(){     
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
+        echo "class initialized";
     }
  
     /* Class Properties */
