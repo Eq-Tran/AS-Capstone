@@ -73,7 +73,7 @@
                 <tr>
                 <td><a href="">Status 6</a></td>
                 <td><a href="">Status 6</a></td>
-                <td><a href="">Status 6</a></td>
+                <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status6.pdf">Status 6</a></td>
                 </tr>
 
                 <tr>
