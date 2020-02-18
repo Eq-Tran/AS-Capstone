@@ -10,7 +10,7 @@
   //
   $results = getAllFriends($myId, true);
   $friendsNum = getAllFriends($myId, false);
-  echo $friendsNum;
+  //echo $friendsNum;
   //var_dump($results);
   //$results = getusers($myId);
   $friendId= filter_input(INPUT_GET, 'friendId');
@@ -85,9 +85,22 @@
               <tr>
               <td><?php echo $row['userid']; ?></td>
               <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
-              <?php if (isPostRequest() && checkFriends($myId, $row['userid']) == false){
-                echo "<td><a href='search.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
-              } ?>
+              
+              <?php if (checkFriends($myId, $row['userid']) === false){
+                if (checkRequest($myId, $row['userid']) === true)
+                {
+                  
+                  echo "<td>Friend Request Sent</td>";
+
+                }
+                else{
+                  echo "<td><a href='search.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                }
+                
+              }
+              
+              
+ ?>
               
 
               </tr>
