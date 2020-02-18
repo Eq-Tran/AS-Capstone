@@ -35,7 +35,7 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function updateProfile($userid, $first, $last, $birthday, $bio, $location){
+function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location){
     
     global $db;
  
@@ -44,17 +44,48 @@ function updateProfile($userid, $first, $last, $birthday, $bio, $location){
     
  
     // Database query string
-    $statement  = $db->prepare("UPDATE users SET first = :first, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
+    $statement  = $db->prepare("UPDATE users SET first = :first, middle = :middle, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
     
     // Array binding function variables to database columns
     $bindParams = array(
         
         ":userid" => $userid,
         ":first" => $first,
+        ":middle" => $middle,
         ":last" => $last,
         ":birthday" => $birthday,
         ":bio" => $bio,
         ":location" => $location
+           
+    );
+    
+    // Conditonal to create validation when insert is successful
+    if($statement->execute($bindParams) && $statement->rowCount() > 0){
+        
+        $results = "User Updated!";
+       
+    }
+    
+    // Returns results value if condition is met
+    return($results);
+}
+
+function updateProfileImage($userid, $profile_image){
+    
+    global $db;
+ 
+    // Results var to store validation string
+    $results = [];
+    
+ 
+    // Database query string
+    $statement  = $db->prepare("UPDATE users SET profile_image = :profile_image WHERE userid =:userid");
+    
+    // Array binding function variables to database columns
+    $bindParams = array(
+        
+        ":userid" => $userid,
+        ":profile_image" => $profile_image
            
     );
     
@@ -95,7 +126,7 @@ function showUser($userid){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("SELECT first, last, email, uname, birthday, bio, location FROM users WHERE userid = :userid");
+    $statement = $db->prepare("SELECT first, middle, last, email, uname, birthday, bio, location, profile_image FROM users WHERE userid = :userid");
     
     $bindParam = array(
         
