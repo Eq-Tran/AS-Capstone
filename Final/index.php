@@ -56,10 +56,10 @@
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#"><i class=" material-icons">group</i></a>
+                          <a class="nav-link" href="friends.php"><i class=" material-icons">group</i></a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#"><i class=" material-icons">person_add</i></a>
+                          <a class="nav-link" href="notifications.php"><i class=" material-icons">person_add</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="logout.php"><i class=" material-icons">power_settings_new</i></a>
