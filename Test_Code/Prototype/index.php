@@ -14,7 +14,8 @@
     
     $showMine = showUserPost($userid);
     $showAll = showPosts();
-    //commit test   
+    //commit test 2
+    
     
 ?>
 
