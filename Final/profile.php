@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    include __DIR__. '/../../Models/model_functions.php';
-    include __DIR__. '/../../Models/post_request_functions.php';
+session_start();
+    include __DIR__. '/../Models/model_functions.php';
+    include __DIR__. '/../Models/post_request_functions.php';
     
     if(!isset($_SESSION['use']))
         {
@@ -36,60 +36,87 @@
         
         }
     
-    
-    
-    
 ?>
 
 <html lang="en">
-    
     <head>
-        
-        <title>Go Profile</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link href="../../CSS/styles.css" rel="stylesheet" type="text/css">
-        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GO - Profile</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="styles/style.css">
     </head>
     
     <body>
+    <div>
         
-        <div class="navbar">
-        
-            <div class="logo">
-            
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">GO</a>
+            <div class="container-fluid">
+                
+              <div class="navbar-header">
+                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>-->
+                
+                
+              </div>
+              <!--<div class="collapse navbar-collapse" id="myNavbar">-->
+                  
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#"><i class=" material-icons">group</i></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#"><i class=" material-icons">person_add</i></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="logout.php"><i class=" material-icons">power_settings_new</i></a>
+                      </li>
+                      
+                    </ul>
+                
+              <!--</div>-->
             </div>
-        
-            <div class ="logout">
-                    
-                <?PHP echo "<a href='logout.php'> Logout</a> ";?>
+          </nav>
+    </div>
+        <div class="container">
             
-            </div>
+        <div class="proimg">
+            <td><img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
+        </div>
+            
+            <div class="proinfo"> 
+                <td><?php echo $profile['birthday']; ?></td>
+                <td><?php echo $profile['location']; ?></td>
+                <td><?php echo $profile['uname']; ?></td>
+                <td><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></td>
+                <td><?php echo $profile['email']; ?></td>
+                    
+            </div>  
         
+        <div class="proabout">
+            <td><?php echo $profile['bio']; ?></td>
         </div>
         
-        <div class="content1">
-        
-        <div class ="proimg">
-                    
-                    <td><img src="../images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
-                    <td><?php echo $profile['birthday']; ?></td>
-                    <td><?php echo $profile['location']; ?></td>
-                    
-        </div>
-        
-        <div class ="proabout">
-                    
-                    <td><?php echo $profile['uname']; ?></td>
-                    <td><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></td>
-                    <td><?php echo $profile['email']; ?></td>
-                    <td><?php echo $profile['bio']; ?></td>
-                    
-        </div>
-        
+    </div>
+       
         <div class="btnedit">
             
             <button data-toggle="collapse" data-target="#updatecollapse">Update Profile</button>
@@ -123,17 +150,18 @@
         <br>
                 <div class="form-element">
                     <label>Birthday: </label>
-                    <input type="text" name="birthday" required />
-                </div>
-        <br>
-                <div class="form-element">
-                    <label>Bio: </label>
-                    <input type="text" name="bio" required />
+                    <input type="text" name="birthday" placeholder="YYYY-DD-MM" value="<?php echo $profile['birthday']; ?>" required />
                 </div>
         <br>
                 <div class="form-element">
                     <label>Location: </label>
-                    <input type="text" name="location" required />
+                    <input type="text" name="location" value="<?php echo $profile['location']; ?>" required />
+                </div>
+        <br>
+                
+                <div class="form-element">
+                    <label>Bio: </label>
+                    <textarea type="text" name="bio" class=" form-control" id="exampleFormControlArea1" rows="4"><?php echo $profile['bio']; ?></textarea>
                 </div>
         <br>    
                 <div class="form-group">        
@@ -184,5 +212,5 @@
            
         
     </body>
-    
-</html>
+        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+</html>        

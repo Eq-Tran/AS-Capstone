@@ -27,3 +27,19 @@ a{
     padding: 10%;
     text-align: left;
 }
+.iekfooter{
+      padding: 2%;
+    background-color: #73549C;
+}
+.navbar-nav 
+{
+    display: flex;
+    felx-direction: row;
+    justify-content: end;
+}
+.navbar
+{
+  display: flex;
+    felx-direction: row;
+    justify-content: end;  
+}
