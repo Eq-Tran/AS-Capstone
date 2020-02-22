@@ -45,8 +45,8 @@
         </body>
     </main>
     <script>
-    // AJAX function that executes the AJAX request
-    function executeAjaxRequest(){
+    // AJAX function that executes the AJAX GET request
+    function executeAjaxGetRequest(){
         
             // Create a new instance of a XMLHttpRequest Object.
             var xmlhttp = new XMLHttpRequest();
@@ -65,6 +65,33 @@
             
             // Specify the request type and the URL you want to get the information from.
             xmlhttp.open("GET", "AjaxDataPage.php?", true);
+            // Send the request.
+            xmlhttp.send();
+        
+    }
+    
+    // AJAX function that executes a POST request
+    function executeAjaxPostRequest(){
+        
+            // Create a new instance of a XMLHttpRequest Object.
+            var xmlhttp = new XMLHttpRequest();
+            
+            // new XML onreadystate change defines a function to be executed.
+            xmlhttp.onreadystatechange = function(){
+                
+                // if AJAX request readyState == 4 and request status == OK (200).
+                if(this.readyState == 4 && this.status == 200){
+                    
+                    // Execute this code 
+                    document.getElementById("data").innerHTML = this.responseText;
+                    
+                }
+            };
+            
+            // Specify the request type and the URL you want to get the information from.
+            xmlhttp.open("POST", "AjaxDataPage.php?", true);
+            // Set the request header and specify the data you want to send.
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             // Send the request.
             xmlhttp.send();
         

@@ -17,7 +17,7 @@
         
     );
    echo $arr;
-
+phpinfo();
 ?>
 <!doctype html>
 <html lang="en">
