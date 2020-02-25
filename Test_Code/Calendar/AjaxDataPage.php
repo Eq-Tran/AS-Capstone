@@ -17,7 +17,8 @@
         
     );
     
-    var_dump($arr);
+   $j = json_encode($arr);
+   var_dump($j);
     foreach($arr as $var){
         
        echo $var["Username"]; 

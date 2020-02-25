@@ -1,4 +1,8 @@
 <?php
+
+include __DIR__ . '/Models/model_functions.php';
+include __DIR__ . '/Models/post_request_functions.php';
+
 $dt = new DateTime;
 if (isset($_GET['year']) && isset($_GET['week'])) {
     $dt->setISODate($_GET['year'], $_GET['week']);
@@ -7,6 +11,14 @@ if (isset($_GET['year']) && isset($_GET['week'])) {
 }
 $year = $dt->format('o');
 $week = $dt->format('W');
+
+
+
+// Add post based from User ID
+// Show Uname for posts in Calendar
+// Delete Post 
+// Calendar should only show Uname date/time
+// post list should show username post body date time
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,7 +31,8 @@ $week = $dt->format('W');
         <div class="cal-box">
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
-
+            <a href="#" >Add Post</a>
+            <a href="#">Delete Post</a>
             <table class="table table-responsive">
                 <tr>
                   
