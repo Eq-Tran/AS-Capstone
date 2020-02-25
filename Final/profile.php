@@ -101,17 +101,18 @@ session_start();
         <div class="proimg">
             <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
         </div>
+        <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
             
             <div class="proinfo"> 
-                <td><?php echo $profile['birthday']; ?></td>
-                <td><?php echo $profile['location']; ?></td>
-                <td><?php echo $profile['uname']; ?></td>
-                <td><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></td>
-                <td><?php echo $profile['email']; ?></td>
-                    
+                
+                <td>Username: <?php echo $profile['uname']; ?></td><br />
+                <td>Email Address: <?php echo $profile['email']; ?></td><br />
+                <td>Location: <?php echo $profile['location']; ?></td><br />
+                <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+              
             </div>  
         
-        <div class="proabout">
+        <div class="proabout"> 
             <td><?php echo $profile['bio']; ?></td>
         </div>
         
@@ -119,7 +120,7 @@ session_start();
        
         <div class="btnedit">
             
-            <button class="button" data-toggle="collapse" data-target="#updatecollapse">Update Profile or Image</button>
+            <button class="btn button" data-toggle="collapse" data-target="#updatecollapse">Update Profile or Image</button>
             <br>
             
         </div>
