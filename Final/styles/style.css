@@ -1,14 +1,14 @@
 html, body{
     height : 100%;
     width: 100%;
-    background-color:#F3F1ED;
+    background-color:black;
 }
 nav{
     
     color:#F3F1ED;
     padding: 2%;
     background-color: #73549C;
-    
+   
 }
 a{
     color:#F3F1ED;
@@ -35,14 +35,21 @@ a{
 }
 .navbar-nav 
 {
-    
+    color:#F3F1ED;
     display: flex;
     flex-direction: row;
     justify-content: end;
 }
 .navbar
 {
+<<<<<<< HEAD
   display: flex;
   flex-direction: row;
   justify-content: end;  
+=======
+    display: flex;
+    flex-direction: row;
+    justify-content: end;  
+>>>>>>> f939c7bc71bc27cae103d6095cb62b0ef6ad7a6b
 }
+

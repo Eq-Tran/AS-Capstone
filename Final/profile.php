@@ -52,14 +52,14 @@ session_start();
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     </head>
     
     <body>
     <div>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="#">GO</a>
+            <a class="navbar-brand" href="index.php">GO</a>
             <div class="container-fluid">
                 
               <div class="navbar-header">
@@ -96,10 +96,10 @@ session_start();
             </div>
           </nav>
     </div>
-        <div class="container">
+    <div class="container">
             
         <div class="proimg">
-            <td><img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
+            <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
         </div>
             
             <div class="proinfo"> 
@@ -119,8 +119,8 @@ session_start();
        
         <div class="btnedit">
             
-            <button class="button" data-toggle="collapse" data-target="#updatecollapse">Update Profile</button>
-            <button class="button" data-toggle="collapse" data-target="#uploadcollapse">Upload Profile Image</button>
+            <button class="button" data-toggle="collapse" data-target="#updatecollapse">Update Profile or Image</button>
+            <br>
             
         </div>
             
@@ -131,7 +131,7 @@ session_start();
             
                 
             
-    
+        <br>
             <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
                 <div class="form-element">
                     <label>First Name: </label>
@@ -183,19 +183,17 @@ session_start();
                 </div> 
         
             </form>
-    
-        </div>
             
-        <div id="uploadcollapse" class="collapse">
-            
-                <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+            <form action="fileUpload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="myfile" id="fileToUpload">
                 <input type="submit" name="submit" value="Upload File Now" >
                 </form>
-                
-        </div>    
+    
+        </div>
+            
         
-        </div> 
+        
+         
         
         <div class ="proposts">
             
