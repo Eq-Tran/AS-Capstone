@@ -67,10 +67,6 @@
             xmlhttp.open("GET", "AjaxDataPage.php?", true);
             // Send the request.
             xmlhttp.send();
-            //comment here
-            // adding another comment here for git branching assignment.
-            //AJAX stuff here
-            //merge conflict
         
     }
     
