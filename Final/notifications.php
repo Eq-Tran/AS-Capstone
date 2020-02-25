@@ -102,14 +102,7 @@
           </nav>
     </div>
     
-    <div id="nav" class="container">
-        <nav>
-            <ul>
-                <li><a href="search.php">search</a></li>
-                <li><a href="index.php" class="active">index</a></li>
-            </ul>
-        </nav>
-    </div>
+
     <div class="container" id="content">
         <?php
          echo "You Have ";

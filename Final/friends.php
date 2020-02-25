@@ -31,6 +31,19 @@
     //var_dump($results);
     //var_dump($myId);
     sendFriendRequest($myId, $friendId);
+  
+        
+        if($results['profile_image'] == null){
+            
+            echo "no image";
+            
+        }else{
+            var_dump($results['profile_image']);
+            
+        }
+       
+        
+    
 ?>
 
 <html lang="en">
@@ -124,7 +137,8 @@
           <tbody>
             <?php foreach($results as $row):?>
               <tr>
-              <td><?php echo $row['userid']; ?></td>
+              <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image"></td>
+              
               <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
               
               <?php if (checkFriends($myId, $row['userid']) === false){
