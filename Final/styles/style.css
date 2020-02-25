@@ -1,7 +1,7 @@
 html, body{
     height : 100%;
     width: 100%;
-    background-color:black;
+    background-color:#F3F1ED;
 }
 nav{
     
@@ -48,4 +48,9 @@ a{
   justify-content: end;  
 
 }
-
+.profileImage{
+    border: 1px solid black;
+    
+    width:30%;
+    border-radius:8px;
+}
