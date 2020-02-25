@@ -16,8 +16,22 @@
         
         
     );
+<<<<<<< HEAD
    echo $arr;
 phpinfo();
+=======
+    
+   $j = json_encode($arr);
+   var_dump($j);
+    foreach($arr as $var){
+        
+       echo $var["Username"]; 
+        
+        
+    }
+    
+
+>>>>>>> 4068675cfe3415bbf9afc0c22e0abd674d68e520
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,7 +43,7 @@ phpinfo();
         <div class="box">
             <form method="GET">
                 <textarea class="textarea" name="textarea"></textarea>
-                <input type="submit" placeholder="submit" name="button1">
+                <input type="submit" name="button1">
                 <p>hello</p>
             </form>
         </div>
