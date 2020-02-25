@@ -42,14 +42,13 @@ a{
 }
 .navbar
 {
-<<<<<<< HEAD
+
   display: flex;
   flex-direction: row;
-  justify-content: end;  
-=======
+  justify-content: end; 
     display: flex;
     flex-direction: row;
     justify-content: end;  
->>>>>>> f939c7bc71bc27cae103d6095cb62b0ef6ad7a6b
+
 }
 
