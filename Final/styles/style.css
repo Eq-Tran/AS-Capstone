@@ -37,12 +37,12 @@ a{
 {
     
     display: flex;
-    felx-direction: row;
+    flex-direction: row;
     justify-content: end;
 }
 .navbar
 {
   display: flex;
-    felx-direction: row;
-    justify-content: end;  
+  flex-direction: row;
+  justify-content: end;  
 }

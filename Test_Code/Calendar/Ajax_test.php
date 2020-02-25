@@ -32,15 +32,18 @@
     </style>
         <body>
             
-               
-                    <canvas id="myChart">
-                        
-                    </canvas>
-              
-            
+            <div id='CalBox'>
+                this
+                <div id="data">
+                     
+                </div>
+                <button name="button" type="submit" onclick="executeAjaxRequest()">submit</button>
+            </div>
+                
         </body>
     </main>
     <script>
+        /*
     function showChart(){
         
       var chrt = document.getElementById("myChart").getContext("2d");
@@ -129,6 +132,7 @@
     }
     
     showChart();
+    */
     // AJAX function that executes the AJAX request
     function executeAjaxRequest(){
         
@@ -145,16 +149,11 @@
                     document.getElementById("data").innerHTML = this.responseText;
                     alert("hello");
                     
-                    for( let i = 0; i < 10 ; i++){
-                        
-                        document.getElementById("Calbox").innerHTML = i;
-                    }
-                    
                 }
             };
             
             // Specify the request type and the URL you want to get the information from.
-            xmlhttp.open("GET", "AjaxDataPage.php?x=8&y=5", true);
+            xmlhttp.open("GET", "AjaxDataPage.php?", true);
             // Send the request.
             xmlhttp.send();
 
