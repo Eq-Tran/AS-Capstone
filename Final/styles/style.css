@@ -5,12 +5,13 @@ html, body{
 }
 nav{
     
+    color:#F3F1ED;
     padding: 2%;
     background-color: #73549C;
     
 }
 a{
-    color:black;
+    color:#F3F1ED;
 }
 .icon-bar{
     background-color:black;
@@ -33,6 +34,7 @@ a{
 }
 .navbar-nav 
 {
+    
     display: flex;
     felx-direction: row;
     justify-content: end;
