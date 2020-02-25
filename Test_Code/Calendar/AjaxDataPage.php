@@ -16,7 +16,15 @@
         
         
     );
-   echo $arr;
+    
+    var_dump($arr);
+    foreach($arr as $var){
+        
+       echo $var["Username"]; 
+        
+        
+    }
+    
 
 ?>
 <!doctype html>
@@ -29,7 +37,7 @@
         <div class="box">
             <form method="GET">
                 <textarea class="textarea" name="textarea"></textarea>
-                <input type="submit" placeholder="submit" name="button1">
+                <input type="submit" name="button1">
                 <p>hello</p>
             </form>
         </div>

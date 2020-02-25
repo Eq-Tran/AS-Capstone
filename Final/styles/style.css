@@ -1,0 +1,45 @@
+html, body{
+    height : 100%;
+    width: 100%;
+    background-color:#F3F1ED;
+}
+nav{
+    
+    padding: 2%;
+    background-color: #73549C;
+    
+}
+a{
+    color:black;
+}
+.icon-bar{
+    background-color:black;
+}
+
+.button{
+    background-color:#9F6FEF;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.signup{
+    margin-top: 15px;
+    background-color:#ffffff;
+    padding: 10%;
+    text-align: left;
+}
+.iekfooter{
+      padding: 2%;
+    background-color: #73549C;
+}
+.navbar-nav 
+{
+    display: flex;
+    felx-direction: row;
+    justify-content: end;
+}
+.navbar
+{
+  display: flex;
+    felx-direction: row;
+    justify-content: end;  
+}

@@ -254,11 +254,16 @@ function getAllFriends($myId, $sendData)
             
         }
         else{
-            echo "total number of friends you have: ";
+            //echo "total number of friends you have: ";
             return $stmt->rowCount();
 
         }
 
+    }
+    if ($stmt->execute([$myId, $myId]) && $stmt->rowCount() == 0){
+        //  echo "You Have no friends, look for someone!";
+        $results = getUsers($myId);
+        return ($results);
     }
 }
 //this checks if youve recieved any friend requests
@@ -305,5 +310,26 @@ function deleteFriends($myId, $friendId)
         echo "Friend Deleted";
     }
 
+}
+
+//this function will check if the user already sent a friend request
+function checkRequest($myId, $friendId)
+{
+    global $db;
+    $sql = "SELECT * from friend_request where sender = :sender and receiver = :receiver";
+    $stmt = $db ->prepare($sql);
+    $binds = array(
+        ':sender' => $myId,
+        ':receiver' => $friendId
+    );
+    //var_dump($binds);
+    if($stmt -> execute($binds) && $stmt->rowCount() > 0)
+    {
+        //echo "<br /> check requests"; 
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 ?>
