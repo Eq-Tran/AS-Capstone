@@ -119,8 +119,8 @@ session_start();
        
         <div class="btnedit">
             
-            <button class="button" data-toggle="collapse" data-target="#updatecollapse">Update Profile</button>
-            <button class="button" data-toggle="collapse" data-target="#uploadcollapse">Upload Profile Image</button>
+            <button class="button" data-toggle="collapse" data-target="#updatecollapse">Update Profile or Image</button>
+            <br>
             
         </div>
             
@@ -131,7 +131,7 @@ session_start();
             
                 
             
-    
+        <br>
             <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
                 <div class="form-element">
                     <label>First Name: </label>
@@ -183,19 +183,17 @@ session_start();
                 </div> 
         
             </form>
-    
-        </div>
             
-        <div id="uploadcollapse" class="collapse">
-            
-                <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+            <form action="fileUpload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="myfile" id="fileToUpload">
                 <input type="submit" name="submit" value="Upload File Now" >
                 </form>
-                
-        </div>    
+    
+        </div>
+            
         
-        </div> 
+        
+         
         
         <div class ="proposts">
             

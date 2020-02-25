@@ -46,8 +46,4 @@ a{
     flex-direction: row;
     justify-content: end;  
 }
-.proimg{
-    border: 1px solid black;
-    height:150px;
-    width:150px;
-}
+

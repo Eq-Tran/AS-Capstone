@@ -103,7 +103,7 @@
                 <ul class="nav navbar-nav navbar-right">
                   <form action="login.php" class="form-inline" name="signin" method="post">
                       <input type="text" class="form-control" placeholder="Username" name="user" required>
-                      <input type="text" class="form-control" placeholder="Password" name="pass" required>
+                      <input type="password" class="form-control" placeholder="Password" name="pass" required>
                       <button class="btn button" type="submit" name="login" value ="login">Log In</button>
                   </form>
                   
@@ -118,6 +118,7 @@
 
         <div class="signup">
             <h2>Don't Have an Account?</h2>
+            
             </br>
 
             <form method ="post" action="login.php">
@@ -134,7 +135,7 @@
                 </div>
                 <div class="form-group">
                   <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->  
-                  <input type="text" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                  <input type="password" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
                 </div>
                   <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" required>
