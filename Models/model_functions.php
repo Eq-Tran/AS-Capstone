@@ -35,7 +35,7 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location){
+function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location, $pw){
     
     global $db;
  
@@ -44,7 +44,7 @@ function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $locati
     
  
     // Database query string
-    $statement  = $db->prepare("UPDATE users SET first = :first, middle = :middle, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
+    $statement  = $db->prepare("UPDATE users SET first = :first, middle = :middle, last = :last, birthday = :birthday, bio = :bio, location = :location, pw = :pass WHERE userid =:userid");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -55,7 +55,8 @@ function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $locati
         ":last" => $last,
         ":birthday" => $birthday,
         ":bio" => $bio,
-        ":location" => $location
+        ":location" => $location,
+        ":pass" => $pw    
            
     );
     

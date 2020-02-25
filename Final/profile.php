@@ -20,6 +20,7 @@ session_start();
     $last = filter_input(INPUT_GET, 'last');
     $birthday = filter_input(INPUT_GET, 'birthday');
     $bio = filter_input(INPUT_GET, 'bio');
+    $pw = filter_input(INPUT_GET, 'pass');
     $location = filter_input(INPUT_GET, 'location');
     
     if(isPostRequested())
@@ -32,7 +33,8 @@ session_start();
             $birthday = filter_input(INPUT_POST, 'birthday');
             $bio = filter_input(INPUT_POST, 'bio');
             $location = filter_input(INPUT_POST, 'location');
-            $results = updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location);
+            $pw = filter_input(INPUT_POST, 'pass'); 
+            $results = updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location, $pw);
         
         }
     
@@ -165,7 +167,13 @@ session_start();
                     <label>Bio: </label>
                     <textarea type="text" name="bio" class=" form-control" id="exampleFormControlArea1" rows="4"><?php echo $profile['bio']; ?></textarea>
                 </div>
-        <br>    
+        <br>        
+                <div class="form-element">
+                   <label>Change Password: </label> 
+                  <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->
+                  <input type="password" class="form-control" id="password" name="pass" value ="<?php echo $profile['pw']; ?>" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
+                </div>
+        <br>
                 <div class="form-group">        
                     <div class="">
                         <button type="submit" class="btn btn-default">Submit</button>
@@ -189,7 +197,7 @@ session_start();
             <form action="fileUpload.php" method="post" enctype="multipart/form-data">
                 <input type="file" name="myfile" id="fileToUpload">
                 <input type="submit" name="submit" value="Upload File Now" >
-                </form>
+            </form>
     
         </div>
             
