@@ -2,6 +2,10 @@
     session_start();
     include __DIR__. '/../Models/model_functions.php';
     include __DIR__. '/../Models/post_request_functions.php';
+    
+    $emailerr = " ";
+    $usererr = " ";$passerr = " ";
+    
         
     $login = filter_input(INPUT_POST,'login');
         
@@ -59,7 +63,7 @@
     //Sign up isPostRequest
     if(isPostRequested())
         {
-            $first = filter_input(INPUT_POST, 'first');
+            $first = filter_input(INPUT_POST, 'first');   
             $last = filter_input(INPUT_POST, 'last');
             $email = filter_input(INPUT_POST, 'email');
             $uname = filter_input(INPUT_POST, 'uname');
@@ -119,28 +123,34 @@
             <form method ="post" action="login.php">
                 <div class="form-group">
                   <input type="text" class="form-control" id="first" name="first" placeholder="First Name" required>
+                  <span class="validity"></span>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" id="last" name="last" placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="username" name="uname" placeholder="Username" required>
+                  <!--Max 15 Characters-->  
+                  <input type="text" class="form-control" id="username" name="uname" placeholder="Username" required pattern="^[A-Za-z0-9_]{1,15}$" oninvalid="this.setCustomValidity('Max 15 Characters Allowed')"oninput="this.setCustomValidity('')">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="password" name="pass" placeholder="Password" required>
+                  <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->  
+                  <input type="text" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                 </div>
-                <!--<div class="form-group">
-                    <input type="text" class="form-control" id="confirmpassword" name="" placeholder="Confirm Password" required>
-                  </div>-->
                   <div class="form-group">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" required>
                   </div>
                 <div class="form-group">
                     <button type="submit" class="btn button">Sign Up</button>
                     <?php
                                 if (isPostRequested()) 
                                     {
-                                        echo "Signed up";
+                                     if($results == true){
+                                         echo "Registration Successful";
+                                     }
+                                     
+                                     else{
+                                        echo "Registration Failed"; 
+                                     }    
                             
                                     }
 

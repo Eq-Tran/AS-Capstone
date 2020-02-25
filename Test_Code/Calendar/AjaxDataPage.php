@@ -16,13 +16,15 @@
         
         
     );
-   
+    
+    var_dump($arr);
     foreach($arr as $var){
         
        echo $var["Username"]; 
         
         
     }
+    
 
 ?>
 <!doctype html>
