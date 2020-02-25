@@ -102,14 +102,7 @@
             </div>
           </nav>
     </div>
-<div class="container">
-        <nav>
-            <ul>
-                <li><a href="index.php">index</a></li>
-                <li><a href="notifications.php" class="active">notifications</a></li>
-            </ul>
-        </nav>
-    </div>
+
 <div class="container">
         <h1>Search Users</h1>
 
