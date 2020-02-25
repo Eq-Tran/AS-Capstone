@@ -52,14 +52,14 @@ session_start();
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     </head>
     
     <body>
     <div>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="#">GO</a>
+            <a class="navbar-brand" href="index.php">GO</a>
             <div class="container-fluid">
                 
               <div class="navbar-header">
@@ -96,10 +96,10 @@ session_start();
             </div>
           </nav>
     </div>
-        <div class="container">
+    <div class="container">
             
         <div class="proimg">
-            <td><img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
+            <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
         </div>
             
             <div class="proinfo"> 

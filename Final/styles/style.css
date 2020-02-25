@@ -8,7 +8,7 @@ nav{
     color:#F3F1ED;
     padding: 2%;
     background-color: #73549C;
-    
+   
 }
 a{
     color:#F3F1ED;
@@ -35,15 +35,15 @@ a{
 }
 .navbar-nav 
 {
-    
+    color:#F3F1ED;
     display: flex;
-    felx-direction: row;
+    flex-direction: row;
     justify-content: end;
 }
 .navbar
 {
-  display: flex;
-    felx-direction: row;
+    display: flex;
+    flex-direction: row;
     justify-content: end;  
 }
 
