@@ -1,7 +1,7 @@
 html, body{
     height : 100%;
     width: 100%;
-    background-color:black;
+    background-color:#F3F1ED;
 }
 nav{
     
@@ -45,10 +45,21 @@ a{
 
   display: flex;
   flex-direction: row;
+<<<<<<< HEAD
   justify-content: end; 
     display: flex;
     flex-direction: row;
     justify-content: end;  
 
 }
+=======
+  justify-content: end;  
+>>>>>>> 57f3dfb70cf007269397d96323e1aa3e495c93a8
 
+}
+.profileImage{
+    border: 1px solid black;
+    
+    width:30%;
+    border-radius:8px;
+}

@@ -149,13 +149,15 @@ session_start();
                 </div>
         <br>
                 <div class="form-element">
+                    <!--YYYY-MM-DD-->
                     <label>Birthday: </label>
-                    <input type="text" name="birthday" placeholder="YYYY-DD-MM" value="<?php echo $profile['birthday']; ?>" required />
+                    <input type="text" name="birthday" placeholder="YYYY-DD-MM" value="<?php echo $profile['birthday']; ?>" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" oninvalid="this.setCustomValidity('YYYY-MM-DD Format Required')"oninput="this.setCustomValidity('')" />
                 </div>
         <br>
                 <div class="form-element">
+                    <!--Max 15 Characters-->
                     <label>Location: </label>
-                    <input type="text" name="location" value="<?php echo $profile['location']; ?>" required />
+                    <input type="text" name="location" value="<?php echo $profile['location']; ?>" required pattern="^([a-zA-Z ]+)(?:,([ A-Z]{3,200}))$" oninvalid="this.setCustomValidity('Coventry, RI - Format Required')"oninput="this.setCustomValidity('')"/>
                 </div>
         <br>
                 
