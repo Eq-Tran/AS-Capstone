@@ -8,44 +8,5 @@
     // need to figure out how to create a delete function for the box.
     
     //TEST PROG
-    $arr = array(
-        
-        "Ethan" => array("Username" => "Etran"),
-        "Ian" => array("Username" => "Ishippee"),
-        "Karissa" => array("Username" => "Ksmith"),
-        
-        
-    );
-<<<<<<< HEAD
-   echo $arr;
-phpinfo();
-=======
-    
-   $j = json_encode($arr);
-   var_dump($j);
-    foreach($arr as $var){
-        
-       echo $var["Username"]; 
-        
-        
-    }
-    
-
->>>>>>> 4068675cfe3415bbf9afc0c22e0abd674d68e520
+echo "hello";
 ?>
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="#">
-    </head>
-    <body>
-        <div class="box">
-            <form method="GET">
-                <textarea class="textarea" name="textarea"></textarea>
-                <input type="submit" name="button1">
-                <p>hello</p>
-            </form>
-        </div>
-    </body>
-</html>

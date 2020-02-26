@@ -5,7 +5,7 @@
     
     if(!isset($_SESSION['use']))
     {
-        header('Location:login.php');
+        //header('Location:login.php');
     }
     
     

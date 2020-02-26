@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__ . '/Models/model_functions.php';
-include __DIR__ . '/Models/post_request_functions.php';
+//include __DIR__ . '/Models/model_functions.php';
+//include __DIR__ . '/Models/post_request_functions.php';
 
 $dt = new DateTime;
 if (isset($_GET['year']) && isset($_GET['week'])) {
@@ -13,12 +13,7 @@ $year = $dt->format('o');
 $week = $dt->format('W');
 
 
-function click(){
-    
-    $results = "clicked";
-    return $results;
-    
-}
+
 // Add post based from User ID
 // Show Uname for posts in Calendar
 // Delete Post 
@@ -38,17 +33,17 @@ function click(){
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
             
             <table class="table table-responsive">
-                <tr>
-                  
-
-
-            <?php
-            do {
-                echo "<td>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</td>\n";
-                $dt->modify('+1 day');
-            } while ($week == $dt->format('W'));
-            ?>
-                </tr>
+                <th>
+                    
+                        <?php
+                        do {
+                            echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
+                            $dt->modify('+1 day');
+                        } while ($week == $dt->format('W'));
+                        ?>
+                    
+                </th>
+                <tbody>
                 <td>hello</td>
                 <td>hello</td>
                 <td>hello</td>
@@ -56,11 +51,15 @@ function click(){
                 <td>hello</td>
                 <td>hello</td>
                 <td>hello</td>
+            </tbody>
             </table>
         </div>
-       
+        <div id="data">
+            
+            
+        </div>
             <input type="submit" name="Add" value="Add" onclick="executeAjaxReq()">
-            <input type="submit" name="Delete" value="Delete">
+            <input type="submit" name="Delete" value="Delete" onclick="executeAjaxReq()">
         
     </body>
     <script>
@@ -68,19 +67,19 @@ function click(){
          
          var xhttp = new XMLHttpRequest();
          
-         xhttp.onreadystatechage = function(){
+         xhttp.onreadystatechange = function(){
              
              
              if(this.readyState == 4 && this.status == 200){
                  
                  
-                 document.querySelector("cal-box").innerHTML = this.responseText;
+                 document.querySelector("td").innerHTML = this.responseText;
                  alert("clicked");
                  
              }
          };
          
-         xhttp.open("GET", "calendarupdate.php", true);
+         xhttp.open("GET", "calendarupdate.php?", true);
          xhttp.send();
          
      }
