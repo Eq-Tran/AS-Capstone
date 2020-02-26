@@ -43,10 +43,8 @@
         </body>
     </main>
     <script>
-<<<<<<< HEAD
-    // AJAX function that executes the AJAX GET request
-    function executeAjaxGetRequest(){
-=======
+  
+
         /*
     function showChart(){
         
@@ -139,7 +137,7 @@
     */
     // AJAX function that executes the AJAX request
     function executeAjaxRequest(){
->>>>>>> 4068675cfe3415bbf9afc0c22e0abd674d68e520
+
         
             // Create a new instance of a XMLHttpRequest Object.
             var xmlhttp = new XMLHttpRequest();
@@ -152,7 +150,7 @@
                     
                     // Execute this code 
                     document.getElementById("data").innerHTML = this.responseText;
-                    alert("hello");
+                    //alert("hello");
                     
                 }
             };
