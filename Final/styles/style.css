@@ -21,6 +21,7 @@ a{
     background-color:#9F6FEF;
     margin-top: 10px;
     margin-left: 5px;
+    margin-bottom:2px;
 }
 .signup{
     margin-top: 15px;
@@ -46,6 +47,9 @@ a{
   display: flex;
   flex-direction: row;
 <<<<<<< HEAD
+  justify-content: end;  
+=======
+<<<<<<< HEAD
   justify-content: end; 
     display: flex;
     flex-direction: row;
@@ -55,11 +59,17 @@ a{
 =======
   justify-content: end;  
 >>>>>>> 57f3dfb70cf007269397d96323e1aa3e495c93a8
+>>>>>>> 67f637ccabcd9261cb7fb5b695a53bdfb48c0189
 
 }
 .profileImage{
     border: 1px solid black;
-    
+    float:left;
     width:30%;
     border-radius:8px;
+}
+.proinfo
+{
+    display:flex;
+    border: 1px solid black;
 }
