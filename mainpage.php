@@ -1,5 +1,5 @@
 
-<!doctype html>
+<!Doctype html>
 <html lang="en">
     <head>
     <meta charset="utf-8">
@@ -54,31 +54,25 @@
                 
                 <tr>
                 <td><a href="">Status 4</a></td>
-                <td><a href="">Status 4</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_status_4.pdf">Status 4</a></td>
                 <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status4.pdf">Status 4</a></td>
                 </tr>
                 
                 <tr>
                 <td><a href="">Status 5</a></td>
-                <td><a href="">Status 5</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_status_5.pdf">Status 5</a></td>
                 <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status5.pdf">Status 5</a></td>
                 </tr>
                 
                 <tr>
-                <td><a href="">Status 5</a></td>
-                <td><a href="">Status 5</a></td>
-                <td><a href="">Status 5</a></td>
-                </tr>
-                
-                <tr>
                 <td><a href="">Status 6</a></td>
-                <td><a href="">Status 6</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_status_6.pdf">Status 6</a></td>
                 <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status6.pdf">Status 6</a></td>
                 </tr>
 
                 <tr>
                 <td><a href="">Status 7</a></td>
-                <td><a href="">Status 7</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_status_7.pdf">Status 7</a></td>
                 <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status7.pdf">Status 7</a></td>
                 </tr>
 
