@@ -56,6 +56,22 @@ a{
 .profileImage
 {
     border: 1px solid black;
+  justify-content: flex-end;
+
+}
+.profileSection{
+    background-color: #F3F1ED;  
+}
+.proimg{
+    margin-top:10px;
+    margin-left:10px;
+    display:flex;
+    flex-direction: column;
+    
+}
+.profileImage{
+    display:flex;
+
     float:left;
     width:30%;
     border-radius:8px;
@@ -63,5 +79,25 @@ a{
 .proinfo
 {
     display:flex;
+
     border: 1px solid black;
+
+    float:right;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:0 0 0 15px;
+}
+.proedit
+{
+    display:flex;
+    float:right;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:0 0 0 15px;
+}
+.proedit
+{
+    display:flex;
+    float:left;
+
 }
