@@ -58,7 +58,6 @@ session_start();
     </head>
     
     <body>
-    <div>
         
         <nav class="navbar">
             <a class="navbar-brand" href="index.php">GO</a>
@@ -96,43 +95,44 @@ session_start();
                 
               <!--</div>-->
             </div>
-          </nav>
-    </div>
+         </nav>
+    
     <div class="container">
+            <div class="proimg">
+                <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
+                <div class="btnedit">
             
-        <div class="proimg">
-            <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
-        </div>
-        <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
+                <button class="proedit btn button" data-toggle="collapse" data-target="#updatecollapse"><i class="material-icons">settings</i></button>
             
-            <div class="proinfo"> 
+                </div>
+            </div>        
+        <div class= "profileStuff">
+
+            <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
                 
-                <td>Username: <?php echo $profile['uname']; ?></td><br />
-                <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                <td>Location: <?php echo $profile['location']; ?></td><br />
-                <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
-              
-            </div>  
+                <div class="proinfo"> 
+                    
+                    <td>Username: <?php echo $profile['uname']; ?></td><br />
+                    <td>Email Address: <?php echo $profile['email']; ?></td><br />
+                    <td>Location: <?php echo $profile['location']; ?></td><br />
+                    <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+                
+                </div>  
+            <br />
+            <div class="proabout"> 
+                <td><?php echo $profile['bio']; ?></td>
+            </div>
         
-        <div class="proabout"> 
-            <td><?php echo $profile['bio']; ?></td>
         </div>
-        
-    </div>
-       
-        <div class="btnedit">
-            
-            <button class="btn button" data-toggle="collapse" data-target="#updatecollapse">Update Profile or Image</button>
-            <br>
-            
-        </div>
+    </div>    
+
             
             <!--posts stuff goes here-->
 
-        <div id="updatecollapse" class="collapse">
+    <div id="updatecollapse" class="collapse">
             
             
-                
+          
             
         <br>
             <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
@@ -200,7 +200,7 @@ session_start();
                 <input type="submit" name="submit" value="Upload File Now" >
             </form>
     
-        </div>
+    </div>
             
         
         
