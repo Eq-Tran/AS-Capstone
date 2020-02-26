@@ -16,6 +16,10 @@
         
         
     );
+<<<<<<< HEAD
+   echo $arr;
+phpinfo();
+=======
     
    $j = json_encode($arr);
    var_dump($j);
@@ -27,6 +31,7 @@
     }
     
 
+>>>>>>> 4068675cfe3415bbf9afc0c22e0abd674d68e520
 ?>
 <!doctype html>
 <html lang="en">
