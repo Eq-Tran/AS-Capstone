@@ -44,12 +44,20 @@
     </head>
 
     <body>
+        
+  
     <div>
-<nav class="navbar">
-    <a class="navbar-brand" href="#">GO</a>
+        <nav class="navbar">
+        <a class="navbar-brand" href="#">GO</a>
             <div class="container-fluid">
-              <div class="navbar-header">
-              </div>
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" href="logout.php"><i class=" material-icons">power_settings_new</i></a>
+                      </li>
+                      
+                    </ul>
+                </div>
             </div>
           </nav>
     </div>

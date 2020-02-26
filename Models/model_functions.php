@@ -191,7 +191,7 @@ function addPost($post, $userid){
     return $results; 
 }
 
-function deleteUserPosts($postid){
+function deleteUserPost($postid){
     
     global $db;
     
