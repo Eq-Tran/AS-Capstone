@@ -46,23 +46,15 @@ a{
 
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
-  justify-content: end;  
-=======
-<<<<<<< HEAD
-  justify-content: end; 
-    display: flex;
-    flex-direction: row;
-    justify-content: end;  
+    justify-content: end;   
+  
 
-}
-=======
-  justify-content: end;  
->>>>>>> 57f3dfb70cf007269397d96323e1aa3e495c93a8
->>>>>>> 67f637ccabcd9261cb7fb5b695a53bdfb48c0189
+}  
 
-}
-.profileImage{
+
+
+.profileImage
+{
     border: 1px solid black;
     float:left;
     width:30%;

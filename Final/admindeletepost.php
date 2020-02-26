@@ -1,0 +1,4 @@
+<?php
+$delete = deleteUserPosts($postid);
+?>
+
