@@ -1,7 +1,7 @@
 <?php
 
-//include __DIR__ . '/Models/model_functions.php';
-//include __DIR__ . '/Models/post_request_functions.php';
+include __DIR__ . '/Models/model_functions.php';
+include __DIR__ . '/Models/post_request_functions.php';
 
 $dt = new DateTime;
 if (isset($_GET['year']) && isset($_GET['week'])) {
@@ -13,6 +13,9 @@ $year = $dt->format('o');
 $week = $dt->format('W');
 
 
+$post = filter_input(INPUT_POST, 'post');
+$posts = showAllUserPosts();
+$addpost = addPost($post, 6);
 
 // Add post based from User ID
 // Show Uname for posts in Calendar
@@ -44,13 +47,11 @@ $week = $dt->format('W');
                     
                 </th>
                 <tbody>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
+                    <?php foreach($posts as $p):?>
+                <td><?php echo $p['uname'];?></td>
+                <td><?php echo $p['post'];?></td>
+                
+                <?php endforeach;?>
             </tbody>
             </table>
         </div>
@@ -70,14 +71,21 @@ $week = $dt->format('W');
                     <option>Sat</option>
                     <option>Sun</option>
                 </select>
-                
+                <input type="submit" name="submit">
             </form>
         </div>
-            <input type="submit" name="Add" value="Add" onclick="executeAjaxReq()">
-            <input type="submit" name="Delete" value="Delete" onclick="executeAjaxReq()">
+        <div class="posts-table" >
+            <?php foreach($posts as $p):?>
+            <div class="box" style="width:200px, height:60px, border:1px solid black;">
+            <td><?php echo $p['uname'];?></td>
+            <td><?php echo $p['post'];?></td>
+            </div>
+            <?php endforeach;?>
+        </div>
         
     </body>
     <script>
+     // Vanilla Javascript ajax call
      /*function executeAjaxReq(){
          
          var xhttp = new XMLHttpRequest();
@@ -121,7 +129,7 @@ $week = $dt->format('W');
     postData('calendarupdate.php', { answer: 42 })
       .then((data) => {
         console.log(data); // JSON data parsed by `response.json()` call
-        alert("this stuff");
+        //alert("this stuff");
         document.querySelector("td").innerHTML = JSON.stringify(data);
       });
     
