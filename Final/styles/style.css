@@ -49,36 +49,64 @@ i{
   justify-content: flex-end;
 
 }
+.container{
+    
+    max-width:650px;
+    justify-content: center;
+}
+.profileContainer
+{
+    width: 50%;
+    margin: 120px auto 120px;
+    background-color: #fff;
+    padding: 0 20px 20px;
+    border-radius: 6px;
+
+}
 .profileSection{
     background-color: #F3F1ED;  
-}
-.proimg{
-    margin-top:10px;
-    margin-left:10px;
     display:flex;
-    flex-direction: column;
-    
+    width: 45%;
+    flex-direction:column;
 }
 .profileImage{
-    display:flex;
-    float:left;
-    max-width:50%;
-    width:30%;
-    border-radius:8px;
-    
+    border-radius: 100px;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    position: relative;
+    margin: auto;
+    top: -60px;
+    box-shadow: 0 0 0 13px #f0f0f0;
+    -webkit-box-shadow: 0 0 0 13px #f0f0f0;
+    -moz-box-shadow: 0 0 0 13px #f0f0f0;
 }
+.profileImage img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 100px;
 
+}
 .profileStuff
 {
-
+    
+    width:100%;
     display:flex;
-    float:right;
     flex-direction:column;
-    justify-content:flex-end;
-    padding:0 0 0 15px;
+    border: 1px solid black;
 }
-.proedit
+.btnedit
 {
     display:flex;
-    float:left;
+    justify-content: flex-end;
+    
+}
+h1{
+    font-family:'Oswald', Times, Serif;
+    font-size: 27px;
+}
+h2{
+    font-family:'Oswald', Times, Serif;
+    
 }
