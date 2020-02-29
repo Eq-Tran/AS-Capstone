@@ -129,10 +129,7 @@ session_start();
 
             <div id="updatecollapse" class="collapse">
             
-            
-          
-            
-<<<<<<< HEAD
+
         <br>
             <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
                 <div class="form-element">
