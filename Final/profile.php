@@ -54,6 +54,9 @@ session_start();
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--Google fonts using Oswald and Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri|Oswald&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/style.css">
     </head>
     
@@ -97,43 +100,39 @@ session_start();
             </div>
          </nav>
     
-    <div class="container">
-            <div class="proimg">
-                <td><img class="profileImage" src="images/<?php echo $profile['profile_image']; ?>" alt="profile image"></td>
-                <div class="btnedit">
-            
-                <button class="proedit btn button" data-toggle="collapse" data-target="#updatecollapse"><i class="material-icons">settings</i></button>
-            
-                </div>
-            </div>        
-        <div class= "profileStuff">
+    <div class="profileContainer container">
 
-            <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
-                
-                <div class="proinfo"> 
+            <div class="profileImage">
+            <img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image" height="150" width="150">
+            </div>      
+
+            <div class= "profileStuff">
+
+            
+                <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
                     
-                    <td>Username: <?php echo $profile['uname']; ?></td><br />
-                    <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                    <td>Location: <?php echo $profile['location']; ?></td><br />
-                    <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
-                
-                </div>  
-            <br />
-            <div class="proabout"> 
-                <td><?php echo $profile['bio']; ?></td>
-            </div>
-        
-        </div>
-    </div>    
-
+                    <div class="proinfo"> 
+                        
+                        <td>Username: <?php echo $profile['uname']; ?></td><br />
+                        <td>Email Address: <?php echo $profile['email']; ?></td><br />
+                        <td>Location: <?php echo $profile['location']; ?></td><br />
+                        <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+                    
+                    </div>  
+                <br />
+                <div class="proabout"> 
+                    <td><?php echo $profile['bio']; ?></td>
+                </div>
+                        <div class="btnedit">
             
-            <!--posts stuff goes here-->
+            <button class="proedit btn button" data-toggle="collapse" data-target="#updatecollapse"><i class="material-icons">settings</i></button>
 
-    <div id="updatecollapse" class="collapse">
+            <div id="updatecollapse" class="collapse">
             
             
           
             
+<<<<<<< HEAD
         <br>
             <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
                 <div class="form-element">
@@ -181,29 +180,32 @@ session_start();
                         <?php
                             if (isPostRequested()) 
                                 {
+
+
+                                
+                                        echo "Profile Updated";
+                                        echo "<meta http-equiv='refresh' content='0'>";
+                                
+                                    }              
                             
-                                    echo "Profile Updated";
-                                    echo "<meta http-equiv='refresh' content='0'>";
-                            
-                                }
-                        
-                        
-                        ?>
-                    </div>
+                            ?>
+                        </div>
+                    
+                    </div> 
+            
+                </form>
                 
-                </div> 
+                <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="myfile" id="fileToUpload">
+                    <input type="submit" name="submit" value="Upload File Now" >
+                    </form>
         
-            </form>
-            
-            <form action="fileUpload.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="myfile" id="fileToUpload">
-                <input type="submit" name="submit" value="Upload File Now" >
-            </form>
-    
-    </div>
-            
-        
-        
+        </div>
+
+            </div>   
+            </div>
+
+     </div>    
          
         
         <div class ="proposts">
