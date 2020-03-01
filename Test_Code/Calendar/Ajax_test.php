@@ -43,6 +43,10 @@
         </body>
     </main>
     <script>
+<<<<<<< HEAD
+    // AJAX function that executes the AJAX request
+    function executeAjaxRequest(){
+=======
   
 
         /*
@@ -138,6 +142,7 @@
     // AJAX function that executes the AJAX request
     function executeAjaxRequest(){
 
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
         
             // Create a new instance of a XMLHttpRequest Object.
             var xmlhttp = new XMLHttpRequest();

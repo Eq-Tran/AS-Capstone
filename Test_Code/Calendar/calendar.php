@@ -13,10 +13,13 @@ $year = $dt->format('o');
 $week = $dt->format('W');
 
 
+<<<<<<< HEAD
+=======
 $post = filter_input(INPUT_POST, 'post');
 $posts = showAllUserPosts();
 $addpost = addPost($post, 6);
 
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
 // Add post based from User ID
 // Show Uname for posts in Calendar
 // Delete Post 
@@ -31,7 +34,7 @@ $addpost = addPost($post, 6);
         <link type="text/css" rel="stylesheet" href="cal.css">
     </head>
     <body>
-        <div class="cal-box">
+        <div id="cal-box" >
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
             
@@ -85,8 +88,13 @@ $addpost = addPost($post, 6);
         
     </body>
     <script>
+<<<<<<< HEAD
+    
+     function executeAjaxReq(){
+=======
      // Vanilla Javascript ajax call
      /*function executeAjaxReq(){
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
          
          var xhttp = new XMLHttpRequest();
          
@@ -96,7 +104,11 @@ $addpost = addPost($post, 6);
              if(this.readyState == 4 && this.status == 200){
                  
                  
+<<<<<<< HEAD
+                 document.getElementById("cal-box").innerHTML = this.responseText;
+=======
                  document.querySelector("td").innerHTML = this.responseText;
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
                  alert("clicked");
                  
              }
