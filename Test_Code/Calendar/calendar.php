@@ -13,12 +13,6 @@ $year = $dt->format('o');
 $week = $dt->format('W');
 
 
-function click(){
-    
-    $results = "clicked";
-    return $results;
-    
-}
 // Add post based from User ID
 // Show Uname for posts in Calendar
 // Delete Post 
@@ -33,7 +27,7 @@ function click(){
         <link type="text/css" rel="stylesheet" href="cal.css">
     </head>
     <body>
-        <div class="cal-box">
+        <div id="cal-box" >
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
             
@@ -64,17 +58,18 @@ function click(){
         
     </body>
     <script>
+    
      function executeAjaxReq(){
          
          var xhttp = new XMLHttpRequest();
          
-         xhttp.onreadystatechage = function(){
+         xhttp.onreadystatechange = function(){
              
              
              if(this.readyState == 4 && this.status == 200){
                  
                  
-                 document.querySelector("cal-box").innerHTML = this.responseText;
+                 document.getElementById("cal-box").innerHTML = this.responseText;
                  alert("clicked");
                  
              }
