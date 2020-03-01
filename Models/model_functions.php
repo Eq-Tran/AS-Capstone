@@ -35,7 +35,7 @@ function addUser($first, $last, $email, $uname, $pw){
     return($results);
 }
 
-function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location){
+function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $location, $pw){
     
     global $db;
  
@@ -44,7 +44,7 @@ function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $locati
     
  
     // Database query string
-    $statement  = $db->prepare("UPDATE users SET first = :first, middle = :middle, last = :last, birthday = :birthday, bio = :bio, location = :location WHERE userid =:userid");
+    $statement  = $db->prepare("UPDATE users SET first = :first, middle = :middle, last = :last, birthday = :birthday, bio = :bio, location = :location, pw = :pass WHERE userid =:userid");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -55,7 +55,8 @@ function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $locati
         ":last" => $last,
         ":birthday" => $birthday,
         ":bio" => $bio,
-        ":location" => $location
+        ":location" => $location,
+        ":pass" => $pw    
            
     );
     
@@ -68,6 +69,13 @@ function updateProfile($userid, $first, $middle, $last, $birthday, $bio, $locati
     
     // Returns results value if condition is met
     return($results);
+}
+
+function killprocess(){
+    exit();
+    return;
+    die();
+    
 }
 
 function updateProfileImage($userid, $profile_image){
@@ -181,6 +189,26 @@ function addPost($post, $userid){
         
     }
     return $results; 
+}
+
+function deleteUserPosts($postid){
+    
+    global $db;
+    
+    $results = [];
+    
+    $statement = $db->prepare("DELETE FROM posts WHERE postid = :postid");
+    
+    $bindParam = array(
+        ":postid" => $postid,
+    );
+    
+    if($statement->execute($bindParam) && $statement->rowCount() > 0){
+                
+         $results = "User Deleted";
+                
+   }
+    return($results);
 }
 
 function showPost($postid){
@@ -623,61 +651,4 @@ function checkRequest($myId, $friendId)
         return false;
     }
 }
-   
-   /*
-    * 
-    * COMMENTED OUT FOR TESTING 
-    * 
-   function findUserId($user) {
-    global $db;
-    $results = [];
-    $id = "";
-    $binds = array();
-    $sql = "SELECT * FROM users WHERE 0=0 ";
-    if ($user != "") {
-         $sql .= " AND uname LIKE :user";
-         $binds['uname'] = '%'.$user.'%';
-    }
-   
-    $stmt = $db->prepare($sql);
-      
-    $results = array();
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-        foreach ($results as $row)
-        {
-            $id = $row['id'];
-        }
-    }
-    //var_dump($results);
-    //echo $id;
-    return ($id);
-}
-
-*/
-
-
-
-//$delUser = deleteUser(2);
-//var_dump($delUser);
-
-//$userTest = addUser("User4", "user4", "user4@user.xom", "User4", "password4");
-//var_dump($userTest);
-
-//$postTest = addPost("this is a test post", 1);
-//var_dump($postTest);
-
-//$showPost = showPosts();
-//var_dump($showPost);
-
-
-//$showpostUname = getPostnameById(1);
-//var_dump($showpostUname);
-
-
-//$showPostinfo = showAllUserPosts();
-//var_dump($showPostinfo);
- 
-
 ?>

@@ -10,7 +10,7 @@ nav{
     background-color: #73549C;
    
 }
-a{
+i{
     color:#F3F1ED;
 }
 .icon-bar{
@@ -46,30 +46,47 @@ a{
 
   display: flex;
   flex-direction: row;
-<<<<<<< HEAD
-  justify-content: end;  
-=======
-<<<<<<< HEAD
-  justify-content: end; 
-    display: flex;
-    flex-direction: row;
-    justify-content: end;  
+  justify-content: flex-end;
 
 }
-=======
-  justify-content: end;  
->>>>>>> 57f3dfb70cf007269397d96323e1aa3e495c93a8
->>>>>>> 67f637ccabcd9261cb7fb5b695a53bdfb48c0189
-
+.profileSection{
+    background-color: #F3F1ED;  
+}
+.proimg{
+    margin-top:10px;
+    margin-left:10px;
+    display:flex;
+    flex-direction: column;
+    
 }
 .profileImage{
-    border: 1px solid black;
+    display:flex;
     float:left;
+    max-width:50%;
     width:30%;
     border-radius:8px;
+    
 }
-.proinfo
+
+.profileStuff
+{
+
+    display:flex;
+    float:right;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:0 0 0 15px;
+}
+.proedit
 {
     display:flex;
-    border: 1px solid black;
+    float:right;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:0 0 0 15px;
+}
+.proedit
+{
+    display:flex;
+    float:left;
 }

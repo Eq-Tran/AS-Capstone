@@ -8,6 +8,7 @@
     // need to figure out how to create a delete function for the box.
     
     //TEST PROG
+
     $arr = array(
         
         "Ethan" => array("Username" => "Etran"),
@@ -27,20 +28,11 @@
         
     }
     
+<<<<<<< HEAD
+=======
+
+
+echo "hello";
+
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
 ?>
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="#">
-    </head>
-    <body>
-        <div class="box">
-            <form method="GET">
-                <textarea class="textarea" name="textarea"></textarea>
-                <input type="submit" name="button1">
-                <p>hello</p>
-            </form>
-        </div>
-    </body>
-</html>

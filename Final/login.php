@@ -68,7 +68,7 @@
             $email = filter_input(INPUT_POST, 'email');
             $uname = filter_input(INPUT_POST, 'uname');
             $pw = filter_input(INPUT_POST, 'pass');
-            $results = addUser($first, $last, $email, $uname, $pw);    
+            //$results = addUser($first, $last, $email, $uname, $pw);    
         }
  ?>
 
@@ -121,7 +121,7 @@
             
             </br>
 
-            <form method ="post" action="login.php">
+            <form id="form1" method ="post" action="login.php">
                 <div class="form-group">
                   <input type="text" class="form-control" id="first" name="first" placeholder="First Name" required>
                   <span class="validity"></span>
@@ -137,23 +137,41 @@
                   <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->  
                   <input type="password" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
                 </div>
+                <div class="form-group">
+                  <!--Password Confirm-->  
+                  <input type="password" class="form-control" id="confirmpassword" name="confirmpass" placeholder="Confirm Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
+                </div>
                   <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" required>
                   </div>
                 <div class="form-group">
                     <button type="submit" class="btn button">Sign Up</button>
                     <?php
-                                if (isPostRequested()) 
+                                
+                        
+                    
+                        if (isPostRequested()) 
+                            {
+                                    
+                                if($_POST['pass'] != $_POST['confirmpass'])
                                     {
-                                     if($results == true){
-                                         echo "Registration Successful";
-                                     }
-                                     
-                                     else{
-                                        echo "Registration Failed"; 
-                                     }    
-                            
+                                    
+                                        echo "Passwords did not match";    
                                     }
+                                    
+                                else if($_POST['pass'] == $_POST['confirmpass'])
+                                    { 
+
+                                       echo "Registration Successful";
+                                        $results = addUser($first, $last, $email, $uname, $pw);                                              
+                                    }
+                                
+                                else
+                                    {
+                                        echo "Registration Failed";
+                                        $stop = killprocess();
+                                    }          
+                            }
 
                             ?>
                 </div>

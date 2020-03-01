@@ -1,9 +1,17 @@
 <?php
 
+include __DIR__ . '/Models/model_functions.php';
+include __DIR__ . '/Models/post_request_functions.php';
 
+<<<<<<< HEAD
 echo "<p> dicks </p>";
+=======
+$data = showAllUserPosts();
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
 
+$s = json_encode($data);
 
+<<<<<<< HEAD
 
 ?>
 <!doctype html>
@@ -22,3 +30,7 @@ echo "<p> dicks </p>";
         </div>
     </body>
 </html>
+=======
+echo $s;
+?>
+>>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
