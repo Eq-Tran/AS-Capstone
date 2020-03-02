@@ -11,22 +11,17 @@ if (isset($_GET['year']) && isset($_GET['week'])) {
 }
 $year = $dt->format('o');
 $week = $dt->format('W');
-
-
-<<<<<<< HEAD
-=======
 $post = filter_input(INPUT_POST, 'post');
 $posts = showAllUserPosts();
 $addpost = addPost($post, 6);
 
->>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
+
 // Add post based from User ID
 // Show Uname for posts in Calendar
 // Delete Post 
 // Calendar should only show Uname date/time
 // post list should show username post body date time
 ?>
-<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -67,9 +62,9 @@ $addpost = addPost($post, 6);
                 <input type="text" name="post" >
                 <select>
                     <option>Mon</option>
-                    <option>Tues</option>
+                    <option>Tue</option>
                     <option>Wed</option>
-                    <option>Thur</option>
+                    <option>Thu</option>
                     <option>Fri</option>
                     <option>Sat</option>
                     <option>Sun</option>
@@ -79,7 +74,7 @@ $addpost = addPost($post, 6);
         </div>
         <div class="posts-table" >
             <?php foreach($posts as $p):?>
-            <div class="box" style="width:200px, height:60px, border:1px solid black;">
+            <div class="box" style="width:200px; height:60px; border:1px solid black;">
             <td><?php echo $p['uname'];?></td>
             <td><?php echo $p['post'];?></td>
             </div>
@@ -88,14 +83,9 @@ $addpost = addPost($post, 6);
         
     </body>
     <script>
-<<<<<<< HEAD
-    
-     function executeAjaxReq(){
-=======
      // Vanilla Javascript ajax call
      /*function executeAjaxReq(){
->>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
-         
+ 
          var xhttp = new XMLHttpRequest();
          
          xhttp.onreadystatechange = function(){
@@ -104,11 +94,11 @@ $addpost = addPost($post, 6);
              if(this.readyState == 4 && this.status == 200){
                  
                  
-<<<<<<< HEAD
+
                  document.getElementById("cal-box").innerHTML = this.responseText;
-=======
+
                  document.querySelector("td").innerHTML = this.responseText;
->>>>>>> 7056989c2e460e00eaa34e5c91d25020321e975e
+
                  alert("clicked");
                  
              }
