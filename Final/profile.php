@@ -102,30 +102,9 @@ session_start();
     
     <div class="profileContainer container">
 
-<<<<<<< HEAD
             <div class="profileImage">
             <img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image" height="150" width="150">
             </div>      
-=======
-            <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
-                
-            <!-- MAKE THIS A FORM WILL BE EASIER TO MOVE W CSS. -->
-                <div class="proinfo"> 
-                    
-                    <td>Username: <?php echo $profile['uname']; ?></td><br />
-                    <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                    <td>Location: <?php echo $profile['location']; ?></td><br />
-                    <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
-                
-                </div>  
-            <br />
-            <div class="proabout"> 
-                <td><?php echo $profile['bio']; ?></td>
-            </div>
-        
-        </div>
-    </div>    
->>>>>>> Tran
 
             <div class= "profileStuff">
 
