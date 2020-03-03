@@ -595,7 +595,7 @@ function deleteFromRequests($myId, $friendId)
 function getAllFriends($myId, $sendData)
 {
     global $db;
-    $stmt = $db -> prepare("SELECT * FROM `friends` WHERE user_one = ? OR user_two = ?");
+    $stmt = $db -> prepare("SELECT distinct user_one, user_two FROM `friends` WHERE user_one = ? OR user_two = ?");
     
    echo "inside get all friends function";
     if ( $stmt->execute([$myId, $myId]) && $stmt->rowCount() > 0 ) 
@@ -702,7 +702,7 @@ function deleteFriends($myId, $friendId)
 function checkRequest($myId, $friendId)
 {
     global $db;
-    $sql = "SELECT * from friend_request where sender = :sender and receiver = :receiver";
+    $sql = "SELECT * from friend_request where sender = :sender and receiver = :receiver or sender = :receiver and receiver = :sender";
     $stmt = $db ->prepare($sql);
     $binds = array(
         ':sender' => $myId,
@@ -715,7 +715,7 @@ function checkRequest($myId, $friendId)
         return true;
     }
     else{
-        return false;
+        return false;  
     }
 }
 ?>

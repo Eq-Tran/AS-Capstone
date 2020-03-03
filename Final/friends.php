@@ -129,7 +129,7 @@
                 if (checkRequest($myId, $row['userid']) === true)
                 {
                   
-                  echo "<td>Friend Request Sent</td>";
+                  echo "<td>Friend Request Pending</td>";
 
                 }
                 else{
