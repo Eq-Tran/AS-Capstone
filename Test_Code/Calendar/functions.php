@@ -13,7 +13,23 @@ include (__DIR__ .'/databaseconnect.php');
      
     */
 
-
+   function show(){
+       
+       global $db;
+       
+       $results = [];
+       $query = $db->prepare("SELECT * FROM test");
+       
+       if($query->execute() && $query->rowCount() > 0){
+           
+           $results = $query->fetchAll(PDO::FETCH_ASSOC);
+           
+       }
+       
+       return ($results);
+       
+   }
+   
    function add($first, $middle, $last){
        
        global $db;

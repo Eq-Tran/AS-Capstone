@@ -9,28 +9,10 @@
     
     //TEST PROG
 
-    $arr = array(
-        
-        "Ethan" => array("Username" => "Etran"),
-        "Ian" => array("Username" => "Ishippee"),
-        "Karissa" => array("Username" => "Ksmith"),
-        
-        
-    );
+include_once __DIR__ . 'functions.php';
 
-   echo $arr;
-   $j = json_encode($arr);
-   var_dump($j);
-    foreach($arr as $var){
-        
-       echo $var["Username"]; 
-        
-        
-    }
-    
+$data = json_encode(show());
 
-
-echo "hello";
-
+echo $data;
 
 ?>
