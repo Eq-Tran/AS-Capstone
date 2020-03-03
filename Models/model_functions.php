@@ -12,7 +12,7 @@ function addUser($first, $last, $email, $uname, $pw){
     
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pass ");
+    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pass, profile_image = 'default.jpg' ");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -22,6 +22,7 @@ function addUser($first, $last, $email, $uname, $pw){
         ":email" => $email,
         ":uname" => $uname,
         ":pass" => $pw
+           
     );
     
     // Conditonal to create validation when insert is successful
@@ -166,6 +167,26 @@ function showUsers(){
         
         
     }
+    return($results);
+}
+
+function deleteUsers($postid){
+    
+    global $db;
+    
+    $results = [];
+    
+    $statement = $db->prepare("DELETE FROM users WHERE userid = :userid");
+    
+    $bindParam = array(
+        ":userid" => $userid,
+    );
+    
+    if($statement->execute($bindParam) && $statement->rowCount() > 0){
+                
+         $results = "User Deleted";
+                
+   }
     return($results);
 }
 
@@ -352,16 +373,16 @@ function checkLogin ($uname, $pw) {
        
    }
    
-   function getusers($myId)
+   function getusers()
 {
     global $db;
     
     $results = [];
-    $stmt = $db ->prepare("SELECT * FROM users WHERE 0=0 AND NOT userid = :id");
-    $binds = array(":id" => $myId);
-    $stmt -> execute($binds);
+    $stmt = $db ->prepare("SELECT * FROM users");
+    //$binds = array(":id" => $myId);
+    //$stmt -> execute($binds);
     
-    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) 
     {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         
@@ -546,7 +567,7 @@ function getAllFriends($myId, $sendData)
                 //var_dump($row);
                 if($row['user_one'] == $myId){
                     
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $userStmt = $db->prepare("SELECT userid, uname, profile_image FROM `users` WHERE userid = :id");
                     $binds=array(":id"=> $row['user_two']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
@@ -557,7 +578,7 @@ function getAllFriends($myId, $sendData)
                 else{
                     //echo "user two";
                     
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $userStmt = $db->prepare("SELECT userid, uname, profile_image FROM `users` WHERE userid = :id");
                     $binds = array(":id" => $row['user_one']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
