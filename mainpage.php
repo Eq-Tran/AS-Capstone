@@ -22,7 +22,30 @@
                 <div class="panel-body">
                     <p>Associates Degree - Capstone Project </p>
                     <p>Our group decided on creating a MeetUp like scheduling web application. Focusing on making it easy to schedule meetings with friends, colleagues, and family.
-                        Lorum Ipsum I ran out of words to say somebody put something smart and fancy here to take up space pls.
+                        <br>
+                        <br>
+                        
+                        Ethan Tran  - Associates Student of Software Engineering at NEIT.
+                        <br>
+                        Responsible for Calendar, Posts, Main Functions, Main Page, and Table Joins/Foreign Keys.
+                        <br>
+                        <br>
+                        
+                        Karissa Smith - Associates Student of Software Engineering at NEIT. 
+                        <br>
+                        Responsible for Friend Add/Delete, Friend Notifications System, Friend Page, Friend Functions, and advanced CSS.
+                        <br>
+                        <br>
+                        
+                        Ian Shippee - Associates Student of Software Engineering at NEIT. 
+                        <br>
+                        Responsible for Session Variables, Profile Page, Profile Update, Sign up, and Sign in for Admin/User.
+                        <br>
+                        <br>
+                        
+                        Each teammate was responsible for starting basic tables, basic CSS and main web page.
+                        
+                        
                     </p>
             <table class="table" >
                 <thead>
@@ -88,6 +111,12 @@
                 <td><a href="">Status 9</a></td>
                 </tr>
                 
+                <tr>
+                <td><a href="">Status 10</a></td>
+                <td><a href="">Status 10</a></td>
+                <td><a href="">Status 10</a></td>
+                </tr>
+                
             </tbody>
             </table>
                     
@@ -98,7 +127,7 @@
                     <div class="col-sm-4">
                     <div class="panel panel-default" style="border-color: rgba(102,0,204, 1.0); position: relative; margin-bottom:10px; ">
                         <!-- ADD LINK TO GITHUB PROFILE HERE -->
-                        <div class="panel-heading"  style="background-color: rgba(102,0,204, .1);"> Team Github Repositories </div>  
+                        <div class="panel-heading"  style="background-color: rgba(102,0,204, .1);"> Team Github Sites </div>  
                         <div class="panel-body">
                          <li><a href="https://github.com/Eq-Tran/AS-Capstone">Capstone Repository</a></li>
                          <li><a href="https://github.com/Eq-Tran">Ethan's Git Profile</a></li>
