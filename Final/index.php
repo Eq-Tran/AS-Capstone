@@ -36,7 +36,7 @@
     <body>
     <div>
 <nav class="navbar">
-    <a class="navbar-brand" href="#">GO</a>
+    
             <div class="container-fluid">
               <div class="navbar-header">
                 <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -47,10 +47,10 @@
                 
               </div>
               <!--<div class="collapse navbar-collapse" id="myNavbar">-->
-
+              
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php">GO</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>

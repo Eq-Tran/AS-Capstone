@@ -121,7 +121,7 @@
           <tbody>
             <?php foreach($results as $row):?>
               <tr>
-              <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image"></td>
+              <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image" class='fListImg'></td>
               
               <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
               
@@ -133,7 +133,7 @@
 
                 }
                 else{
-                  echo "<td><a href='search.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
                 }
                 
               }

@@ -546,7 +546,7 @@ function getAllFriends($myId, $sendData)
                 //var_dump($row);
                 if($row['user_one'] == $myId){
                     
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $userStmt = $db->prepare("SELECT userid, uname, profile_image FROM `users` WHERE userid = :id");
                     $binds=array(":id"=> $row['user_two']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
@@ -557,7 +557,7 @@ function getAllFriends($myId, $sendData)
                 else{
                     //echo "user two";
                     
-                    $userStmt = $db->prepare("SELECT userid, uname FROM `users` WHERE userid = :id");
+                    $userStmt = $db->prepare("SELECT userid, uname, profile_image FROM `users` WHERE userid = :id");
                     $binds = array(":id" => $row['user_one']);
                     $userStmt ->execute($binds);
                     //array push pushes one or more items to an array to be stored
