@@ -8,7 +8,19 @@
         //header('Location:login.php');
     }
     
-   
+    $userid = filter_input(INPUT_GET, 'userid');
+    $uname = filter_input(INPUT_GET, 'uname');
+    $email = filter_input(INPUT_GET, 'email');
+    $first = filter_input(INPUT_GET, 'first');
+    $middle = filter_input(INPUT_GET, 'middle');
+    $last = filter_input(INPUT_GET, 'last');
+    $postid = filter_input(INPUT_GET, 'postid');
+    
+    $profile = showUser($_SESSION['use']); 
+    $posts = showUserPost($_SESSION['use']);
+    $comments = showPostComments(2);
+            var_dump($comments);
+    
 ?>
 
 <html lang="en">
@@ -65,7 +77,23 @@
        **Calendar is going here
    </div>
         <div class="posts">
-            
+            <div class ="">
+                
+                <!--<?php //foreach($posts as $p):?>
+                <p class = "">User: <?php //echo $p['users.uname']?></p>
+                <p class = "">Post: <?php //echo $p['posts.post']?></p>
+                <form action ="index.php" class="form-inline" name="comment" method="post">
+                <input type="text" class ="form-control" placeholder = "add a comment"
+                </form>
+                <?php //endforeach;?> 
+                </div>
+                <br>-->
+                
+                <p class = "">User: <?php echo $posts['uname']?></p>
+                <p class = "">Post: <?php echo $posts['post']?></p>
+                <form action ="index.php" class="form-inline" name="comment" method="post">
+                <input type="text" class ="form-control" placeholder = "add a comment"
+                </form>
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>

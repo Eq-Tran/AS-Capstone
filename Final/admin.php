@@ -63,22 +63,25 @@
           </nav>
     </div>
  <br>
+                <div class ="adminview">
                 <h1>Users</h1>
                 <?php foreach($users as $u):?>
-                <p>User ID: <?php echo $u['userid']?></p>
-                <p>User NAME: <?php echo $u['uname']?></p>
-                <p>USER DELETE:<a href="admindeleteusers.php?id=<?php echo $u['userid']; ?>">Delete</a></p>
-                <?php endforeach;?> 
- 
+                <p class = "admininfo">Username: <?php echo $u['uname']?></p>
+                <p class = "admininfo"><a href="admindeleteusers.php?id=<?php echo $u['userid']; ?>">Delete</a></p>
+                <br>
+                <br>
+                <?php endforeach;?>
+                </div>
+                
+                <div class ="adminview">
                 <h1>User Posts</h1>
                 <?php foreach($posts as $p):?>
-                <p>User: <?php echo $p['uname']?></p>
-                <p>Post: <?php echo $p['post']?></p>
+                <p class = "admininfo">User: <?php echo $p['uname']?></p>
+                <p class = "admininfo">Post: <?php echo $p['post']?></p>
                 <p><a href="admindeletepost.php?id=<?php echo $p['postid']; ?>">Delete</a></p>
                 <?php endforeach;?> 
-        
-   
- <br>
+                </div>
+                <br>
     
 
 </body>

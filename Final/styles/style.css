@@ -139,3 +139,15 @@ i{
     border: 1px solid black;
     width:20%
 }
+
+.adminview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    align-items: center;
+}
+
+.admininfo{
+    
+}

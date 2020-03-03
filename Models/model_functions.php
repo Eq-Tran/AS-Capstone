@@ -312,6 +312,52 @@ function showAllUserPosts(){
     return($results);
 }
 
+function addPostComment($comment, $postid, $userid){
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("INSERT INTO comments SET postid = :postid ,userid = :userid, comment = :comment");
+    $bind = array(
+        
+        ":postid" => $postid,
+        ":userid" => $userid,
+        ":comment" => $comment   
+        
+    );
+    
+    if($statement->execute($bind) && $statement->rowCount() > 0){
+        
+        $results = "post added";
+        
+        
+    }
+    return $results; 
+}
+
+function showPostComments($postid){
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("
+            SELECT comments.userid, comments.postid, comments.comment, posts.postid
+            FROM posts
+            INNER JOIN comments ON comments.userid = posts.userid
+            INNER JOIN posts ON posts.userid = users.userid
+            WHERE comments.userid = :userid;
+    ");
+   
+    $binds = array(
+        ":postid" => $postid
+    );       
+    
+    if($statement->execute($binds) && $statement->rowCount() > 0){
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    return($results);
+}
+
 function checkLogin ($uname, $pw) {
        global $db;
        
