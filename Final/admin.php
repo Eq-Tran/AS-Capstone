@@ -21,10 +21,11 @@
     $last = filter_input(INPUT_GET, 'last'); 
     
     $posts = showAllUserPosts();
+    $users = getusers();
     
 ?>
 
-<<html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,14 +63,18 @@
           </nav>
     </div>
  <br>
+                <h1>Users</h1>
+                <?php foreach($users as $u):?>
+                <p>User ID: <?php echo $u['userid']?></p>
+                <p>User NAME: <?php echo $u['uname']?></p>
+                <p>USER DELETE:<a href="admindeleteusers.php?id=<?php echo $u['userid']; ?>">Delete</a></p>
+                <?php endforeach;?> 
  
-    
+                <h1>User Posts</h1>
                 <?php foreach($posts as $p):?>
-                <p>POST ID: <?php echo $p['postid']?></p>
-                <p>User ID: <?php echo $p['userid']?></p>
-                <p>User NAME: <?php echo $p['uname']?></p>
-                <p>POST BODY: <?php echo $p['post']?></p>
-                <p>POST DELETE:<a href="admindeletepost.php?id=<?php echo $p['postid']; ?>">Delete</a></p>
+                <p>User: <?php echo $p['uname']?></p>
+                <p>Post: <?php echo $p['post']?></p>
+                <p><a href="admindeletepost.php?id=<?php echo $p['postid']; ?>">Delete</a></p>
                 <?php endforeach;?> 
         
    
