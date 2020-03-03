@@ -73,6 +73,9 @@
    <div class="container">
        **Calendar is going here
    </div>
+        <div class="posts">
+            
+        </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
 </html>
