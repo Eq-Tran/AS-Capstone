@@ -1,45 +1,12 @@
 <?php
 
-include __DIR__ . '/Models/model_functions.php';
-include __DIR__ . '/Models/post_request_functions.php';
+// Focus: Seeing if I can use php function to insert a query by using ajax 
 
-$data = showAllUserPosts();
 
-foreach($data as $d => $user){
-    
-    echo $user['post'];    
-    
-}
+//include __DIR__ . '/functions.php';
+
+
+echo stuff;
+
+
 ?>
-<!DOCTYPE HTML>
-<html lang="en">
-    <head>
-        
-    </head>
-    <body>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Uname</td>
-                        <td>PID</td>
-                        <td>Post</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($data as $d):?>
-                    <tr>
-                        <td><?php echo $d['userid'];?></td>
-                        <td><?php echo $d['uname'];?></td>
-                        <td><?php echo $d['postid'];?></td>
-                        <td><?php echo $d['post'];?></td>
-                        
-                    </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
-       
-        </div>
-    </body>
-</html>

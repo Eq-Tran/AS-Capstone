@@ -43,6 +43,10 @@
         </body>
     </main>
     <script>
+
+    // AJAX function that executes the AJAX request
+
+
   
 
         /*
@@ -137,6 +141,7 @@
     */
     // AJAX function that executes the AJAX request
     function executeAjaxRequest(){
+
 
         
             // Create a new instance of a XMLHttpRequest Object.
