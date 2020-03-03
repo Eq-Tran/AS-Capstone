@@ -32,15 +32,6 @@
     //var_dump($myId);
     sendFriendRequest($myId, $friendId);
   
-        
-        if($results['profile_image'] == null){
-            
-            echo "no image";
-            
-        }else{
-            var_dump($results['profile_image']);
-            
-        }
        
         
     
@@ -106,7 +97,7 @@
 <div class="container">
         <h1>Search Users</h1>
 
-        <form class="form-horizontal" action="search.php" method="post">
+        <form class="form-horizontal" action="friends.php" method="post">
         <div class="form-group">
 
           <label class="control-label col-sm-2" for="username">UserName:</label>
@@ -149,8 +140,6 @@
               
               
  ?>
-              
-
               </tr>
             <?php endforeach; ?>
           </tbody>
