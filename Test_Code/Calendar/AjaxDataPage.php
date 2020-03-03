@@ -9,10 +9,10 @@
     
     //TEST PROG
 
-include_once __DIR__ . 'functions.php';
+include_once __DIR__ . '/functions.php';
 
-$data = json_encode(show());
+echo json_encode(show());
 
-echo $data;
+
 
 ?>

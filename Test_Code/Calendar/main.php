@@ -9,7 +9,7 @@ $middle = filter_input(INPUT_POST, 'middle');
 $last = filter_input(INPUT_POST, 'last');
 
 
-  $results =  add($first, $middle, $last);
+$results =  add($first, $middle, $last);
 
 
 
@@ -18,31 +18,107 @@ $last = filter_input(INPUT_POST, 'last');
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <main>
             <form method="POST">
                 First Name:
-                <input type="text" name="first" placeholder="First">
+                <input type="text" name="first" placeholder="First" id="first">
                 Middle Name:
-                <input type="text" name="middle" placeholder="Middle">
+                <input type="text" name="middle" placeholder="Middle" id="middle">
                 Last Name:
-                <input type="text" name="last" placeholder="Last">
-                <button type="submit" >Button</button>
+                <input type="text" name="last" placeholder="Last" id="last">
+                <button type="submit"  id="add" value="Add">Add</button>
             </form>
-
+            <div class="data">
+                
+                <h1>Names</h1>
+                <ul id="names_list">
+                    
+                </ul>
+                
+                
+                
+            </div>
+            
+            
+            
         </main>
     </body>
     <script>
         
         
-  
-
+       function displayNames(names){
+           
+           for(var i = 0; i < names.length; i++){
+               
+               
+               $("#names_list").append('<li><a href="#">' + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
+               
+           }
+              
+       }
+        
+        window.addEventListener('load', loadPage);
+        var button = document.querySelector("#add");
+        button.addEventListener("click", addName);
+        async function addName(){
+            
+            var first = document.querySelector("#first");
+            var middle = document.querySelector("#middle");
+            var last = document.querySelector("#last");
+            
+            
+            const url = 'ajaxdata.php';
+            const data = {first: first, middle:middle , last:last};
+            
+            try{
+                
+                const response = fetch(url,{
+                    
+                   'method' : 'POST',
+                   'body' : JSON.stringify(data),
+                   'headers' : {
+                       
+                       'content-type' : 'application/json'
+                       
+                   }
+                });
+                
+                const id = await response.json();
+                 $("#team_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
+                    document.getElementById("message").innerHTML = "Added Name " + first + '' + middle + '' + last + '' +  ". Id: " + id;
+            }catch(error){
+                
+                console.error(error);
+            }
+        }
+        
+        async function loadPage(){
+            
+            const url = 'AjaxDataPage.php';
+            
+            try{
+                
+                const response = fetch(url, {
+                    
+                    'method' : 'GET'
+                    
+                });
+                
+                const json = await response.json();
+                
+                displayNames(json);
+            }catch(error){
+                
+                console.error(error);
+                
+            }
+            
+        }
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){

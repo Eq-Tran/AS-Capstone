@@ -60,7 +60,4 @@ include (__DIR__ .'/databaseconnect.php');
 
 
 
-
-
-
 ?>
