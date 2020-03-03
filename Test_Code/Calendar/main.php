@@ -1,7 +1,15 @@
 <?php
 
-include __DIR__ . '/Models/model_functions.php';
-include __DIR__ . '/Models/post_request_functions.php';
+
+include __DIR__ . '/functions.php';
+
+
+$first = filter_input(INPUT_POST, 'first');
+$middle = filter_input(INPUT_POST, 'middle');
+$last = filter_input(INPUT_POST, 'last');
+
+
+  $results =  add($first, $middle, $last);
 
 
 
@@ -18,7 +26,58 @@ include __DIR__ . '/Models/post_request_functions.php';
     </head>
     <body>
         <main>
-            
+            <form method="POST">
+                First Name:
+                <input type="text" name="first" placeholder="First">
+                Middle Name:
+                <input type="text" name="middle" placeholder="Middle">
+                Last Name:
+                <input type="text" name="last" placeholder="Last">
+                <button type="submit" >Button</button>
+            </form>
+
         </main>
     </body>
+    <script>
+        
+        
+  
+
+/*
+        //AJAX REq to see if you can use php function from different URL
+        function Request(){
+            
+            var xhttp = new XMLHttpRequest();
+            
+            xhttp.onreadystatechange = function(){
+                
+                if(this.readyState == 4 && this.status == 200){
+                    
+                    
+                    document.querySelector().innerHTML = this.responseText;
+                    
+                }
+                
+                
+            };
+            
+            xhttp.open("GET", "", true);
+            xhttp.send();
+            
+            
+        }
+        */
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
 </html>

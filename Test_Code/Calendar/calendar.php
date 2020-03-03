@@ -9,6 +9,7 @@ if (isset($_GET['year']) && isset($_GET['week'])) {
 } else {
     $dt->setISODate($dt->format('o'), $dt->format('W'));
 }
+
 $year = $dt->format('o');
 $week = $dt->format('W');
 $post = filter_input(INPUT_POST, 'post');
@@ -22,6 +23,7 @@ $addpost = addPost($post, 6);
 // Calendar should only show Uname date/time
 // post list should show username post body date time
 ?>
+<!DOCYTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -34,22 +36,37 @@ $addpost = addPost($post, 6);
             <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
             
             <table class="table table-responsive">
-                <th>
-                    
+            
                         <?php
+                        
                         do {
-                            echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M Y') . "</th>\n";
+                            echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M') . "</th>\n";
                             $dt->modify('+1 day');
                         } while ($week == $dt->format('W'));
+                         
+                         
                         ?>
-                    
-                </th>
+              
                 <tbody>
-                    <?php foreach($posts as $p):?>
-                <td><?php echo $p['uname'];?></td>
-                <td><?php echo $p['post'];?></td>
-                
-                <?php endforeach;?>
+                    <tr>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                    </tr>
+                    <tr>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                        <td>ello</td>
+                    </tr>
+                    
             </tbody>
             </table>
         </div>
@@ -73,18 +90,15 @@ $addpost = addPost($post, 6);
             </form>
         </div>
         <div class="posts-table" >
-            <?php foreach($posts as $p):?>
+
             <div class="box" style="width:200px; height:60px; border:1px solid black;">
-            <td><?php echo $p['uname'];?></td>
-            <td><?php echo $p['post'];?></td>
-            </div>
-            <?php endforeach;?>
+       
         </div>
         
     </body>
     <script>
-     // Vanilla Javascript ajax call
-     /*function executeAjaxReq(){
+         // Vanilla Javascript ajax call
+     function executeAjaxReq(){
  
          var xhttp = new XMLHttpRequest();
          
@@ -107,8 +121,9 @@ $addpost = addPost($post, 6);
          xhttp.open("GET", "calendarupdate.php?", true);
          xhttp.send();
          
-     }*/
+     }
     
+    /*
     // Example POST method implementation:
     async function postData(url = "", data = {}) {
       // Default options are marked with *
@@ -128,12 +143,13 @@ $addpost = addPost($post, 6);
       return await response.json(); // parses JSON response into native JavaScript objects
     }
 
-    postData('calendarupdate.php', { answer: 42 })
+    postData('calendarupdate.php', {})
       .then((data) => {
         console.log(data); // JSON data parsed by `response.json()` call
         //alert("this stuff");
         document.querySelector("td").innerHTML = JSON.stringify(data);
       });
+      */
     
     </script>
 </html>

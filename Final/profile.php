@@ -110,6 +110,7 @@ session_start();
 
             <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
                 
+            <!-- MAKE THIS A FORM WILL BE EASIER TO MOVE W CSS. -->
                 <div class="proinfo"> 
                     
                     <td>Username: <?php echo $profile['uname']; ?></td><br />
