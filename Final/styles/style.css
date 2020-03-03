@@ -10,7 +10,7 @@ nav{
     background-color: #73549C;
    
 }
-a{
+i{
     color:#F3F1ED;
 }
 .icon-bar{
@@ -137,4 +137,5 @@ a{
 .fListImg
 {
     border: 1px solid black;
+    width:20%
 }
