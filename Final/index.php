@@ -14,13 +14,20 @@
     $first = filter_input(INPUT_GET, 'first');
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
+    $profile_image = filter_input(INPUT_GET, 'profile_image');
     $postid = filter_input(INPUT_GET, 'postid');
     
     $profile = showUser($_SESSION['use']); 
-    $posts = showUserPost($_SESSION['use']);
-    $comments = showPostComments(2);
-            var_dump($comments);
+    $posts = showAllUserPosts($_SESSION['use']);
+    $image = getImage($_SESSION['use']);
     
+    if(isPostRequested())
+        {
+            $userid = $_SESSION['use'];   
+            $postid = $posts['postid'];
+            $comment = filter_input(INPUT_POST, 'comment');
+                
+        }
 ?>
 
 <html lang="en">
@@ -79,21 +86,32 @@
         <div class="posts">
             <div class ="">
                 
-                <!--<?php //foreach($posts as $p):?>
-                <p class = "">User: <?php //echo $p['users.uname']?></p>
-                <p class = "">Post: <?php //echo $p['posts.post']?></p>
-                <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"
-                </form>
-                <?php //endforeach;?> 
-                </div>
-                <br>-->
+                <?php foreach($posts as $p):?>
+                <?php $userid = $p['userid'];
+                $postid= $p['postid'];?>
+                <br><br>
+                <img class="" src="images/<?php echo $image['profile_image']; ?>" alt="profile image" height="150" width="150">
+                <p class = "">User: <?php echo $p['uname']?></p>
+                <p class = "">Post: <?php echo $p['post']?></p>
+                <?php $comments = showPostComments($postid);?>
                 
-                <p class = "">User: <?php echo $posts['uname']?></p>
-                <p class = "">Post: <?php echo $posts['post']?></p>
+                    <?php foreach($comments as $c):;?>
+                        <?php $Commenter = showUser($c['userid'])?>
+                        <p class = "">Commenter: <?php echo $Commenter['uname']; ?></p>
+                        <p class = "">Comment: <?php echo $c['comment']; ?></p>
+                    <?php endforeach;?>
+                
                 <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"
+                <input type="text" class ="form-control" placeholder = "add a comment"      
                 </form>
+                <button class="btn button" type="submit" name="comment" value ="add a comment">Comment</button>
+                <?php endforeach;?> 
+                </div>
+                <br>
+                
+                <?php if (isPostRequested())
+                    $results = addComment($userid, $postid, $comment);
+                ?>    
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
