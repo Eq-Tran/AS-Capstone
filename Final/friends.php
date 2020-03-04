@@ -131,7 +131,7 @@
                 <tr>
                 <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image" class='fListImg'></td>
                 
-                <td><span><a href='friendProfile.php?id=<?php $row['userid']?>'><?php echo $row['uname']; ?></a></span></td>
+                <td><span><a href="friendProfile.php?id=<?php echo $row['userid']?>"><?php echo $row['uname']; ?></a></span></td>
                 
                 <?php 
                 if (checkFriends($myId, $row['userid']) === false){
