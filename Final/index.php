@@ -18,8 +18,8 @@
     
     $profile = showUser($_SESSION['use']); 
     $posts = showUserPost($_SESSION['use']);
-    $comments = showPostComments(2);
-            var_dump($comments);
+    //$comments = showPostComments(2);
+    //var_dump($comments);
     
 ?>
 

@@ -118,27 +118,6 @@ session_start();
                     </div>
                 <div id="updatecollapse" class="collapse">
                 
-<<<<<<< HEAD
-                <div class="form-element">
-                    <label>Bio: </label>
-                    <textarea type="text" name="bio" class=" form-control" id="exampleFormControlArea1" rows="4"><?php echo $profile['bio']; ?></textarea>
-                </div>
-        <br>        
-                <div class="form-element">
-                   <label>Please input or change Password to update Bio: </label> 
-                  <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->
-                  <input type="text" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
-                </div>
-        <br>
-                <div class="form-group">        
-                    <div class="">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <?php
-                            if (isPostRequested()) 
-                                {
-
-=======
->>>>>>> smith
 
                     <br>
                         <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
