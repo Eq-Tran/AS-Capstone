@@ -18,8 +18,14 @@
     $postid = filter_input(INPUT_GET, 'postid');
     
     $profile = showUser($_SESSION['use']); 
+
     $posts = showAllUserPosts($_SESSION['use']);
     $image = getImage($_SESSION['use']);
+
+    $posts = showUserPost($_SESSION['use']);
+    $comments = showPostComments(2);
+    var_dump($comments);
+
     
     if(isPostRequested())
         {

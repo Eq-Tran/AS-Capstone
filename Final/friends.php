@@ -19,9 +19,25 @@
     {
       $User = filter_input(INPUT_POST,'username');
       $results = findUser($User,$myId);
+      //echo "search";
     }
-
-
+    /*if (isGetRequested('request'))
+    {
+      $status = filter_input(INPUT_GET, 'status');
+      //var_dump($status);
+      if ($status == 'add')
+      {
+        //echo "ADD FRIENDS";
+        sendFriendRequest($myId, $friendId);
+      }
+      if($status == 'delete')
+      {
+        //echo "DELETE FRIENDS";
+        deleteFriends($myId, $friendId);
+      }
+    }
+    */
+ 
     //this is here for testing purposes--making sure that it is grabbing correct id numbers
     echo "My Id is: ";
     echo $myId;
@@ -30,7 +46,7 @@
 
     //var_dump($results);
     //var_dump($myId);
-    sendFriendRequest($myId, $friendId);
+    
   
        
         
@@ -59,20 +75,11 @@
             <a class="navbar-brand" href="#">GO</a>
             <div class="container-fluid">
                 
-              <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>-->
-                
-                
-              </div>
               <!--<div class="collapse navbar-collapse" id="myNavbar">-->
                   
-                <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php">GO</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -98,56 +105,60 @@
         <h1>Search Users</h1>
 
         <form class="form-horizontal" action="friends.php" method="post">
-        <div class="form-group">
+          <div class="form-group">
 
-          <label class="control-label col-sm-2" for="username">UserName:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="username" placeholder="Enter Username" >
+            <label class="control-label col-sm-2" for="username">UserName:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="username" placeholder="Enter Username" >
+            </div>
           </div>
-        </div>
-        <div class="form-group">        
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" name="search">Search</button>
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default" name="search">Search</button>
 
+            </div>
           </div>
-        </div>
-        
-        <table class="table table-striped">
-          <thead>
-              <th>ID</th>
-            <th>Username</th>
-            <th>Add Friend Button</th>
-          </thead>
-          <tbody>
-            <?php foreach($results as $row):?>
-              <tr>
-              <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image" class='fListImg'></td>
-              
-              <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
-              
-              <?php if (checkFriends($myId, $row['userid']) === false){
-                if (checkRequest($myId, $row['userid']) === true)
-                {
+          </form>
+          <form class="form-horizontal" action="friends.php" method="get">
+          <table class="table table-striped">
+            <thead>
+                <th>ID</th>
+              <th>Username</th>
+              <th>Add Friend Button</th>
+            </thead>
+            <tbody>
+              <?php foreach($results as $row):?>
+                <tr>
+                <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image" class='fListImg'></td>
+                
+                <td><span><a href="friendProfile.php?id=<?php echo $row['userid']?>"><?php echo $row['uname']; ?></a></span></td>
+                
+                <?php 
+                if (checkFriends($myId, $row['userid']) === false){
+                  if (checkRequest($myId, $row['userid']) === true)
+                  {
+                    
+                    echo "<td>Friend Request Pending</td>";
+
+                  }
+                  else{
+                    echo "<td><a href='friends.php?friendId=" . $row['userid']. "&status=add' type='submit' class='btn btn-success' name='request'>Add Friend</a></td>";
+
+                  }
                   
-                  echo "<td>Friend Request Pending</td>";
-
                 }
                 else{
-                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
-                }
-                
-              }
-              
-              
- ?>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "&status=delete' type='submit' class='btn btn-danger' name='request'>Delete Friend</a></td>";
 
+                }   ?>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+                  
         </form>
 
-        </table>
+        
     </div>
 
 </body>
