@@ -115,9 +115,17 @@
                 </div>
                 <br>
                 
+<<<<<<< HEAD
                 <?php if (isPostRequested())
                     $results = addComment($userid, $postid, $comment);
                 ?>    
+=======
+                <p class = "">User: <?php echo $posts['uname']?></p>
+                <p class = "">Post: <?php echo $posts['post']?></p>
+                <form action ="index.php" class="form-inline" name="comment" method="post">
+                <input type="text" class ="form-control" placeholder = "add a comment">
+                </form>
+>>>>>>> smith
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
