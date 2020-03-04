@@ -21,15 +21,15 @@
 
     $posts = showAllUserPosts($_SESSION['use']);
     $image = getImage($_SESSION['use']);
-
     
-    if(isPostRequested())
-        {
-            $userid = $_SESSION['use'];   
-            $postid = $posts['postid'];
-            $comment = filter_input(INPUT_POST, 'comment');
-                
-        }
+    
+    if(isPostRequested()){
+        $userid = $_SESSION['use'];   
+        $postid = $postid;
+        $comment = filter_input(INPUT_POST, 'comment');
+        
+    }
+
 ?>
 
 <html lang="en">
@@ -62,7 +62,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">GO</a>
+                        <a class="navbar-brand" href="#">GO</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -97,31 +97,32 @@
                 <p class = "">Post: <?php echo $p['post']?></p>
                 <?php $comments = showPostComments($postid);?>
                 
-                    <?php foreach($comments as $c):?>
+                    <?php foreach($comments as $c): ?>
                         <?php $Commenter = showUser($c['userid']);?>
                         <p class = "">Commenter: <?php echo $Commenter['uname']; ?></p>
                         <p class = "">Comment: <?php echo $c['comment']; ?></p>
                     <?php endforeach;?>
                 
-                <form action ="index.php" class="form-inline" name="comment" method="post">
-                    <input type="text" class ="form-control" placeholder = "add a comment">      
-                </form>
-                <button class="btn button" type="submit" name="comment" value ="add a comment">Comment</button>
-                <?php endforeach;?> 
+                <form action ="index.php" class="form-inline" method="post">
+                    <input type="text" class ="form-control" name="comment" placeholder = "add a comment">      
+                
+                <button class="btn button" type="submit" value ="add a comment">Comment</button>
+                <!-- Inside of for each it adds a comment to all posts, Must fix -->
+                <!-- Takes last textbox value for comment -->
+                <?php if (isPostRequested())
+                   $results = addComment($userid, $postid, $comment); 
+                    echo $userid;echo " ";
+                    echo $postid; echo " ";
+                    echo $comment; echo " ";
+                ?>
+                <?php endforeach;?>
+                </form>    
+                 
                 </div>
                 <br>
                 
-<<<<<<< HEAD
-                <?php if (isPostRequested())
-                    $results = addComment($userid, $postid, $comment);
-                ?>    
-=======
-                <p class = "">User: <?php echo $posts['uname']?></p>
-                <p class = "">Post: <?php echo $posts['post']?></p>
-                <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment">
-                </form>
->>>>>>> smith
+                    
+
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>

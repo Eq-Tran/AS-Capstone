@@ -102,21 +102,20 @@ session_start();
                     </div>
             
             
-                <div class ="proposts">
-                    
-                    <div class ="addpost">
-                        
-                    </div>
-                    
-                    <div class="showpost">
-                        
-                    </div>
+            <div class ="proposts">
+                
+                <div class ="addpost">
                     
                 </div>
-         </div>
+                
+                <div class="showpost">
+                    
+                </div>
+                
+            </div>
+                
             
             
     </body>
-        
-</html>    
-<footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+</html>  
