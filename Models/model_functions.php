@@ -136,7 +136,6 @@ function showUser($userid){
     
     $results = [];
     $statement = $db->prepare("SELECT first, middle, last, email, uname, birthday, bio, location, profile_image FROM users WHERE userid = :userid");
-    $userid = filter_input(INPUT_GET, 'id');
     $bindParam = array(
         
         ":userid" => $userid,

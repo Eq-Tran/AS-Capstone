@@ -10,6 +10,7 @@ session_start();
     $friendId = filter_input(INPUT_GET, 'id');
     $profile = showUser($friendId);
     
+    
     // Add Image get
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');

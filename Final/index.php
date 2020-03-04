@@ -5,7 +5,7 @@
     
     if(!isset($_SESSION['use']))
     {
-        //header('Location:login.php');
+        header('Location:login.php');
     }
     
     $userid = filter_input(INPUT_GET, 'userid');
@@ -21,10 +21,6 @@
 
     $posts = showAllUserPosts($_SESSION['use']);
     $image = getImage($_SESSION['use']);
-
-    $posts = showUserPost($_SESSION['use']);
-    $comments = showPostComments(2);
-    var_dump($comments);
 
     
     if(isPostRequested())
@@ -101,14 +97,14 @@
                 <p class = "">Post: <?php echo $p['post']?></p>
                 <?php $comments = showPostComments($postid);?>
                 
-                    <?php foreach($comments as $c):;?>
-                        <?php $Commenter = showUser($c['userid'])?>
+                    <?php foreach($comments as $c):?>
+                        <?php $Commenter = showUser($c['userid']);?>
                         <p class = "">Commenter: <?php echo $Commenter['uname']; ?></p>
                         <p class = "">Comment: <?php echo $c['comment']; ?></p>
                     <?php endforeach;?>
                 
                 <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"      
+                    <input type="text" class ="form-control" placeholder = "add a comment">      
                 </form>
                 <button class="btn button" type="submit" name="comment" value ="add a comment">Comment</button>
                 <?php endforeach;?> 

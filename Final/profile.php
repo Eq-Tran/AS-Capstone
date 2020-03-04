@@ -9,7 +9,7 @@ session_start();
         }
     
     $profile = showUser($_SESSION['use']);
-    //var_dump($profile);
+    
     // Add Image get
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
