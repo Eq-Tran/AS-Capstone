@@ -26,26 +26,23 @@ $results =  add($first, $middle, $last);
         <main>
             <form method="POST">
                 First Name:
-                <input type="text" name="first" placeholder="First" id="first">
+                <input type="text" name="first" placeholder="First" id="first" value="first">
                 Middle Name:
-                <input type="text" name="middle" placeholder="Middle" id="middle">
+                <input type="text" name="middle" placeholder="Middle" id="middle" value="middle">
                 Last Name:
-                <input type="text" name="last" placeholder="Last" id="last">
-                <button type="submit"  id="add" value="Add">Add</button>
+                <input type="text" name="last" placeholder="Last" id="last" value="last">
+                <input type="submit"  id="add" value="Add">Add</input>
             </form>
-            <div class="data">
-                
-                <h1>Names</h1>
-                <ul id="names_list">
-                    
-                </ul>
-                
-                
+            <div id="data">
+          
                 
             </div>
             
             
-            
+            <h1>Names</h1>
+                <ul id="names_list">
+                    
+                </ul>
         </main>
     </body>
     <script>
@@ -62,18 +59,22 @@ $results =  add($first, $middle, $last);
               
        }
         
-        window.addEventListener('load', loadPage);
+        //window.addEventListener('load', loadPage);
         var button = document.querySelector("#add");
         button.addEventListener("click", addName);
+        
+        // adds name to the database through a php script 
         async function addName(){
             
-            var first = document.querySelector("#first");
-            var middle = document.querySelector("#middle");
-            var last = document.querySelector("#last");
+             event.preventDefault();
+             
+            var first = document.getElementById("first").value;
+            var middle = document.getElementById("middle").value;
+            var last = document.getElementById("last").value;
             
             
             const url = 'ajaxdata.php';
-            const data = {first: first, middle:middle , last:last};
+            const data = {first: first, middle: middle , last:last};
             
             try{
                 
@@ -88,37 +89,38 @@ $results =  add($first, $middle, $last);
                    }
                 });
                 
-                const id = await response.json();
-                 $("#team_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
-                    document.getElementById("message").innerHTML = "Added Name " + first + '' + middle + '' + last + '' +  ". Id: " + id;
+                const id = response.data;
+                 $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
+                    document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last + '' +  ". Id: " + id;
+                   
             }catch(error){
                 
                 console.error(error);
             }
         }
         
-        async function loadPage(){
+       async function loadPage(){
             
             const url = 'AjaxDataPage.php';
-            
+            const error = 'Not working';
             try{
                 
                 const response = fetch(url, {
                     
-                    'method' : 'GET'
-                    
+                    'method' : 'GET',
+           
                 });
                 
                 const json = await response.json();
-                
                 displayNames(json);
+                
             }catch(error){
                 
                 console.error(error);
                 
             }
-            
         }
+            
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){
