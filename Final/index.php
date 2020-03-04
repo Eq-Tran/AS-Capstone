@@ -92,7 +92,7 @@
                 <p class = "">User: <?php echo $posts['uname']?></p>
                 <p class = "">Post: <?php echo $posts['post']?></p>
                 <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"
+                <input type="text" class ="form-control" placeholder = "add a comment">
                 </form>
         </div>     
 </body>
