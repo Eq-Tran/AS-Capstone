@@ -22,6 +22,7 @@ i{
     margin-top: 10px;
     margin-left: 5px;
     margin-bottom:2px;
+    
 }
 .signup{
     margin-top: 15px;
@@ -46,19 +47,11 @@ i{
 
   display: flex;
   flex-direction: row;
-    justify-content: end;   
+    justify-content: flex-end;   
   
 
 }  
 
-
-
-.profileImage
-{
-    border: 1px solid black;
-  justify-content: flex-end;
-
-}
 .container{
     
     max-width:650px;
@@ -66,7 +59,7 @@ i{
 }
 .profileContainer
 {
-    width: 50%;
+    width: 80%;
     margin: 120px auto 120px;
     background-color: #fff;
     padding: 0 20px 20px;
@@ -80,19 +73,6 @@ i{
     flex-direction:column;
 }
 .profileImage{
-    display:flex;
-
-    float:left;
-    width:30%;
-    border-radius:8px;
-}
-.proinfo
-{
-    display:flex;
-
-    border: 1px solid black;
-
-    float:right;
     border-radius: 100px;
     overflow: hidden;
     height: 150px;
@@ -101,8 +81,12 @@ i{
     margin: auto;
     top: -60px;
     box-shadow: 0 0 0 13px #f0f0f0;
-    -webkit-box-shadow: 0 0 0 13px #f0f0f0;
-    -moz-box-shadow: 0 0 0 13px #f0f0f0;
+}
+.proinfo
+{
+    display:flex;
+
+
 }
 .profileImage img{
     position: absolute;
@@ -117,25 +101,27 @@ i{
     width:100%;
     display:flex;
     flex-direction:column;
-    border: 1px solid black;
+}
+.proName{
+    display:flex;
+    justify-content: center;
 }
 .btnedit
 {
     display:flex;
-    float:right;
-    width:75px;
-    flex-direction:column;
     justify-content:flex-end;
-    padding:0 0 0 15px;
 }
-.proedit
-{
-    display:flex;
-    float:left;
 
-}
 .fListImg
 {
     border: 1px solid black;
     width:20%
+}
+h1{
+    font-family:'Oswald', Times, Serif;
+    font-size: 27px;
+}
+h2{
+    font-family:'Oswald', Times, Serif;
+    
 }

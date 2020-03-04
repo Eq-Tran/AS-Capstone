@@ -63,23 +63,13 @@ session_start();
     <body>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="index.php">GO</a>
             <div class="container-fluid">
                 
-              <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>-->
-                
-                
-              </div>
               <!--<div class="collapse navbar-collapse" id="myNavbar">-->
                   
-                <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php"><i >GO</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -100,125 +90,123 @@ session_start();
             </div>
          </nav>
     
-    <div class="profileContainer container">
+        <div class="profileContainer container">
 
-            <div class="profileImage">
-            <img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image" height="150" width="150">
-            </div>      
+                <div class="profileImage">
+                <img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image" height="150" width="150">
+                </div>      
 
-            <div class= "profileStuff">
+                <div class= "profileStuff">
 
-            
-                <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
-                    
-                    <div class="proinfo"> 
+                
+                    <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
                         
-                        <td>Username: <?php echo $profile['uname']; ?></td><br />
-                        <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                        <td>Location: <?php echo $profile['location']; ?></td><br />
-                        <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
-                    
-                    </div>  
-                <br />
-                <div class="proabout"> 
-                    <td><?php echo $profile['bio']; ?></td>
-                </div>
-                        <div class="btnedit">
-            
-            <button class="proedit btn button" data-toggle="collapse" data-target="#updatecollapse"><i class="material-icons">settings</i></button>
-
-            <div id="updatecollapse" class="collapse">
-            
-
-        <br>
-            <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
-                <div class="form-element">
-                    <label>First Name: </label>
-                    <input type="text" name="first" value="<?php echo $profile['first']; ?>"/>
-                </div>
-        <br>
-                <div class="form-element">
-                    <label>Middle Name: </label>
-                    <input type="text" name="middle" value="<?php echo $profile['middle']; ?>"/>
-                </div>
-        <br>
-                <div class="form-element">
-                    <label>Last Name: </label>
-                    <input type="text" name="last" value="<?php echo $profile['last']; ?>"/>
-                </div>
-        <br>
-                <div class="form-element">
-                    <!--YYYY-MM-DD-->
-                    <label>Birthday: </label>
-                    <input type="text" name="birthday" placeholder="YYYY-DD-MM" value="<?php echo $profile['birthday']; ?>" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" oninvalid="this.setCustomValidity('YYYY-MM-DD Format Required')"oninput="this.setCustomValidity('')" />
-                </div>
-        <br>
-                <div class="form-element">
-                    <!--Max 15 Characters-->
-                    <label>Location: </label>
-                    <input type="text" name="location" value="<?php echo $profile['location']; ?>" required pattern="^([a-zA-Z ]+)(?:,([ A-Z]{3,200}))$" oninvalid="this.setCustomValidity('Coventry, RI - Format Required')"oninput="this.setCustomValidity('')"/>
-                </div>
-        <br>
-                
-                <div class="form-element">
-                    <label>Bio: </label>
-                    <textarea type="text" name="bio" class=" form-control" id="exampleFormControlArea1" rows="4"><?php echo $profile['bio']; ?></textarea>
-                </div>
-        <br>        
-                <div class="form-element">
-                   <label>Change Password: </label> 
-                  <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->
-                  <input type="password" class="form-control" id="password" name="pass" value ="<?php echo $profile['pw']; ?>" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')">
-                </div>
-        <br>
-                <div class="form-group">        
-                    <div class="">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <?php
-                            if (isPostRequested()) 
-                                {
-
-
-                                
-                                        echo "Profile Updated";
-                                        echo "<meta http-equiv='refresh' content='0'>";
-                                
-                                    }              
+                        <div class="proinfo"> 
                             
-                            ?>
-                        </div>
+                            <td>Username: <?php echo $profile['uname']; ?></td><br />
+                            <td>Email Address: <?php echo $profile['email']; ?></td><br />
+                            <td>Location: <?php echo $profile['location']; ?></td><br />
+                            <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+                        
+                        </div>  
+                    <br />
+                    <div class="proabout"> 
+                        <td><?php echo $profile['bio']; ?></td>
+                    </div>
+                    <div class="btnedit">
+                        <button class="proedit btn button" data-toggle="collapse" data-target="#updatecollapse"><i class="material-icons">settings</i></button>
+                    </div>
+                <div id="updatecollapse" class="collapse">
+                
+
+                    <br>
+                        <form name ="profileupdate" method="post" action = "profile.php" enctype="multipart/form-data">
+                            <div class="form-element">
+                                <label>First Name: </label>
+                                <input type="text" name="first" value="<?php echo $profile['first']; ?>"/>
+                            </div>
+                            <br>
+                            <div class="form-element">
+                                <label>Middle Name: </label>
+                                <input type="text" name="middle" value="<?php echo $profile['middle']; ?>"/>
+                            </div>
+                            <br>
+                            <div class="form-element">
+                                <label>Last Name: </label>
+                                <input type="text" name="last" value="<?php echo $profile['last']; ?>"/>
+                            </div>
+                            <br>
+                            <div class="form-element">
+                                <!--YYYY-MM-DD-->
+                                <label>Birthday: </label>
+                                <input type="text" name="birthday" placeholder="YYYY-DD-MM" value="<?php echo $profile['birthday']; ?>" required pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" oninvalid="this.setCustomValidity('YYYY-MM-DD Format Required')"oninput="this.setCustomValidity('')" />
+                            </div>
+                            <br>
+                            <div class="form-element">
+                                <!--Max 15 Characters-->
+                                <label>Location: </label>
+                                <input type="text" name="location" value="<?php echo $profile['location']; ?>" required pattern="^([a-zA-Z ]+)(?:,([ A-Z]{3,200}))$" oninvalid="this.setCustomValidity('Coventry, RI - Format Required')"oninput="this.setCustomValidity('')"/>
+                            </div>
+                            <br>
+                            
+                            <div class="form-element">
+                                <label>Bio: </label>
+                                <textarea type="text" name="bio" class=" form-control" id="exampleFormControlArea1" rows="4"><?php echo $profile['bio']; ?></textarea>
+                            </div>
+                            <br>        
+                            <div class="form-element">
+                                <label>Change Password: </label> 
+                                <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->
+                                <input type="password" class="form-control" id="password" name="pass" value ="<?php echo $profile['pw']; ?>" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')" />
+                                
+                            </div>
+                            <br>
+                            <div class="form-group">        
+                                <div class="">
+                                    <button type="submit" class="btn button">Submit</button>
+                                    <?php
+                                        if (isPostRequested()) 
+                                            {
+
+                                                    echo "Profile Updated";
+                                                    echo "<meta http-equiv='refresh' content='0'>";
+                                            
+                                                }              
+                                        
+                                        ?>
+                                    </div>
+                                
+                             </div> 
+                        
+                         </form>
+                            
+                        <form action="fileUpload.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="myfile" id="fileToUpload">
+                            <input type="submit" name="submit" value="Upload File Now" >
+                         </form>
                     
-                    </div> 
-            
-                </form>
-                
-                <form action="fileUpload.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="myfile" id="fileToUpload">
-                    <input type="submit" name="submit" value="Upload File Now" >
-                    </form>
-        
-        </div>
+                    </div>
 
-            </div>   
-            </div>
+         </div>   
+                </div>
 
-     </div>    
-         
-        
-        <div class ="proposts">
+        </div>    
             
-            <div class ="addpost">
+            
+            <div class ="proposts">
+                
+                <div class ="addpost">
+                    
+                </div>
+                
+                <div class="showpost">
+                    
+                </div>
                 
             </div>
-            
-            <div class="showpost">
                 
-            </div>
             
-        </div>
             
-           
-        
     </body>
         <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
 </html>        

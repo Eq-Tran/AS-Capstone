@@ -530,10 +530,10 @@ function getAllFriends($myId, $sendData)
     global $db;
     $stmt = $db -> prepare("SELECT distinct user_one, user_two FROM `friends` WHERE user_one = ? OR user_two = ?");
     
-   echo "inside get all friends function";
+   //echo "inside get all friends function";
     if ( $stmt->execute([$myId, $myId]) && $stmt->rowCount() > 0 ) 
     {
-        echo "statement binded";
+        //echo "statement binded";
         if($sendData == true){
             $results = [];
             $users = [];
@@ -622,11 +622,17 @@ function checkFriends($myId, $friendId)
 function deleteFriends($myId, $friendId)
 {
     global $db;
-    $sql = "DELETE * from friends where user_one = ? and user_two = ? OR user_one = ? and user_two = ?";
+    $sql = "DELETE FROM friends where user_one = :myId and user_two = :friendId OR user_one = :friendId and user_two = :myId";
     $stmt = $db ->prepare($sql);
-    if($stmt -> execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
+    $binds = array(
+        ':myId' => $myId,
+        ':friendId' => $friendId
+    );
+    //var_dump($binds);
+    if($stmt -> execute($binds) && $stmt->rowCount() > 0)
     {
         echo "Friend Deleted";
+        header("Refresh: 0;");
     }
 
 }
