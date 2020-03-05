@@ -185,12 +185,10 @@ session_start();
                             <input type="submit" name="submit" value="Upload File Now" >
                          </form>
                     
-                    </div>
+                 </div>
+                
 
-         </div>   
-                </div>
-
-        </div>    
+         </div>    
             
             
             <div class ="proposts">
@@ -205,7 +203,7 @@ session_start();
                 
             </div>
                 
-            
+  </div>      
             
     </body>
         <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>

@@ -79,43 +79,44 @@ session_start();
     
         <div class="profileContainer container">
 
-                <div class="profileImage">
+            <div class="profileImage">
                 <img src="images/<?php echo $profile['profile_image']; ?>" alt="profile image" height="150" width="150">
-                </div>      
+            </div>      
 
-                <div class= "profileStuff">
+            <div class= "profileStuff">
 
                 
-                    <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
+                <div class="proName"><h1><?php echo $profile['first']; echo " "; echo $profile['middle']; echo " "; echo $profile['last']; ?></h1><br /></div>
                         
-                        <div class="proinfo"> 
+                    <div class="proinfo"> 
                             
-                            <td>Username: <?php echo $profile['uname']; ?></td><br />
-                            <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                            <td>Location: <?php echo $profile['location']; ?></td><br />
-                            <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+                        <td>Username: <?php echo $profile['uname']; ?></td><br />
+                        <td>Email Address: <?php echo $profile['email']; ?></td><br />
+                        <td>Location: <?php echo $profile['location']; ?></td><br />
+                        <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
                         
-                        </div>  
+                     </div>  
                     <br />
                     <div class="proabout"> 
                         <td><?php echo $profile['bio']; ?></td>
                     </div>
+                 </div>
             
-            
+             </div>
             <div class ="proposts">
-                
-                <div class ="addpost">
                     
+                <div class ="addpost">
+                        
                 </div>
-                
+                    
                 <div class="showpost">
                     
                 </div>
                 
-            </div>
+             </div>
                 
-            
+         
             
     </body>
-        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>   
 </html>  
