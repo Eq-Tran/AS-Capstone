@@ -117,7 +117,6 @@ i{
     border: 1px solid black;
     width:20%
 }
-<<<<<<< HEAD
 
 .adminview{
     display: flex;
@@ -128,13 +127,13 @@ i{
 }
 
 .admininfo{
-=======
+    display:flex;
+}
 h1{
     font-family:'Oswald', Times, Serif;
     font-size: 27px;
 }
 h2{
     font-family:'Oswald', Times, Serif;
->>>>>>> smith
     
 }

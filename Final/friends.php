@@ -21,9 +21,23 @@
       $results = findUser($User,$myId);
       //echo "search";
     }
-
-    
-
+    /*if (isGetRequested('request'))
+    {
+      $status = filter_input(INPUT_GET, 'status');
+      //var_dump($status);
+      if ($status == 'add')
+      {
+        //echo "ADD FRIENDS";
+        sendFriendRequest($myId, $friendId);
+      }
+      if($status == 'delete')
+      {
+        //echo "DELETE FRIENDS";
+        deleteFriends($myId, $friendId);
+      }
+    }
+    */
+ 
     //this is here for testing purposes--making sure that it is grabbing correct id numbers
     echo "My Id is: ";
     echo $myId;
@@ -117,7 +131,7 @@
                 <tr>
                 <td><img src="images/<?php echo $row['profile_image']; ?>" alt="profile image" class='fListImg'></td>
                 
-                <td><span><a href="friendProfile.php?id='".<?php $row['userid'] ?>><?php echo $row['uname']; ?></a></span></td>
+                <td><span><a href="friendProfile.php?id=<?php echo $row['userid']?>"><?php echo $row['uname']; ?></a></span></td>
                 
                 <?php 
                 if (checkFriends($myId, $row['userid']) === false){
@@ -128,13 +142,13 @@
 
                   }
                   else{
-                    echo "<td><a href='friends.php?friendId=" . $row['userid']. "' type='submit' class='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                    echo "<td><a href='friends.php?friendId=" . $row['userid']. "&status=add' type='submit' class='btn btn-success' name='request'>Add Friend</a></td>";
 
                   }
                   
                 }
                 else{
-                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' type='submit' class='btn btn-danger' name='deleteFriend'>Delete Friend</a></td>";
+                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "&status=delete' type='submit' class='btn btn-danger' name='request'>Delete Friend</a></td>";
 
                 }   ?>
                 </tr>

@@ -5,7 +5,7 @@
     
     if(!isset($_SESSION['use']))
     {
-        //header('Location:login.php');
+        header('Location:login.php');
     }
     
     $userid = filter_input(INPUT_GET, 'userid');
@@ -14,13 +14,22 @@
     $first = filter_input(INPUT_GET, 'first');
     $middle = filter_input(INPUT_GET, 'middle');
     $last = filter_input(INPUT_GET, 'last');
+    $profile_image = filter_input(INPUT_GET, 'profile_image');
     $postid = filter_input(INPUT_GET, 'postid');
     
     $profile = showUser($_SESSION['use']); 
-    $posts = showUserPost($_SESSION['use']);
-    $comments = showPostComments(2);
-            var_dump($comments);
+
+    $posts = showAllUserPosts($_SESSION['use']);
+    $image = getImage($_SESSION['use']);
     
+    
+    if(isPostRequested()){
+        $userid = $_SESSION['use'];   
+        $postid = $postid;
+        $comment = filter_input(INPUT_POST, 'comment');
+        
+    }
+
 ?>
 
 <html lang="en">
@@ -53,7 +62,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">GO</a>
+                        <a class="navbar-brand" href="#">GO</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -79,21 +88,41 @@
         <div class="posts">
             <div class ="">
                 
-                <!--<?php //foreach($posts as $p):?>
-                <p class = "">User: <?php //echo $p['users.uname']?></p>
-                <p class = "">Post: <?php //echo $p['posts.post']?></p>
-                <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"
-                </form>
-                <?php //endforeach;?> 
-                </div>
-                <br>-->
+                <?php foreach($posts as $p):?>
+                <?php $userid = $p['userid'];
+                $postid= $p['postid'];?>
+                <br><br>
+                <img class="" src="images/<?php echo $image['profile_image']; ?>" alt="profile image" height="150" width="150">
+                <p class = "">User: <?php echo $p['uname']?></p>
+                <p class = "">Post: <?php echo $p['post']?></p>
+                <?php $comments = showPostComments($postid);?>
                 
-                <p class = "">User: <?php echo $posts['uname']?></p>
-                <p class = "">Post: <?php echo $posts['post']?></p>
-                <form action ="index.php" class="form-inline" name="comment" method="post">
-                <input type="text" class ="form-control" placeholder = "add a comment"
-                </form>
+                    <?php foreach($comments as $c): ?>
+                        <?php $Commenter = showUser($c['userid']);?>
+                        <p class = "">Commenter: <?php echo $Commenter['uname']; ?></p>
+                        <p class = "">Comment: <?php echo $c['comment']; ?></p>
+                    <?php endforeach;?>
+                
+                <form action ="index.php" class="form-inline" method="post">
+                    <input type="text" class ="form-control" name="comment" placeholder = "add a comment">      
+                
+                <button class="btn button" type="submit" value ="add a comment">Comment</button>
+                <!-- Inside of for each it adds a comment to all posts, Must fix -->
+                <!-- Takes last textbox value for comment -->
+                <?php if (isPostRequested())
+                   $results = addComment($userid, $postid, $comment); 
+                    echo $userid;echo " ";
+                    echo $postid; echo " ";
+                    echo $comment; echo " ";
+                ?>
+                <?php endforeach;?>
+                </form>    
+                 
+                </div>
+                <br>
+                
+                    
+
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
