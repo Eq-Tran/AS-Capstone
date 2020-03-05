@@ -40,9 +40,9 @@ $results =  add($first, $middle, $last);
             
             
             <h1>Names</h1>
-                <ul id="names_list">
+                <ol id="names_list">
                     
-                </ul>
+                </ol>
         </main>
     </body>
     <script>
