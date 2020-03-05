@@ -123,7 +123,7 @@ $addpost = addPost($post, 6);
          
      }
     
-    /*
+    // PEEK ERIKS GITHUB SHOWS HOW TO INSERT INTO A DB 
     // Example POST method implementation:
     async function postData(url = "", data = {}) {
       // Default options are marked with *
@@ -149,7 +149,7 @@ $addpost = addPost($post, 6);
         //alert("this stuff");
         document.querySelector("td").innerHTML = JSON.stringify(data);
       });
-      */
+      
     
     </script>
 </html>

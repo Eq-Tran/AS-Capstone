@@ -3,7 +3,7 @@
 
 include __DIR__ . '/functions.php';
 
-
+/*
 $first = filter_input(INPUT_POST, 'first');
 $middle = filter_input(INPUT_POST, 'middle');
 $last = filter_input(INPUT_POST, 'last');
@@ -11,7 +11,7 @@ $last = filter_input(INPUT_POST, 'last');
 
 $results =  add($first, $middle, $last);
 
-
+*/
 
 
 ?>
@@ -26,11 +26,11 @@ $results =  add($first, $middle, $last);
         <main>
             <form method="POST">
                 First Name:
-                <input type="text" name="first" placeholder="First" id="first" value="first">
+                <input type="text" name="first" placeholder="First" id="first" value="">
                 Middle Name:
-                <input type="text" name="middle" placeholder="Middle" id="middle" value="middle">
+                <input type="text" name="middle" placeholder="Middle" id="middle" value="">
                 Last Name:
-                <input type="text" name="last" placeholder="Last" id="last" value="last">
+                <input type="text" name="last" placeholder="Last" id="last" value="">
                 <input type="submit"  id="add" value="Add">Add</input>
             </form>
             <div id="data">
@@ -59,14 +59,14 @@ $results =  add($first, $middle, $last);
               
        }
         
-        //window.addEventListener('load', loadPage);
+        window.addEventListener('load', loadPage);
         var button = document.querySelector("#add");
         button.addEventListener("click", addName);
         
         // adds name to the database through a php script 
         async function addName(){
             
-             event.preventDefault();
+             //event.preventDefault();
              
             var first = document.getElementById("first").value;
             var middle = document.getElementById("middle").value;
@@ -91,7 +91,7 @@ $results =  add($first, $middle, $last);
                 
                 const id = response.data;
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
-                    document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last + '' +  ". Id: " + id;
+                    document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last ;
                    
             }catch(error){
                 
@@ -102,7 +102,7 @@ $results =  add($first, $middle, $last);
        async function loadPage(){
             
             const url = 'AjaxDataPage.php';
-            const error = 'Not working';
+            //const error = 'Not working';
             try{
                 
                 const response = fetch(url, {
