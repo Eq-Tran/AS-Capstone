@@ -58,6 +58,24 @@ include (__DIR__ .'/databaseconnect.php');
        return $results;
    }
 
+   function delete(){
+       global $db;
+       
+       $results = [];
+       
+       $query = $db->prepare("DELETE * FROM test");
+       
+       if($query->execute() == true){
+           
+           
+           
+           
+           
+           
+       }
+       
+       
+   }
 
 
 ?>

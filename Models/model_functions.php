@@ -136,7 +136,6 @@ function showUser($userid){
     
     $results = [];
     $statement = $db->prepare("SELECT first, middle, last, email, uname, birthday, bio, location, profile_image FROM users WHERE userid = :userid");
-    
     $bindParam = array(
         
         ":userid" => $userid,
@@ -229,6 +228,27 @@ function deleteUserPost($postid){
          $results = "User Deleted";
                 
    }
+    return($results);
+}
+
+function getImage($userid){
+    global $db;
+    
+    
+    $statement = $db->prepare("SELECT profile_image FROM users where userid = :userid ");
+    
+    $bindParam = array(
+        
+        ":userid" => $userid,
+        
+    );
+    
+    if($statement->execute($bindParam) && $statement->rowCount() > 0){
+        
+        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        
+    }
     return($results);
 }
 
@@ -338,13 +358,7 @@ function showPostComments($postid){
     global $db;
     
     $results = [];
-    $statement = $db->prepare("
-            SELECT comments.userid, comments.postid, comments.comment, posts.postid
-            FROM posts
-            INNER JOIN comments ON comments.userid = posts.userid
-            INNER JOIN posts ON posts.userid = users.userid
-            WHERE comments.userid = :userid;
-    ");
+    $statement = $db->prepare("SELECT * from comments where postid = :postid");
    
     $binds = array(
         ":postid" => $postid
@@ -352,10 +366,32 @@ function showPostComments($postid){
     
     if($statement->execute($binds) && $statement->rowCount() > 0){
         
-        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        $results = $statement->fetchall(PDO::FETCH_ASSOC);
     }
     
     return($results);
+}
+
+function addComment($userid, $postid, $comment){
+    global $db;
+    
+    $results = [];
+    $statement = $db->prepare("INSERT INTO comments SET userid = :userid, postid = :postid, comment = :comment");
+    $bind = array(
+        
+        ":userid" => $userid,
+        ":postid" => $postid,   
+        ":comment" => $comment
+    );
+    
+    if($statement->execute($bind) && $statement->rowCount() > 0){
+        
+        $results = "comment added";
+        
+        
+    }
+    return $results;
+    
 }
 
 function checkLogin ($uname, $pw) {

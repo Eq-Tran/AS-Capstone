@@ -40,14 +40,14 @@ $results =  add($first, $middle, $last);
             
             
             <h1>Names</h1>
-                <ul id="names_list">
+                <ol id="names_list">
                     
-                </ul>
+                </ol>
         </main>
     </body>
     <script>
         
-        
+        window.addEventListener('load', loadPage);
        function displayNames(names){
            
            for(var i = 0; i < names.length; i++){
@@ -58,8 +58,8 @@ $results =  add($first, $middle, $last);
            }
               
        }
-        
-        window.addEventListener('load', loadPage);
+
+     
         var button = document.querySelector("#add");
         button.addEventListener("click", addName);
         
@@ -74,11 +74,11 @@ $results =  add($first, $middle, $last);
             
             
             const url = 'ajaxdata.php';
-            const data = {first: first, middle: middle , last:last};
+            const data = {first: first, middle: middle, last: last};
             
             try{
                 
-                const response = fetch(url,{
+                const response =  await fetch(url,{
                     
                    'method' : 'POST',
                    'body' : JSON.stringify(data),
@@ -87,9 +87,15 @@ $results =  add($first, $middle, $last);
                        'content-type' : 'application/json'
                        
                    }
+                }).then(function(data)
+                {
+                    console.log(data);
                 });
+        
+                //console.log(response)
+                 const id = await response.json();
+               
                 
-                const id = response.data;
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
                     document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last ;
                    
@@ -99,19 +105,27 @@ $results =  add($first, $middle, $last);
             }
         }
         
+        
        async function loadPage(){
-            
-            const url = 'AjaxDataPage.php';
+
+            const url = 'AjaxDatapage.php';
             //const error = 'Not working';
+            
             try{
                 
-                const response = fetch(url, {
+                const response = await fetch(url, {
                     
                     'method' : 'GET',
+                    'headers' : {
+                       
+                       'content-type' : 'application/json'
+                       
+                   }
            
                 });
                 
                 const json = await response.json();
+                console.log(json);
                 displayNames(json);
                 
             }catch(error){
@@ -120,7 +134,15 @@ $results =  add($first, $middle, $last);
                 
             }
         }
-            
+        /*
+  fetch('https://randomuser.me/api/')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    document.getElementById("data").innerHTML = data.results[0].name.first;
+  });*/
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){
@@ -146,16 +168,7 @@ $results =  add($first, $middle, $last);
         }
         */
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
     </script>
 </html>
