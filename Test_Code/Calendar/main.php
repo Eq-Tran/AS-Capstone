@@ -92,8 +92,8 @@ $results =  add($first, $middle, $last);
                     console.log(data);
                 });
         
-                //console.log(response)
-                 const id = await response.json();
+                 console.log(response)
+                 //const id = await response.json();
                
                 
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
@@ -134,15 +134,8 @@ $results =  add($first, $middle, $last);
                 
             }
         }
-        /*
-  fetch('https://randomuser.me/api/')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("data").innerHTML = data.results[0].name.first;
-  });*/
+        
+  
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){
