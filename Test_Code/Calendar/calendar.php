@@ -27,53 +27,52 @@ $addpost = addPost($post, 6);
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link type="text/javascript" href="#">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <link type="text/css" rel="stylesheet" href="cal.css">
     </head>
     <body>
-        <div id="cal-box" >
-            <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
-            <a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
-            
-            <table class="table table-responsive">
-            
-                        <?php
-                        
-                        do {
-                            echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M') . "</th>\n";
-                            $dt->modify('+1 day');
-                        } while ($week == $dt->format('W'));
-                         
-                         
-                        ?>
-              
-                <tbody>
-                    <tr>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                    </tr>
-                    <tr>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                        <td>ello</td>
-                    </tr>
-                    
-            </tbody>
-            </table>
-        </div>
-        <div id="data">
-            
-            
-        </div>
+        <div id="nav-links" >
+            <a href="<?php echo '?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
+            <a href="<?php echo '?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
+        </div>    
+            <div id="Calendar">
+                <table class="table table-responsive">
+
+                            <?php
+
+                            do {
+                                echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M') . "</th>\n";
+                                $dt->modify('+1 day');
+                            } while ($week == $dt->format('W'));
+
+
+                            ?>
+
+                    <tbody>
+                        <tr>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                        </tr>
+                        <tr>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                        </tr>
+
+                </tbody>
+                </table>
+            </div>
+   
+       
         <div class="post-box">
             <form method="POST">
                 <input type="text" name="post" >
@@ -86,15 +85,18 @@ $addpost = addPost($post, 6);
                     <option>Sat</option>
                     <option>Sun</option>
                 </select>
-                <input type="submit" name="submit">
+                <input type="submit" name="submit" onclick="executeAjaxReq()">
             </form>
         </div>
         <div class="posts-table" >
 
             <div class="box" style="width:200px; height:60px; border:1px solid black;">
-       
+                 <div id="data">
+            
+            
         </div>
-        
+        </div>
+        </div>
     </body>
     <script>
          // Vanilla Javascript ajax call
@@ -109,10 +111,7 @@ $addpost = addPost($post, 6);
                  
                  
 
-                 document.getElementById("cal-box").innerHTML = this.responseText;
-
-                 document.querySelector("td").innerHTML = this.responseText;
-
+                 //document.getElementById("data").innerHTML = this.responseText;
                  alert("clicked");
                  
              }
@@ -123,7 +122,7 @@ $addpost = addPost($post, 6);
          
      }
     
-    /*
+    
     // Example POST method implementation:
     async function postData(url = "", data = {}) {
       // Default options are marked with *
@@ -146,10 +145,10 @@ $addpost = addPost($post, 6);
     postData('calendarupdate.php', {})
       .then((data) => {
         console.log(data); // JSON data parsed by `response.json()` call
-        //alert("this stuff");
+        alert("this stuff");
         document.querySelector("td").innerHTML = JSON.stringify(data);
       });
-      */
+      
     
     </script>
 </html>
