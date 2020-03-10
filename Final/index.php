@@ -104,16 +104,14 @@
                     <?php endforeach;?>
                 
                 <form action ="index.php" class="form-inline" method="post">
-                    <input type="text" class ="form-control" name="comment" placeholder = "add a comment">      
+                    <p hidden><?php $postid ?></p>     
+                <input type="text" class ="form-control" name="comment" placeholder = "add a comment">      
                 
                 <button class="btn button" type="submit" value ="add a comment">Comment</button>
-                <!-- Inside of for each it adds a comment to all posts, Must fix -->
-                <!-- Takes last textbox value for comment -->
+                
                 <?php if (isPostRequested())
                    $results = addComment($userid, $postid, $comment); 
-                    echo $userid;echo " ";
-                    echo $postid; echo " ";
-                    echo $comment; echo " ";
+                    
                 ?>
                 <?php endforeach;?>
                 </form>    
