@@ -570,7 +570,7 @@ function requestNotification($myId, $sendData)
     global $db;
 
     $stmt = $db->prepare("SELECT sender, uname FROM `friend_request` JOIN users ON friend_request.sender = users.userid WHERE receiver = ?");
-    $stmt->execute([$myId]);
+    $stmt->execute([$myId]);  
     if($sendData){
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -690,7 +690,7 @@ function getAllFriends($myId, $sendData)
     }
 }
 //this checks if youve recieved any friend requests
-function getFriendRequests($myId, $friendId)
+/*function getFriendRequests($myId, $friendId)
 {
     global $db;
     $stmt = $db -> prepare("SELECT * FROM `friend_request` WHERE sender = ? AND receiver = ?");
@@ -705,7 +705,7 @@ function getFriendRequests($myId, $friendId)
         }
     }
 }
-
+*/
 //this function will check if the user if friends with person(so you can search for friends and people not in your friends list)
 //will only return true or false(for add button)
 function checkFriends($myId, $friendId)
@@ -726,7 +726,7 @@ function checkFriends($myId, $friendId)
 function deleteFriends($myId, $friendId)
 {
     global $db;
-    $sql = "DELETE FROM friends where user_one = ".$myId." and user_two = ".$friendId." OR user_one = ".$friendId." and user_two = ".$myId;
+    $sql = "DELETE FROM friends where user_one= ".$myId." and user_two = ".$friendId." OR user_one = ".$friendId." and user_two = ".$myId;
     $stmt = $db ->prepare($sql);
     /*$binds = array(
         ':myId' => $myId,
@@ -742,6 +742,21 @@ function deleteFriends($myId, $friendId)
     }
 
 }
+//getSentRequests will find all the friend requests that the user sent out to other people
+function getSentRequests($myId, $sendData)
+{
+    global $db;
+    //echo "in sent requests function";
+    $stmt = $db->prepare("SELECT DISTINCT receiver, uname FROM `friend_request` JOIN users ON friend_request.receiver = users.userid WHERE sender = ?");
+    $stmt->execute([$myId]);
+    if($sendData){
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    else{
+        return $stmt->rowCount();
+    }
+}
+
 
 //this function will check if the user already sent a friend request
 function checkRequest($myId, $friendId)
@@ -749,6 +764,7 @@ function checkRequest($myId, $friendId)
     global $db;
     $sql = "SELECT * from friend_request where sender = ". $myId . " and receiver = ".$friendId." or sender = ".$friendId." and receiver = ". $myId;
     $stmt = $db ->prepare($sql);
+    //binds array wasnt working
     /*$binds = array(
         ':sender' => $myId,
         ':receiver' => $friendId

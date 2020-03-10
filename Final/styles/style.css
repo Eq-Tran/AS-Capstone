@@ -34,6 +34,10 @@ i{
       padding: 2%;
     background-color: #73549C;
     color:#F3F1ED;
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
 }
 .navbar-nav 
 {
@@ -54,7 +58,6 @@ i{
 
 .container{
     
-    min-height: 500px;
     max-width:650px;
     justify-content: center;
 }
