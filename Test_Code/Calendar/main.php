@@ -13,7 +13,7 @@ $results =  add($first, $middle, $last);
 
 */
 
-
+$results = show();
 // Test add/delete by implementing an if else condition that tests against a delete or add keyword that does the prior or the latter 
 
 
@@ -34,13 +34,12 @@ $results =  add($first, $middle, $last);
                 Middle Name:
                 <input type="text" name="middle" placeholder="Middle" id="middle" value="">
                 Last Name:
-<<<<<<< HEAD
-                <input type="text" name="last" placeholder="Last" id="last" value="last">
-=======
                 <input type="text" name="last" placeholder="Last" id="last" value="">
->>>>>>> a980893081e2718f72528b6a9e7161b7db827104
-                <input type="hidden" name="action">
+
+
                 <input type="submit"  id="add" value="Add">Add</input>
+                 <input type="submit"  id="delete" value="Delete">Add</input>
+                
             </form>
             <div id="data">
           
@@ -62,7 +61,7 @@ $results =  add($first, $middle, $last);
            for(var i = 0; i < names.length; i++){
                
                
-               $("#names_list").append('<li><a href="#">' +names[i].id + " " + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
+               $("#names_list").append('<li><a href="#">' + names[i].id + " " + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
                
            }
               
@@ -73,9 +72,9 @@ $results =  add($first, $middle, $last);
         button.addEventListener("click", addName);
         
         // adds name to the database through a php script 
-        async function addName(){
+        async function addName(first, middle, last){
             
-            // event.preventDefault();
+           //event.preventDefault();
             
             //Sets the variable to the value of the selector
             var first = document.getElementById("first").value;
@@ -84,7 +83,7 @@ $results =  add($first, $middle, $last);
             
             
             const url = 'ajaxdata.php';
-            const data = {first: first, middle: middle, last: last};
+            const data = {first: first, middle: middle, last: last, action: "add"};
             
             try{
                 
@@ -105,50 +104,16 @@ $results =  add($first, $middle, $last);
                  console.log(response);
                  const id = await response.json();
                
-                
+              
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
                     document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last ;
-                   
+                
             }catch(error){
                 
                 console.error(error);
             }
         }// close addName
-        
-        async function deleteName(){
-            
-            const url = 'ajaxdata.php';
-            const data = {id: id};
-            
-            var id = document.getElementById("id");
-            
-            try{
-                
-                const resp = await fetch(url, {
-                    
-                    'method' : 'POST',
-                    'body' : JSON.stringify(data),
-                    'headers' : {
-                        
-                        'content-type' : 'application/json',
-                        
-                    } 
-                }).then(function(data)
-                {
-                console.log(data);
-                
-            });
-            
-            console.log(resp);
-            return await resp.json();
-            
-        }catch(error){
-            
-            console.error("Error" , error);
-            
-        }
-        
-    }
+      
         
        async function loadPage(){
             
@@ -175,40 +140,41 @@ $results =  add($first, $middle, $last);
             }
         }
         
-        /*
-  fetch('https://randomuser.me/api/')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("data").innerHTML = data.results[0].name.first;
-  });*/
-    
-/*
-        //AJAX REq to see if you can use php function from different URL
-        function Request(){
+        async function deleteName(){
             
-            var xhttp = new XMLHttpRequest();
             
-            xhttp.onreadystatechange = function(){
+            var id = document.getElementById("id").value;
+            const url = 'ajaxdata.php';
+            const data = {id: id, action: "delete"};
+            
+            
+            try{
                 
-                if(this.readyState == 4 && this.status == 200){
+                const resp = await fetch(url, {
                     
-                    
-                    document.querySelector().innerHTML = this.responseText;
-                    
-                }
+                    'method' : 'POST',
+                    'body' : JSON.stringify(data),
+                    'headers' : {
+                        
+                        'content-type' : 'application/json',
+                        
+                    } 
+                }).then(function(data)
+                {
+                console.log(data);
                 
-                
-            };
+            });
             
-            xhttp.open("GET", "", true);
-            xhttp.send();
+            console.log(resp);
+            const json = await resp.json();
             
+        }catch(error){
+            
+            console.error("Error" , error);
             
         }
-        */ 
         
+    }
+  
     </script>
 </html>
