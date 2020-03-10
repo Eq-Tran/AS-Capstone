@@ -4,35 +4,36 @@
     include __DIR__. '/../Models/post_request_functions.php';
     
     $myId= $_SESSION['use'];
-    echo $myId;
+    //echo $myId;
   //Counts the number of notifications that the user has
     $requestNum = requestNotification($myId, false);
     $allrequests = requestNotification($myId, true);
     $response = filter_input(INPUT_GET, 'response');
     $friendId = intval(filter_input(INPUT_GET, 'friendId'));
+    $sentRequests = [];
+    $sentRequests= getSentRequests($myId, true);
+    $sentRequestsNum = getSentRequests($myId, false);
     //echo $response;
-      
+    //var_dump($sentRequestsNum);
     //this works but doesnt refresh the first time
     if (isGetRequested())
     {
 
-
-
         //echo $response;
         if ($response === 'accept')
         {
-            echo 'accepted friend request';
+            //echo 'accepted friend request';
             //$friendId = filter_input(INPUT_GET, 'friendId');
 
             //testing to make sure we are grabbing the correct friend ID
-            echo '<br> Your friends ID: ' . $friendId;
+            //echo '<br> Your friends ID: ' . $friendId;
             $friends= makeFriends($myId, $friendId);
             //echo $friends;
     
         }
         else if ($response === 'deny'){
-            echo "deny friend request";
-            echo '<br> Your friends ID: ' . $friendId;
+            //echo "deny friend request";
+            //echo '<br> Your friends ID: ' . $friendId;
             $results = deleteFromRequests($myId, $friendId);
             //var_dump($results);
             //echo $results;
@@ -64,7 +65,6 @@
     <div>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="#">GO</a>
             <div class="container-fluid">
                 
               <div class="navbar-header">
@@ -80,7 +80,7 @@
                   
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php"><i>GO</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -101,49 +101,109 @@
             </div>
           </nav>
     </div>
-    
+    <div class="container">
+        <div class="tab nav-tabs">
+          <button class="tablinks " onclick="openRequest(event, 'friendRequests')" id="defaultOpen">Friend Requests</button>
+          <button class="tablinks " onclick="openRequest(event, 'requestsSent')">Requests Sent</button>
+        </div>
 
-    <div class="container" id="content">
+        <div id="friendRequests" class="tabcontent">
         <?php
-         echo "You Have ";
-         echo $requestNum;
-         echo " friend requests";
-
-        if ($requestNum > 0)
-        {                
-            echo '
-            <form action="notifications.php" id="form">
-            <div class="user_box">
-            <table id="table" class="table table-striped" >
-            <tr>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            </tr>';
-            foreach($allrequests as $row)
-            {
-                
+            if ($requestNum > 0)
+            {             
+              //echo "You Have ";
+            //echo $requestNum;
+            //echo " friend requests";            
                 echo '
+                <form action="notifications.php" id="form">
+                <div class="user_box">
+                <table id="table" class="table table-hover friendstable" >
                 <tr>
-                <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
-                <td><a href="notifications.php?response=accept&friendId='. $row->sender .'" class= "btn btn-success" type="button"  name="acceptFriend" id="button" value="accept">Accept</a></td>
-                <td><a href="notifications.php?response=deny&friendId='. $row->sender .'" class= "btn btn-danger" type="button" name="denyFriend" id="button" value="deny">Deny</a></td>';
-            echo '</div>';
+                <th>Name</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </tr>';
+                foreach($allrequests as $row)
+                {
+                    
+                    echo '
+                    <tr>
+                    <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
+                    <td><a href="notifications.php?response=accept&friendId='. $row->sender .'" class= "btn btn-success" type="button"  name="acceptFriend" id="button" value="accept">Accept</a></td>
+                    <td><a href="notifications.php?response=deny&friendId='. $row->sender .'" class= "btn btn-danger" type="button" name="denyFriend" id="button" value="deny">Deny</a></td>';
+                echo '</div>';
+                    
+                }
+                echo '</form>';
                 
             }
-            echo '</form>';
-            
-        }
-        else{
-            echo '<h4>You have no friend reuests today</h4>';
-        }
-        //echo $_POST['friendResponse'];
+            else{
+                echo '<h4>You have no friend requests today</h4>';
+            }
+            //echo $_POST['friendResponse'];
 
+                
+            ?>
+        </div>
+        <div id="requestsSent" class="tabcontent" >
+          <?php
+              //echo $sentRequestsNum;
+              if ($sentRequestsNum > 0)
+              {
+                echo '
+                <form action="notifications.php" id="form">
+                <div class="user_box">
+                <table id="table" class="table table-hover friendstable" >
+                <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </tr>';
+                //echo "You Have ";
+                //echo $sentRequestsNum;
+                //echo " sent requests";       
+                  foreach($sentRequests as $row)
+                  {
             
-        ?>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src = "file.js"></script>
+                    echo '
+                    <tr>
+                    <td><span><a href="friendProfile.php?id='.$row->receiver.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
+                    <td><a href="notifications.php?response=cancel&friendId='. $row->receiver .'" class= "btn btn-danger" type="button" name="cancelFriend" id="button" value="cancel">Cancel</a></td>';
+                    echo '</div>';
+                    
+                }
+                echo '</form>';
+                
+              }
+              else{
+                echo '<h4>You have no Sent Requests</h4>';
+              }
+          ?>
+
+
+        </div>
+      </div>
+    <footer class="page-footer iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>   
+    <script>
+      function openRequest(evt, requests) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(requests).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+</script>
 </body>
+
 </html>

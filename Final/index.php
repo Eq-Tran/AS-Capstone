@@ -7,7 +7,7 @@
     {
         header('Location:login.php');
     }
-    
+    $i =0 ;
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
     $email = filter_input(INPUT_GET, 'email');
@@ -20,15 +20,14 @@
     $profile = showUser($_SESSION['use']); 
 
     $posts = showAllUserPosts($_SESSION['use']);
-    $image = getImage($_SESSION['use']);
     
     
-    if(isPostRequested()){
+   /*if(isPostRequested()){
         $userid = $_SESSION['use'];   
         $postid = $postid;
         $comment = filter_input(INPUT_POST, 'comment');
         
-    }
+    }*/
 
 ?>
 
@@ -62,7 +61,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="navbar-brand" href="#">GO</a>
+                        <a class="navbar-brand" href="index.php"><i >GO</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -85,40 +84,54 @@
    <div class="container">
        **Calendar is going here
    </div>
-        <div class="posts">
-            <div class ="">
+        <div class="postscommentscontainer container">
+            <div class ="posts">
                 
                 <?php foreach($posts as $p):?>
                 <?php $userid = $p['userid'];
-                $postid= $p['postid'];?>
+                $postid= $p['postid'];
+                $image = getImage($p['userid']);?>
+                <?php $i= $i +1; ?>
                 <br><br>
-                <img class="" src="images/<?php echo $image['profile_image']; ?>" alt="profile image" height="150" width="150">
-                <p class = "">User: <?php echo $p['uname']?></p>
-                <p class = "">Post: <?php echo $p['post']?></p>
+            <div class="postimage">      
+                <td><img class="" src="images/<?php echo $image['profile_image']; ?>" alt="profile image" height="100" width="100">
+                </div>  
+                <a href = "friendProfile.php?id=<?php echo $p['userid'] ?>"><?php echo $p['uname']?></a>
+                <p class = ""><?php echo $p['post']?></p>
                 <?php $comments = showPostComments($postid);?>
-                
+            </div>
+            <div class ="comments">
                     <?php foreach($comments as $c): ?>
                         <?php $Commenter = showUser($c['userid']);?>
-                        <p class = "">Commenter: <?php echo $Commenter['uname']; ?></p>
-                        <p class = "">Comment: <?php echo $c['comment']; ?></p>
+                        <a href = "friendProfile.php?id=<?php echo $c['userid'] ?>"><?php echo $Commenter['uname']; ?></a>
+                        <p class = ""><?php echo $c['comment']; ?></p>
                     <?php endforeach;?>
                 
-                <form action ="index.php" class="form-inline" method="post">
-                    <input type="text" class ="form-control" name="comment" placeholder = "add a comment">      
+                <form action ="index.php" class="form-inline" method="post">     
+                <input type="text" class ="form-control" name="comment_<?php echo $i ?>" placeholder = "add a comment" value="">      
+                <div class ="commentbtn">   
+                <button class="btn button" type="submit" value ="">Comment</button>
+                </div>
                 
-                <button class="btn button" type="submit" value ="add a comment">Comment</button>
-                <!-- Inside of for each it adds a comment to all posts, Must fix -->
-                <!-- Takes last textbox value for comment -->
                 <?php if (isPostRequested())
-                   $results = addComment($userid, $postid, $comment); 
-                    echo $userid;echo " ";
-                    echo $postid; echo " ";
-                    echo $comment; echo " ";
+                    
+                   if (empty($_POST["comment_".$i])){
+                       
+                   }
+                   
+                   else{
+                   $userid = $_SESSION['use'];   
+                   $postid = $postid;
+                   $comment = filter_input(INPUT_POST, 'comment_'.$i); 
+                   $results = addComment($userid, $postid, $comment);
+                   header("refresh: 0; url = index.php");
+                   }
+                   
                 ?>
                 <?php endforeach;?>
                 </form>    
-                 
-                </div>
+            </div> 
+                
                 <br>
                 
                     

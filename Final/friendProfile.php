@@ -1,13 +1,17 @@
 <?php
-session_start();
+    session_start();
     include __DIR__. '/../Models/model_functions.php';
     include __DIR__. '/../Models/post_request_functions.php';
     
-    if(!isset($_SESSION['use']))
-        {
-            header("Location:profile.php");
-        }
+    $myId = $_SESSION['use'];
+    $friendStatus ="";
     $friendId = filter_input(INPUT_GET, 'id');
+    $friendId = (int)$friendId;
+    $status = filter_input(INPUT_GET, 'status');
+    //var_dump($friendId);
+    
+    //var_dump($friendId);
+    $friendStatus= checkFriends($myId, $friendId);
     $profile = showUser($friendId);
     
     
@@ -24,6 +28,14 @@ session_start();
     $pw = filter_input(INPUT_GET, 'pass');
     $location = filter_input(INPUT_GET, 'location');
 
+    if($status === 'add')
+    {
+        sendFriendRequest($myId, $friendId);
+    }
+    if($status === 'delete')
+    {
+        deleteFriends($myId, $friendId);
+    }
     
 ?>
 
@@ -91,16 +103,33 @@ session_start();
                     <div class="proinfo"> 
                             
                         <td>Username: <?php echo $profile['uname']; ?></td><br />
-                        <td>Email Address: <?php echo $profile['email']; ?></td><br />
-                        <td>Location: <?php echo $profile['location']; ?></td><br />
-                        <td>Birthday:<?php echo $profile['birthday']; ?></td><br />
+                        <td>Email Address: 
+                            <?php if($friendStatus==true){ echo $profile['email'];}  ?>
+                        </td><br />
+                        <td>Location: <?php if($friendStatus==true){echo $profile['location']; }?></td><br />
+                        <td>Birthday:<?php if($friendStatus==true){echo $profile['birthday']; }?></td><br />
                         
                      </div>  
                     <br />
                     <div class="proabout"> 
-                        <td><?php echo $profile['bio']; ?></td>
+                        <td><?php if($friendStatus==true){ echo $profile['bio'];} ?></td>
                     </div>
-                 </div>
+                    <div class="prorequest">
+                        <?php 
+                        if ($friendStatus==true){
+                            echo "<a href='friendProfile.php?status=delete&id=".$friendId."' class ='btn button' name='deleteFriend'><i class='material-icons'>delete</i></a>";
+                        }
+                        else {
+                            if(checkRequest($myId, $friendId)==true)
+                            {
+                                echo "<a href='notifications.php'>Friend Request Pending</a>";
+                            }
+                            else{
+                            echo "<a href='friendProfile.php?status=add&id=".$friendId."' class ='btn btn-success' name='addFriend'>Add Friend</a>";
+                            }
+                        }
+                        ?>
+                     </div>
             
              </div>
             <div class ="proposts">
@@ -115,8 +144,8 @@ session_start();
                 
              </div>
                 
-         
+         </div>
             
     </body>
-        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>   
+<footer class="page-footer iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>           
 </html>  

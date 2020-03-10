@@ -3,8 +3,6 @@ include_once __DIR__ . '/functions.php';
 include_once __DIR__ . '/Models/post_request_functions.php';
 
 
-
-
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
 if($contentType === "application/json"){
@@ -15,7 +13,9 @@ if($contentType === "application/json"){
     
     // If json decode fails
     if(is_array($decoded)){
+            
         
+<<<<<<< HEAD
 <<<<<<< HEAD
         if($action == 'add'){
             
@@ -41,31 +41,35 @@ if($contentType === "application/json"){
         // echo json_encdoe($decoded['first"])
         //if($first["first"] != null ||  $last["last"] != null)
         //{
+=======
+>>>>>>> master
             $id = $decoded['id'];
             $first = $decoded["first"];
             $middle = $decoded["middle"];
             $last = $decoded["last"];
-            $action = $decoded['action'];
+            $action = $decoded["action"];
             
-            if($action == "add"){
-                
-                $results = add($first,$middle,$last);
-                echo json_encode($results);         
-                
-            }else if($action == "delete"){
-                
-                $results = delete($id);
-                echo json_encode($results);
-                
-            }
-       // }else{
+        if($action == "add"){
             
+           $first = $decoded["first"];
+            $middle = $decoded["middle"];
+            $last = $decoded["last"];
+            $results = add($first,$middle,$last);
+            echo json_encode($results);  
             
-           // echo "First and Last Required Try Again";
+        }else if($action == "delete"){
             
+<<<<<<< HEAD
        // }
 >>>>>>> master
         
+=======
+            $results = delete($id);
+            echo json_encode($results);
+            
+        }
+  
+>>>>>>> master
     }else{
         
         echo "ERROR could not make request";
