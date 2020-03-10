@@ -129,7 +129,7 @@
 
                 }
                 else{
-                  echo "<td><a href='friends.php?friendId='" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
                 }
                 
               }else{
