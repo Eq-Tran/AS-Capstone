@@ -14,21 +14,20 @@ if($contentType === "application/json"){
     // If json decode fails
     if(is_array($decoded)){
             
-        
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         if($action == 'add'){
             
-            echo json_encode($decoded['first']);
+           
             $first = $decoded["first"];
             $middle = $decoded["middle"];
             $last = $decoded["last"];
+            $action = $decoded['action'];
             $results = add($first,$middle,$last);
             echo json_encode($results);
             
         }elseif($action == 'delete'){
          
-            echo json_encode($decoded['first']);
+          
             $first = $decoded["first"];
             $middle = $decoded["middle"];
             $last = $decoded["last"];
@@ -36,48 +35,14 @@ if($contentType === "application/json"){
             
         }
         
-=======
-        //need to figure out some kind of validation for this
-        // echo json_encdoe($decoded['first"])
-        //if($first["first"] != null ||  $last["last"] != null)
-        //{
-=======
->>>>>>> master
-            $id = $decoded['id'];
-            $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $action = $decoded["action"];
-            
-        if($action == "add"){
-            
-           $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $results = add($first,$middle,$last);
-            echo json_encode($results);  
-            
-        }else if($action == "delete"){
-            
-<<<<<<< HEAD
-       // }
->>>>>>> master
-        
-=======
-            $results = delete($id);
-            echo json_encode($results);
-            
-        }
-  
->>>>>>> master
+
     }else{
         
-        echo "ERROR could not make request";
+        echo "error";
         
     }
-    
 }
-
+    
 
 
 ?>
