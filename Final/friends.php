@@ -121,20 +121,20 @@
               <td><span><a href="friendProfile.php?id=<?php echo $row['userid'] ?>"><?php echo $row['uname']; ?></a></span></td>
               
               <?php 
-              if (checkFriends($myId, $row['userid']) === false){
-                if (checkRequest($myId, $row['userid']) === true)
-                {
-                  
-                  echo "<td><a href='notifications.php'>Request Pending</a></td>";
+                if (checkFriends($myId, $row['userid']) === false){
+                  if (checkRequest($myId, $row['userid']) === true)
+                  {
+                    
+                    echo "<td><a href='notifications.php'>Request Pending</a></td>";
 
+                  }
+                  else{
+                    echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                  }
+                  
+                }else{
+                  echo "<td> </td>";
                 }
-                else{
-                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
-                }
-                
-              }else{
-                echo "<td> </td>";
-              }
               ?>   
                 </tr>
               <?php endforeach; ?>
