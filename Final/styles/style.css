@@ -111,7 +111,10 @@ i{
     display:flex;
     justify-content:flex-end;
 }
-
+.prorequest
+{    display:flex;
+    justify-content:flex-end;
+}
 .fListImg
 {
     border: 1px solid black;
@@ -136,4 +139,35 @@ h1{
 h2{
     font-family:'Oswald', Times, Serif;
     
+}
+.searchbox
+{
+    width:325px;
+    margin-top: 10px;
+}
+.searchform
+{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    flex-basis: auto;
+}
+.friendstable th
+{
+    background-color:#73549C;
+    height:25px;
+    
+}
+.friendstable td
+{
+    width: 30%;
+    height:30%;
+}
+
+.friendstable img{
+    
+    border-radius: 100px;
+    overflow: hidden;
+    height: 100px;
+    width: 100px;
 }

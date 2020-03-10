@@ -455,16 +455,16 @@ function checkLogin ($uname, $pw) {
        
    }
    
-   function getusers()
+   function getUsers($myId)
 {
     global $db;
     
     $results = [];
-    $stmt = $db ->prepare("SELECT * FROM users");
-    //$binds = array(":id" => $myId);
+    $stmt = $db ->prepare("SELECT * FROM users WHERE NOT userid =:id");
+    $binds = array(":id" => $myId);
     //$stmt -> execute($binds);
     
-    if ( $stmt->execute() && $stmt->rowCount() > 0 ) 
+    if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) 
     {
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         
@@ -725,17 +725,19 @@ function checkFriends($myId, $friendId)
 function deleteFriends($myId, $friendId)
 {
     global $db;
-    $sql = "DELETE FROM friends where user_one = :myId and user_two = :friendId OR user_one = :friendId and user_two = :myId";
+    $sql = "DELETE FROM friends where user_one = ".$myId." and user_two = ".$friendId." OR user_one = ".$friendId." and user_two = ".$myId;
     $stmt = $db ->prepare($sql);
-    $binds = array(
+    /*$binds = array(
         ':myId' => $myId,
         ':friendId' => $friendId
     );
-    //var_dump($binds);
-    if($stmt -> execute($binds) && $stmt->rowCount() > 0)
+    var_dump($binds);
+    */
+    if($stmt->execute() && $stmt->rowCount() > 0)
     {
-        echo "Friend Deleted";
+        
         header("Refresh: 0;");
+        //echo "Friend Deleted";
     }
 
 }
