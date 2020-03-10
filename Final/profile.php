@@ -155,9 +155,9 @@ session_start();
                             </div>
                             <br>        
                             <div class="form-element">
-                                <label>Change Password: </label> 
+                                <label>Input Password to Update Profile: </label> 
                                 <!--UpperCase, LowerCaser, Number & Special Character, Min 8 Characters-->
-                                <input type="password" class="form-control" id="password" name="pass" value ="<?php echo $profile['pw']; ?>" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')" />
+                                <input type="password" class="form-control" id="password" name="pass" placeholder="Password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" oninvalid="this.setCustomValidity('UpperCase, LowerCaser, Number & Special Character, Min 8 Characters')"oninput="this.setCustomValidity('')" />
                                 
                             </div>
                             <br>

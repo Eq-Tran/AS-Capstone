@@ -172,3 +172,37 @@ h2{
     height: 100px;
     width: 100px;
 }
+
+.postscommentscontainer
+{
+    width: 80%;
+    margin: 120px auto 120px;
+    background-color: #fff;
+    padding: 0 20px 20px;
+    border-radius: 6px;
+    
+}
+
+.postimage
+{
+    border-radius: 100px;
+    overflow: hidden;
+    height: 100px;
+    width: 100px;
+    
+    
+    top: -60px;
+    box-shadow: 0 0 0 13px #f0f0f0;
+}
+
+.posts
+{
+    
+    
+}
+
+.comments
+{
+    
+    
+}
