@@ -35,7 +35,7 @@ include (__DIR__ .'/databaseconnect.php');
        global $db;
        
        $results = [];
-       $query = $db->prepare("INSERT INTO test SET first = :first, middle = :middle, last = :last");
+       $query = $db->prepare("INSERT INTO test2 SET first = :first, middle = :middle, last = :last");
        $paramBind = array(
            
            ":first" => $first,
@@ -58,6 +58,7 @@ include (__DIR__ .'/databaseconnect.php');
        return $results;
    }
 
+<<<<<<< HEAD
    function delete(){
        global $db;
        
@@ -70,12 +71,60 @@ include (__DIR__ .'/databaseconnect.php');
            
            
            
+=======
+   function delete($id){
+       
+       global $db;
+       
+       $results = [];
+       $query = $db->prepare("DELETE FROM test WHERE id = :id");
+       $bind =array(
+           
+           ":id" => $id,
+           
+       );
+       
+       if($query->execute($bind) && $query->rowCount() > 0){
+           
+           $results = "delete";
+>>>>>>> master
            
            
        }
        
        
+<<<<<<< HEAD
+=======
+       return($results);
+       
+>>>>>>> master
    }
 
-
+   
+   function addPost($uname, $post, $day){
+       global $db;
+       
+       $results = [];
+       $query = $db->prepare("INSERT INTO test2 SET uname = :uname, post = :post, day = :day;");
+       
+       $params = array(
+           
+           ":uname" => $uname,
+           ":post" => $post,
+           ":day" => $day,
+           
+       );
+       
+       if($query->execute($params) && $query->rowCount() > 0){
+           
+           $results = "Added";
+           
+           
+       }
+       
+       
+       return $results;
+       
+       
+   }
 ?>

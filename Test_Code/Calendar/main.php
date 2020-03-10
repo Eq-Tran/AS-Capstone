@@ -31,6 +31,10 @@ $results =  add($first, $middle, $last);
                 <input type="text" name="middle" placeholder="Middle" id="middle" value="">
                 Last Name:
                 <input type="text" name="last" placeholder="Last" id="last" value="">
+<<<<<<< HEAD
+=======
+                <input type="hidden" name="action">
+>>>>>>> master
                 <input type="submit"  id="add" value="Add">Add</input>
             </form>
             <div id="data">
@@ -53,21 +57,28 @@ $results =  add($first, $middle, $last);
            for(var i = 0; i < names.length; i++){
                
                
-               $("#names_list").append('<li><a href="#">' + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
+               $("#names_list").append('<li><a href="#">' +names[i].id + " " + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
                
            }
               
+<<<<<<< HEAD
        }
 
      
+=======
+       }// closed
+        
+       
+>>>>>>> master
         var button = document.querySelector("#add");
         button.addEventListener("click", addName);
         
         // adds name to the database through a php script 
         async function addName(){
             
-             //event.preventDefault();
-             
+            // event.preventDefault();
+            
+            //Sets the variable to the value of the selector
             var first = document.getElementById("first").value;
             var middle = document.getElementById("middle").value;
             var last = document.getElementById("last").value;
@@ -89,11 +100,16 @@ $results =  add($first, $middle, $last);
                    }
                 }).then(function(data)
                 {
-                    console.log(data);
+                  console.log(data);
                 });
         
+<<<<<<< HEAD
                  console.log(response)
                  //const id = await response.json();
+=======
+                 console.log(response);
+                 const id = await response.json();
+>>>>>>> master
                
                 
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
@@ -103,8 +119,42 @@ $results =  add($first, $middle, $last);
                 
                 console.error(error);
             }
+        }// close addName
+        
+        async function deleteName(){
+            
+            const url = 'ajaxdata.php';
+            const data = {id: id};
+            
+            var id = document.getElementById("id");
+            
+            try{
+                
+                const resp = await fetch(url, {
+                    
+                    'method' : 'POST',
+                    'body' : JSON.stringify(data),
+                    'headers' : {
+                        
+                        'content-type' : 'application/json',
+                        
+                    } 
+                }).then(function(data)
+                {
+                console.log(data);
+                
+            });
+            
+            console.log(resp);
+            return await resp.json();
+            
+        }catch(error){
+            
+            console.error("Error" , error);
+            
         }
         
+    }
         
        async function loadPage(){
 
@@ -115,12 +165,8 @@ $results =  add($first, $middle, $last);
                 
                 const response = await fetch(url, {
                     
-                    'method' : 'GET',
-                    'headers' : {
-                       
-                       'content-type' : 'application/json'
-                       
-                   }
+                    'method' : 'GET'
+                   
            
                 });
                 
@@ -135,7 +181,20 @@ $results =  add($first, $middle, $last);
             }
         }
         
+<<<<<<< HEAD
   
+=======
+        /*
+  fetch('https://randomuser.me/api/')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    document.getElementById("data").innerHTML = data.results[0].name.first;
+  });*/
+    
+>>>>>>> master
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){
@@ -159,9 +218,13 @@ $results =  add($first, $middle, $last);
             
             
         }
+<<<<<<< HEAD
         */
 
 
+=======
+        */ 
+>>>>>>> master
         
     </script>
 </html>

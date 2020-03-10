@@ -744,14 +744,14 @@ function deleteFriends($myId, $friendId)
 function checkRequest($myId, $friendId)
 {
     global $db;
-    $sql = "SELECT * from friend_request where sender = :sender and receiver = :receiver or sender = :receiver and receiver = :sender";
+    $sql = "SELECT * from friend_request where sender = ". $myId . " and receiver = ".$friendId." or sender = ".$friendId." and receiver = ". $myId;
     $stmt = $db ->prepare($sql);
-    $binds = array(
+    /*$binds = array(
         ':sender' => $myId,
         ':receiver' => $friendId
-    );
+    );*/
     //var_dump($binds);
-    if($stmt -> execute($binds) && $stmt->rowCount() > 0)
+    if($stmt -> execute() && $stmt->rowCount() > 0)
     {
         //echo "<br /> check requests"; 
         return true;
