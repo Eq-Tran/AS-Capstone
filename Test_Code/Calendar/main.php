@@ -13,7 +13,7 @@ $results =  add($first, $middle, $last);
 
 */
 
-
+$results = show();
 // Test add/delete by implementing an if else condition that tests against a delete or add keyword that does the prior or the latter 
 
 
@@ -72,7 +72,7 @@ $results =  add($first, $middle, $last);
         button.addEventListener("click", addName);
         
         // adds name to the database through a php script 
-        async function addName(){
+        async function addName(first, middle, last){
             
            //event.preventDefault();
             
@@ -83,7 +83,7 @@ $results =  add($first, $middle, $last);
             
             
             const url = 'ajaxdata.php';
-            const data = {first: first, middle: middle, last: last};
+            const data = {first: first, middle: middle, last: last, action: "add"};
             
             try{
                 
@@ -104,10 +104,10 @@ $results =  add($first, $middle, $last);
                  console.log(response);
                  const id = await response.json();
                
-                
+              
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
                     document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last ;
-                   
+                
             }catch(error){
                 
                 console.error(error);
@@ -143,7 +143,7 @@ $results =  add($first, $middle, $last);
         async function deleteName(){
             
             const url = 'ajaxdata.php';
-            const data = {id: id};
+            const data = {id: id, action: "delete"};
             
             var id = document.getElementById("id").value;
             

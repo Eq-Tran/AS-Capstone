@@ -13,14 +13,28 @@ if($contentType === "application/json"){
     
     // If json decode fails
     if(is_array($decoded)){
-   
+            
+        
             $id = $decoded['id'];
             $first = $decoded["first"];
             $middle = $decoded["middle"];
             $last = $decoded["last"];
+            $action = $decoded["action"];
+            
+        if($action == "add"){
+            
+           $first = $decoded["first"];
+            $middle = $decoded["middle"];
+            $last = $decoded["last"];
             $results = add($first,$middle,$last);
-            echo json_encode($results);         
-                
+            echo json_encode($results);  
+            
+        }else if($action == "delete"){
+            
+            $results = delete($id);
+            echo json_encode($results);
+            
+        }
   
     }else{
         
