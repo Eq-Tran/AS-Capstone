@@ -14,6 +14,10 @@ $results =  add($first, $middle, $last);
 */
 
 
+// Test add/delete by implementing an if else condition that tests against a delete or add keyword that does the prior or the latter 
+
+
+
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -31,6 +35,7 @@ $results =  add($first, $middle, $last);
                 <input type="text" name="middle" placeholder="Middle" id="middle" value="middle">
                 Last Name:
                 <input type="text" name="last" placeholder="Last" id="last" value="last">
+                <input type="hidden" name="action">
                 <input type="submit"  id="add" value="Add">Add</input>
             </form>
             <div id="data">
