@@ -67,6 +67,8 @@
             $pw = filter_input(INPUT_POST, 'pass');
                 
         }
+        
+        error_reporting (E_ALL ^ E_NOTICE); 
  ?>
 
 <html lang="en">
@@ -93,7 +95,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                   Sign In
                 </button>
-                <a class="navbar-brand" href="#">GO</a>
+                  <a class="navbar-brand" href="#"><i>GO</i></a>
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
 
@@ -153,7 +155,8 @@
                                 if($_POST['pass'] != $_POST['confirmpass'])
                                     {
                                     
-                                        echo "Passwords did not match";    
+                                        echo "Passwords did not match";
+                                        $_POST['confirmpass'] ="undefine";
                                     }
                                     
                                 else if($_POST['pass'] == $_POST['confirmpass'])
