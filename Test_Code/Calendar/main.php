@@ -142,10 +142,11 @@ $results =  add($first, $middle, $last);
         
         async function deleteName(){
             
+            
+            var id = document.getElementById("id").value;
             const url = 'ajaxdata.php';
             const data = {id: id};
             
-            var id = document.getElementById("id").value;
             
             try{
                 
