@@ -39,6 +39,8 @@
             //echo $results;
             
         }
+
+
         //header("location: notifications.php");
     }
 ?>
@@ -108,43 +110,44 @@
         </div>
 
         <div id="friendRequests" class="tabcontent">
-        <?php
-            if ($requestNum > 0)
-            {             
-              //echo "You Have ";
-            //echo $requestNum;
-            //echo " friend requests";            
-                echo '
-                <form action="notifications.php" id="form">
-                <div class="user_box">
-                <table id="table" class="table table-hover friendstable" >
-                <tr>
-                <th>Name</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                </tr>';
-                foreach($allrequests as $row)
-                {
-                    
-                    echo '
-                    <tr>
-                    <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
-                    <td><a href="notifications.php?response=accept&friendId='. $row->sender .'" class= "btn btn-success" type="button"  name="acceptFriend" id="button" value="accept">Accept</a></td>
-                    <td><a href="notifications.php?response=deny&friendId='. $row->sender .'" class= "btn btn-danger" type="button" name="denyFriend" id="button" value="deny">Deny</a></td>';
-                echo '</div>';
-                    
-                }
-                echo '</form>';
-                
-            }
-            else{
-                echo '<h4>You have no friend requests today</h4>';
-            }
-            //echo $_POST['friendResponse'];
+          <?php
+              if ($requestNum > 0)
+              {             
+                //echo "You Have ";
+              //echo $requestNum;
+              //echo " friend requests";            
+                  echo '
+                  <form action="notifications.php" id="form">
+                  <div class="user_box">
+                  <table id="table" class="table table-hover friendstable" >
+                  <tr>
+                  <th>Name</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  </tr>';
+                  foreach($allrequests as $row)
+                  {
+                      
+                      echo '
+                      <tr>
+                      <td><span><a href="friendProfile.php?id='.$row->sender.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
+                      <td><a href="notifications.php?response=accept&friendId='. $row->sender .'" class= "btn btn-success" type="button"  name="acceptFriend" id="button" value="accept">Accept</a></td>
+                      <td><a href="notifications.php?response=deny&friendId='. $row->sender .'" class= "btn btn-danger" type="button" name="denyFriend" id="button" value="deny">Deny</a></td>';
+                  echo '</div>';
+                      
+                  }
+                  echo '</form>';
+                  
+              }
+              else{
+                  
+                  echo '<div><h4>You have no friend requests today</h4></div>';
+              }
+              //echo $_POST['friendResponse'];
 
-                
-            ?>
+                  
+              ?>
         </div>
         <div id="requestsSent" class="tabcontent" >
           <?php
@@ -170,7 +173,7 @@
                     echo '
                     <tr>
                     <td><span><a href="friendProfile.php?id='.$row->receiver.'" class="see_profileBtn">'.$row->uname.'</a></span></td>
-                    <td><a href="notifications.php?response=cancel&friendId='. $row->receiver .'" class= "btn btn-danger" type="button" name="cancelFriend" id="button" value="cancel">Cancel</a></td>';
+                    <td><a href="notifications.php?response=deny&friendId='. $row->receiver .'" class= "btn btn-danger" type="button" name="cancelFriend" id="button" value="cancel">Cancel</a></td>';
                     echo '</div>';
                     
                 }
@@ -178,7 +181,7 @@
                 
               }
               else{
-                echo '<h4>You have no Sent Requests</h4>';
+                echo '<div><h4>You have no Sent Requests</h4></div>';
               }
           ?>
 

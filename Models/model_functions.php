@@ -762,7 +762,9 @@ function getSentRequests($myId, $sendData)
 function checkRequest($myId, $friendId)
 {
     global $db;
-    $sql = "SELECT * from friend_request where sender = ". $myId . " and receiver = ".$friendId." or sender = ".$friendId." and receiver = ". $myId;
+    var_dump($myId);
+    var_dump($friendId);
+    $sql = "SELECT * from friend_request where sender = ? and receiver = ? or sender = ? and receiver = ?";
     $stmt = $db ->prepare($sql);
     //binds array wasnt working
     /*$binds = array(
@@ -770,7 +772,7 @@ function checkRequest($myId, $friendId)
         ':receiver' => $friendId
     );*/
     //var_dump($binds);
-    if($stmt -> execute() && $stmt->rowCount() > 0)
+    if($stmt -> execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
     {
         //echo "<br /> check requests"; 
         return true;

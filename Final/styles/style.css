@@ -33,6 +33,7 @@ i{
 .iekfooter{
       padding: 2%;
     background-color: #73549C;
+    max-height:30px;
     color:#F3F1ED;
     position: fixed;
    left: 0;
@@ -197,7 +198,17 @@ h2{
     top: -60px;
     box-shadow: 0 0 0 13px #f0f0f0;
 }
-
+.tab button{
+    padding: 14px 16px;
+    border: none;
+    outline: none;
+}
+.tab button:hover {
+    background-color: #ddd;
+  }
+.tab button.active {
+    background-color: #ccc;
+  }
 .posts
 {
     
