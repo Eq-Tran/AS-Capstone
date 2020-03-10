@@ -376,7 +376,6 @@ function addComment($userid, $postid, $comment){
     global $db;
     
     $results = [];
-    var_dump($comment);
     $statement = $db->prepare("INSERT INTO comments SET userid = :userid, postid = :postid, comment = :comment");
     $bind = array(
         
@@ -455,6 +454,7 @@ function checkLogin ($uname, $pw) {
        
        
    }
+   
    
    function getUsers($myId)
 {
