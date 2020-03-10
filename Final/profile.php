@@ -205,6 +205,7 @@ session_start();
                 
   </div>      
             
-    </body>
-        <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+ </body>
+
 </html>        
+<footer class="page-footer iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>

@@ -4,7 +4,7 @@
     include __DIR__. '/../Models/post_request_functions.php';
     
     $myId= $_SESSION['use'];
-    echo $myId;
+    //echo $myId;
   //Counts the number of notifications that the user has
     $requestNum = requestNotification($myId, false);
     $allrequests = requestNotification($myId, true);
@@ -15,8 +15,6 @@
     //this works but doesnt refresh the first time
     if (isGetRequested())
     {
-
-
 
         //echo $response;
         if ($response === 'accept')
@@ -64,7 +62,6 @@
     <div>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="#">GO</a>
             <div class="container-fluid">
                 
               <div class="navbar-header">
@@ -80,7 +77,7 @@
                   
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php"><i>GO</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -105,12 +102,13 @@
 
     <div class="container" id="content">
         <?php
-         echo "You Have ";
-         echo $requestNum;
-         echo " friend requests";
+
 
         if ($requestNum > 0)
-        {                
+        {             
+          echo "You Have ";
+         echo $requestNum;
+         echo " friend requests";            
             echo '
             <form action="notifications.php" id="form">
             <div class="user_box">
@@ -136,14 +134,14 @@
             
         }
         else{
-            echo '<h4>You have no friend reuests today</h4>';
+            echo '<h4>You have no friend reqests today</h4>';
         }
         //echo $_POST['friendResponse'];
 
             
         ?>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src = "file.js"></script>
+
 </body>
+<footer class="page-footer iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>   
 </html>
