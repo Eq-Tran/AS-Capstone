@@ -4,7 +4,7 @@
     include __DIR__. '/../Models/post_request_functions.php';
     
     $myId= $_SESSION['use'];
-    echo $myId;
+    //echo $myId;
   //Counts the number of notifications that the user has
     $requestNum = requestNotification($myId, false);
     $allrequests = requestNotification($myId, true);
@@ -16,23 +16,21 @@
     if (isGetRequested())
     {
 
-
-
         //echo $response;
         if ($response === 'accept')
         {
-            echo 'accepted friend request';
+            //echo 'accepted friend request';
             //$friendId = filter_input(INPUT_GET, 'friendId');
 
             //testing to make sure we are grabbing the correct friend ID
-            echo '<br> Your friends ID: ' . $friendId;
+            //echo '<br> Your friends ID: ' . $friendId;
             $friends= makeFriends($myId, $friendId);
             //echo $friends;
     
         }
         else if ($response === 'deny'){
-            echo "deny friend request";
-            echo '<br> Your friends ID: ' . $friendId;
+            //echo "deny friend request";
+            //echo '<br> Your friends ID: ' . $friendId;
             $results = deleteFromRequests($myId, $friendId);
             //var_dump($results);
             //echo $results;
@@ -64,7 +62,6 @@
     <div>
         
         <nav class="navbar">
-            <a class="navbar-brand" href="#">GO</a>
             <div class="container-fluid">
                 
               <div class="navbar-header">
@@ -80,7 +77,7 @@
                   
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php"><i class=" material-icons">home</i></a>
+                        <a class="nav-link" href="index.php"><i>GO</i></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="profile.php"><i class=" material-icons">person</i></a>
@@ -105,16 +102,15 @@
 
     <div class="container" id="content">
         <?php
-         echo "You Have ";
-         echo $requestNum;
-         echo " friend requests";
-
         if ($requestNum > 0)
-        {                
+        {             
+          echo "You Have ";
+         echo $requestNum;
+         echo " friend requests";            
             echo '
             <form action="notifications.php" id="form">
             <div class="user_box">
-            <table id="table" class="table table-striped" >
+            <table id="table" class="table table-hover" >
             <tr>
             <th>Name</th>
             <th></th>
@@ -136,14 +132,14 @@
             
         }
         else{
-            echo '<h4>You have no friend reuests today</h4>';
+            echo '<h4>You have no friend requests today</h4>';
         }
         //echo $_POST['friendResponse'];
 
             
         ?>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src = "file.js"></script>
+
 </body>
+<footer class="page-footer iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>   
 </html>

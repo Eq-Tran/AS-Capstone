@@ -30,11 +30,15 @@ $results =  add($first, $middle, $last);
         <main>
             <form method="POST">
                 First Name:
-                <input type="text" name="first" placeholder="First" id="first" value="first">
+                <input type="text" name="first" placeholder="First" id="first" value="">
                 Middle Name:
-                <input type="text" name="middle" placeholder="Middle" id="middle" value="middle">
+                <input type="text" name="middle" placeholder="Middle" id="middle" value="">
                 Last Name:
+<<<<<<< HEAD
                 <input type="text" name="last" placeholder="Last" id="last" value="last">
+=======
+                <input type="text" name="last" placeholder="Last" id="last" value="">
+>>>>>>> a980893081e2718f72528b6a9e7161b7db827104
                 <input type="hidden" name="action">
                 <input type="submit"  id="add" value="Add">Add</input>
             </form>
@@ -58,11 +62,11 @@ $results =  add($first, $middle, $last);
            for(var i = 0; i < names.length; i++){
                
                
-               $("#names_list").append('<li><a href="#">' + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
+               $("#names_list").append('<li><a href="#">' +names[i].id + " " + names[i].first + '' + names[i].middle + '' + names[i].last + '</a></li>');
                
            }
               
-       }
+       }// closed
         
        
         var button = document.querySelector("#add");
@@ -71,8 +75,9 @@ $results =  add($first, $middle, $last);
         // adds name to the database through a php script 
         async function addName(){
             
-             //event.preventDefault();
-             
+            // event.preventDefault();
+            
+            //Sets the variable to the value of the selector
             var first = document.getElementById("first").value;
             var middle = document.getElementById("middle").value;
             var last = document.getElementById("last").value;
@@ -94,10 +99,10 @@ $results =  add($first, $middle, $last);
                    }
                 }).then(function(data)
                 {
-                    console.log(data);
+                  console.log(data);
                 });
         
-                //console.log(response)
+                 console.log(response);
                  const id = await response.json();
                
                 
@@ -108,8 +113,42 @@ $results =  add($first, $middle, $last);
                 
                 console.error(error);
             }
+        }// close addName
+        
+        async function deleteName(){
+            
+            const url = 'ajaxdata.php';
+            const data = {id: id};
+            
+            var id = document.getElementById("id");
+            
+            try{
+                
+                const resp = await fetch(url, {
+                    
+                    'method' : 'POST',
+                    'body' : JSON.stringify(data),
+                    'headers' : {
+                        
+                        'content-type' : 'application/json',
+                        
+                    } 
+                }).then(function(data)
+                {
+                console.log(data);
+                
+            });
+            
+            console.log(resp);
+            return await resp.json();
+            
+        }catch(error){
+            
+            console.error("Error" , error);
+            
         }
         
+    }
         
        async function loadPage(){
             
@@ -120,12 +159,8 @@ $results =  add($first, $middle, $last);
                 
                 const response = await fetch(url, {
                     
-                    'method' : 'GET',
-                    'headers' : {
-                       
-                       'content-type' : 'application/json'
-                       
-                   }
+                    'method' : 'GET'
+                   
            
                 });
                 
@@ -139,6 +174,7 @@ $results =  add($first, $middle, $last);
                 
             }
         }
+        
         /*
   fetch('https://randomuser.me/api/')
   .then((response) => {
@@ -148,6 +184,7 @@ $results =  add($first, $middle, $last);
     console.log(data);
     document.getElementById("data").innerHTML = data.results[0].name.first;
   });*/
+    
 /*
         //AJAX REq to see if you can use php function from different URL
         function Request(){
@@ -171,18 +208,7 @@ $results =  add($first, $middle, $last);
             
             
         }
-        */
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        */ 
         
     </script>
 </html>
