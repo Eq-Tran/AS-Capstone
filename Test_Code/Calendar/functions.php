@@ -35,7 +35,7 @@ include (__DIR__ .'/databaseconnect.php');
        global $db;
        
        $results = [];
-       $query = $db->prepare("INSERT INTO test2 SET first = :first, middle = :middle, last = :last");
+       $query = $db->prepare("INSERT INTO test SET first = :first, middle = :middle, last = :last");
        $paramBind = array(
            
            ":first" => $first,
@@ -109,4 +109,6 @@ include (__DIR__ .'/databaseconnect.php');
        
        
    }
+   
+
 ?>
