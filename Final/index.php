@@ -3,10 +3,23 @@
     include (__DIR__ . '/../Models/model_functions.php');
     include (__DIR__ . '/../Models/post_request_functions.php');
     
+    $dt = new DateTime;
+    if (isset($_GET['year']) && isset($_GET['week'])) {
+        $dt->setISODate($_GET['year'], $_GET['week']);
+    } else {
+        $dt->setISODate($dt->format('o'), $dt->format('W'));
+    }
+    
+    $year = $dt->format('o');
+    $week = $dt->format('W');
+    $post = filter_input(INPUT_POST, 'post');
+    $day = filter_input(INPUT_POST, 'selectOp');
+    
     if(!isset($_SESSION['use']))
     {
         header('Location:login.php');
     }
+    
     $i =0 ;
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
@@ -21,13 +34,15 @@
 
     $posts = showAllUserPosts($_SESSION['use']);
     
-    
-   /*if(isPostRequested()){
+      /*if(isPostRequested()){
         $userid = $_SESSION['use'];   
         $postid = $postid;
         $comment = filter_input(INPUT_POST, 'comment');
         
     }*/
+    
+    /*********************Calendar******************************/
+ 
 
 ?>
 
@@ -82,7 +97,63 @@
           </nav>
     </div>
    <div class="container">
-       **Calendar is going here
+       <div class="calendar-box">
+            <div id="nav-links" >
+            <a href="<?php echo '?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
+            <a href="<?php echo '?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
+        </div>    
+            <table class="table table-responsive">
+
+                            <?php
+
+                            do {
+                                echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M') . "</th>\n";
+                                $dt->modify('+1 day');
+                            } while ($week == $dt->format('W'));
+
+
+                            ?>
+
+                    <tbody>
+                        <?php foreach($posts as $row):?>
+                        <tr>
+                            <td><?php echo $row['day'];?></td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                        </tr>
+                        <tr>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                            <td>ello</td>
+                        </tr>
+                        <?php endforeach;?>
+                </tbody>
+                </table>
+           
+           
+       </div>
+       
+       <form method="POST">
+           <input type="text" name="post" placeholder="Add Post">
+            <select name="selectOp">
+                    <option value="Mon">Mon</option>
+                    <option value="Tue">Tue</option>
+                    <option value="Wed">Wed</option>
+                    <option value="Thu">Thu</option>
+                    <option value="Fri">Fri</option>
+                    <option value="Sat">Sat</option>
+                    <option value="Sun">Sun</option>
+                </select>
+           <input type="submit" name="add">
+       </form>
    </div>
         <div class="postscommentscontainer container">
             <div class ="posts">

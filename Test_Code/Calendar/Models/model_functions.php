@@ -161,16 +161,17 @@ function showUsers(){
     return($results);
 }
 
-function addPost($post, $userid){
+function addPost($post, $day, $userid){
     
     global $db;
     
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid");
+    $statement = $db->prepare("INSERT INTO posts SET post = :post , day = :day, userid = :userid");
     $bind = array(
         
         ":post" => $post,
-        ":userid" => $userid
+        ":day" => $day,
+        ":userid" => $userid,
         
     );
     

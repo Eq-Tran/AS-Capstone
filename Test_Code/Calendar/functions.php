@@ -58,20 +58,6 @@ include (__DIR__ .'/databaseconnect.php');
        return $results;
    }
 
-<<<<<<< HEAD
-   function delete(){
-       global $db;
-       
-       $results = [];
-       
-       $query = $db->prepare("DELETE * FROM test");
-       
-       if($query->execute() == true){
-           
-           
-           
-           
-=======
    function delete($id){
        
        global $db;
@@ -87,17 +73,14 @@ include (__DIR__ .'/databaseconnect.php');
        if($query->execute($bind) && $query->rowCount() > 0){
            
            $results = "delete";
->>>>>>> master
            
            
        }
        
        
-<<<<<<< HEAD
-=======
+
        return($results);
-       
->>>>>>> master
+
    }
 
    

@@ -35,26 +35,30 @@ $results = show();
                 <input type="text" name="middle" placeholder="Middle" id="middle" value="">
                 Last Name:
                 <input type="text" name="last" placeholder="Last" id="last" value="">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
                 <input type="hidden" name="action">
->>>>>>> master
-=======
 
-
->>>>>>> master
                 <input type="submit"  id="add" value="Add">Add</input>
                  <input type="submit"  id="delete" value="Delete">Add</input>
                 
             </form>
             <div id="data">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
           
                 
             </div>
             
-            
-            <h1>Names</h1>
+                <h1>Names</h1>
                 <ol id="names_list">
                     
                 </ol>
@@ -63,7 +67,7 @@ $results = show();
     <script>
         
         window.addEventListener('load', loadPage);
-       function displayNames(names){
+        function displayNames(names){
            
            for(var i = 0; i < names.length; i++){
                
@@ -72,20 +76,14 @@ $results = show();
                
            }
               
-<<<<<<< HEAD
-       }
 
-     
-=======
-       }// closed
+       }
         
-       
->>>>>>> master
         var button = document.querySelector("#add");
         button.addEventListener("click", addName);
         
         // adds name to the database through a php script 
-        async function addName(first, middle, last){
+        async function addName(){
             
            //event.preventDefault();
             
@@ -114,15 +112,10 @@ $results = show();
                   console.log(data);
                 });
         
-<<<<<<< HEAD
-                 console.log(response)
-                 //const id = await response.json();
-=======
+
                  console.log(response);
                  const id = await response.json();
->>>>>>> master
-               
-              
+
                  $("#names_list").append('<li><a href="#">' + first + '' + middle + '' + last + '</a></li>');
                     document.getElementById("data").innerHTML = "Added Name " + first + '' + middle + '' + last ;
                 
@@ -130,8 +123,7 @@ $results = show();
                 
                 console.error(error);
             }
-        }// close addName
-      
+        }
         
        async function loadPage(){
 
@@ -144,7 +136,6 @@ $results = show();
                     
                     'method' : 'GET'
                    
-           
                 });
                 
                 const json = await response.json();
@@ -155,32 +146,12 @@ $results = show();
                 
                 console.error(error);
                 
-            }
+            }                                                                                                                   
         }
         
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-=======
         /*
-  fetch('https://randomuser.me/api/')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    document.getElementById("data").innerHTML = data.results[0].name.first;
-  });*/
-    
->>>>>>> master
-/*
-        //AJAX REq to see if you can use php function from different URL
-        function Request(){
-=======
         async function deleteName(){
->>>>>>> master
-            
-            
+
             var id = document.getElementById("id").value;
             const url = 'ajaxdata.php';
             const data = {id: id, action: "delete"};
@@ -210,19 +181,9 @@ $results = show();
             
             console.error("Error" , error);
             
-        }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        */
+        }*/
 
-
-=======
-        */ 
->>>>>>> master
-=======
->>>>>>> master
-        
-    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   
     </script>
 </html>
