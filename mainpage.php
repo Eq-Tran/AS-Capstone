@@ -33,13 +33,13 @@
                         
                         Karissa Smith - Associates Student of Software Engineering at NEIT. 
                         <br>
-                        Responsible for Friend Add/Delete, Friend Notifications System, Friend Page, Friend Functions, and advanced CSS.
+                        Responsible for Friend Add/Delete, Friend Notifications System, Friend Page, Friend Functions, comment system, and advanced CSS.
                         <br>
                         <br>
                         
                         Ian Shippee - Associates Student of Software Engineering at NEIT. 
                         <br>
-                        Responsible for Session Variables, Profile Page, Profile Update, Sign up, and Sign in for Admin/User.
+                        Responsible for Session Variables, Profile Page, Profile Update, Sign up, Sign in for Admin/User, and comment system.
                         <br>
                         <br>
                         
@@ -113,8 +113,8 @@
                 
                 <tr>
                 <td><a href="">Status 10</a></td>
-                <td><a href="">Status 10</a></td>
-                <td><a href="">Status 10</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_Status_10.pdf">Status 10</a></td>
+                <td><a href="http://ict.neit.edu/008002648/public_html/Capstone/statusReports/Smith_Status10.pdf">Status 10</a></td>
                 </tr>
                 
             </tbody>
@@ -151,7 +151,8 @@
                         <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_Tech_Spec.pdf">AS Technical Specification</a></li>
-                        <li><a href="">AS Capstone Zip File</a></li>
+                        <li><a href="http://ict.neit.edu/001317108/E_I_K_Capstone_Final.zip">AS Capstone Zip File (How To Document in Zip File)</a></li>
+                        <li><a href="http://ict.neit.edu/001317108/Capstone/CapstonePresentation.pptx">PowerPoint Presentation</a></li>
                     
                     
                     </div>
@@ -171,9 +172,41 @@
                     </div>
                 </div>
             </div>
+        
+        
+        <div style="align-content: center; ">
+        
+        
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_login.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_index1.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_index2.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_profile1.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_profile2.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_friends.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_notification1.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_notification2.png">
+        <img class="mySlides" style="height:40%; width: 40%;" src="webimages/capstone_admin.png">
+        
+        
+        
+        </div>
+        
+        <script>
+var slideIndex = 0;
+carousel();
 
-
-
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > x.length) {slideIndex = 1}
+  x[slideIndex-1].style.display = "block";
+  setTimeout(carousel, 3000); // Change image every 2 seconds
+}
+        </script>
         
         <footer style="clear:both; text-align:center;">&copy; Ethan Tran, Ian Shippee, Karissa Smith 2020</footer>
         
