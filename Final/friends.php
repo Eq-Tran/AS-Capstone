@@ -89,14 +89,14 @@
     </div>
 
 <div class="container">
-        <h1>Looking for Someone?</h1>
+        
 
         <form class="form-horizontal searchform" action="friends.php" method="post">
           <div class="form-group">
 
             <!-- <label class="control-label col-sm-2" for="username">UserName:</label>-->
             <div class="col-sm-10 ">
-              <input type="text" class="form-control searchbox" name="username" placeholder="Enter Username" >
+              <input type="text" class="form-control searchbox" name="username" placeholder="Looking for someone?" >
               
             </div>
           </div>
