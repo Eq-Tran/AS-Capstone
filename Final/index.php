@@ -82,7 +82,25 @@
           </nav>
     </div>
    <div class="container">
-       **Calendar is going here
+       <form action ="index.php" class="form-inline" method="post">     
+                <input type="text" class ="form-control" name="post" placeholder = "add a post" value="">      
+                <div class ="commentbtn">   
+                <button class="btn button" type="submit" value ="">Post</button>
+                <?php if (isPostRequested())
+                    
+                   if (empty($_POST["comment_".$i])){
+                       
+                   }
+                   
+                   else{
+                   $userid = $_SESSION['use'];   
+                   $postid = $postid;
+                   $uname = filter_input(INPUT_POST, $uname); 
+                   $results = addPost($userid, $postid, $uname);
+                   header("refresh: 0; url = index.php");
+                   }
+                   
+                ?>
    </div>
         <div class="postscommentscontainer container">
             <div class ="posts">

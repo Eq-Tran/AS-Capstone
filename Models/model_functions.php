@@ -189,16 +189,17 @@ function deleteUsers($postid){
     return($results);
 }
 
-function addPost($post, $userid){
+function addPost($post, $userid, $uname){
     
     global $db;
     
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid");
+    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid, uname =:uname, day = 'monday'");
     $bind = array(
         
         ":post" => $post,
-        ":userid" => $userid
+        ":userid" => $userid,
+        ":uname"   => $uname 
         
     );
     
