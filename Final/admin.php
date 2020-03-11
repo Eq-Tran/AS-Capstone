@@ -21,7 +21,7 @@
     $last = filter_input(INPUT_GET, 'last'); 
     
     $posts = showAllUserPosts();
-    $users = getusers();
+    $users = showUsers();
     
 ?>
 
@@ -49,7 +49,7 @@
   
     <div>
         <nav class="navbar">
-        <a class="navbar-brand" href="#">GO</a>
+            <a class="navbar-brand" href="#"><li>GO</li></a>
             <div class="container-fluid">
                 <div class="navbar-header">
                     <ul class="nav navbar-nav">

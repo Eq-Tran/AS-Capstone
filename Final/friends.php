@@ -89,14 +89,14 @@
     </div>
 
 <div class="container">
-        <h1>Looking for Someone?</h1>
+        
 
         <form class="form-horizontal searchform" action="friends.php" method="post">
           <div class="form-group">
 
             <!-- <label class="control-label col-sm-2" for="username">UserName:</label>-->
             <div class="col-sm-10 ">
-              <input type="text" class="form-control searchbox" name="username" placeholder="Enter Username" >
+              <input type="text" class="form-control searchbox" name="username" placeholder="Looking for someone?" >
               
             </div>
           </div>
@@ -121,20 +121,20 @@
               <td><span><a href="friendProfile.php?id=<?php echo $row['userid'] ?>"><?php echo $row['uname']; ?></a></span></td>
               
               <?php 
-              if (checkFriends($myId, $row['userid']) === false){
-                if (checkRequest($myId, $row['userid']) === true)
-                {
-                  
-                  echo "<td><a href='notifications.php'>Request Pending</a></td>";
+                if (checkFriends($myId, $row['userid']) === false){
+                  if (checkRequest($myId, $row['userid']) === true)
+                  {
+                    
+                    echo "<td><a href='notifications.php'>Request Pending</a></td>";
 
+                  }
+                  else{
+                    echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
+                  }
+                  
+                }else{
+                  echo "<td> </td>";
                 }
-                else{
-                  echo "<td><a href='friends.php?friendId=" . $row['userid']. "' class ='btn btn-success' name='addFriend'>Add Friend</a></td>";
-                }
-                
-              }else{
-                echo "<td> </td>";
-              }
               ?>   
                 </tr>
               <?php endforeach; ?>

@@ -97,6 +97,7 @@
           </nav>
     </div>
    <div class="container">
+<<<<<<< HEAD
        <div class="calendar-box">
             <div id="nav-links" >
             <a href="<?php echo '?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
@@ -145,6 +146,26 @@
            <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['use']?>">
            <input type="submit" name="add" id="add">
        </form>
+=======
+       <form action ="index.php" class="form-inline" method="post">     
+                <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
+                <div class ="commentbtn">   
+                <button class="btn button" type="submit" value ="posts">Submit a Post</button>
+                <?php if (isPostRequested())  
+                  
+                   if (empty($_POST['posts'])){
+                       
+                   }
+                   else{
+                   $userid = $_SESSION['use'];   
+                   $uname = filter_input(INPUT_POST, $uname);
+                   $post = filter_input(INPUT_POST, 'posts');
+                   $results = addPost($post, $userid, $uname);
+                   header("refresh: 0; url = index.php");
+                   }
+                   
+                ?>
+>>>>>>> master
    </div>
         <div class="postscommentscontainer container">
             <div class ="posts">

@@ -12,7 +12,7 @@ function addUser($first, $last, $email, $uname, $pw){
     
  
     // Database query string
-    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pass, profile_image = 'default.jpg' ");
+    $statement  = $db->prepare("INSERT INTO users SET first = :first, last = :last, email = :email, uname = :uname, pw = :pass, profile_image = 'defaultProfileimage.jpg' ");
     
     // Array binding function variables to database columns
     $bindParams = array(
@@ -115,7 +115,7 @@ function deleteUser($userid){
     
     $results = [];
     
-    $statement = $db->prepare("DELETE FROM users WHERE userid = :userid");
+    $statement = $db->prepare("DELETE FROM users WHERE userid =:userid");
     
     $bindParam = array(
         ":userid" => $userid,
@@ -162,7 +162,7 @@ function showUsers(){
     
     if($statement->execute() && $statement->rowCount() > 0){
         
-        $results = $statement->fetch(PDO::FETCH_ASSOC);
+        $results = $statement->fetchall(PDO::FETCH_ASSOC);
         
         
     }
@@ -189,20 +189,21 @@ function deleteUsers($postid){
     return($results);
 }
 
-function addPost($post, $userid){
+function addPost($post, $userid, $uname){
     
     global $db;
-    
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid");
-    $bind = array(
+    $statement = $db->prepare("INSERT INTO posts SET post = ? ,userid = ?, uname =?, day = 'monday'");
+    /*$bind = array(
         
         ":post" => $post,
-        ":userid" => $userid
+        ":userid" => $userid,
+        ":uname"   => $uname
+            
         
-    );
+    );*/
     
-    if($statement->execute($bind) && $statement->rowCount() > 0){
+    if($statement->execute([$post, $userid, $uname]) && $statement->rowCount() > 0){
         
         $results = "post added";
         
@@ -762,7 +763,9 @@ function getSentRequests($myId, $sendData)
 function checkRequest($myId, $friendId)
 {
     global $db;
-    $sql = "SELECT * from friend_request where sender = ". $myId . " and receiver = ".$friendId." or sender = ".$friendId." and receiver = ". $myId;
+    //var_dump($myId);
+    //var_dump($friendId);
+    $sql = "SELECT * from friend_request where sender = ? and receiver = ? or sender = ? and receiver = ?";
     $stmt = $db ->prepare($sql);
     //binds array wasnt working
     /*$binds = array(
@@ -770,7 +773,7 @@ function checkRequest($myId, $friendId)
         ':receiver' => $friendId
     );*/
     //var_dump($binds);
-    if($stmt -> execute() && $stmt->rowCount() > 0)
+    if($stmt -> execute([$myId, $friendId, $friendId, $myId]) && $stmt->rowCount() > 0)
     {
         //echo "<br /> check requests"; 
         return true;
