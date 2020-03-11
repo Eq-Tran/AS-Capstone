@@ -97,7 +97,6 @@
           </nav>
     </div>    
    <div class="container">
-<<<<<<< HEAD
        <div class="calendar-box">
             <div id="nav-links" >
             <a href="<?php echo '?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
@@ -146,7 +145,6 @@
            <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['use']?>">
            <input type="submit" name="add" id="add">
        </form>
-=======
        <form action ="index.php" class="form-inline" method="post">     
                 <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
                 <div class ="commentbtn">   
