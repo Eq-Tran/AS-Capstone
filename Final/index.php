@@ -122,7 +122,7 @@
                     <tbody>
                         <?php foreach($posts as $p):?>
                         <tr>
-                        
+                            <td><?php ?></td>
                       
                         </tr>
                         <?php endforeach;?>
@@ -132,7 +132,7 @@
            
        </div>
        
-       <form method="POST">
+       <!--<form method="POST">
            <input type="text" name="postbody" placeholder="Add Post" id="postbody">
             <select name="selectOp" id="selectOp">
                     <option value="Mon">Mon</option>
@@ -143,12 +143,12 @@
                     <option value="Sat">Sat</option>
                     <option value="Sun">Sun</option>
                 </select>
-           <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['use']?>">
+           <input type="hidden" name="userid" id="userid" value=""> -->
            
                
        </form>
 
-<button type="button" id="add">Add this</button>
+
 
        <form action ="index.php" class="form-inline" method="post">     
                 <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
@@ -229,7 +229,7 @@ window.addEventListener('load', loadPosts);
 var button = document.querySelector("#add");
 button.addEventListener('click', addPost);
     
-    
+   
 function showPosts(posts){
     
     for(var i = 0; i < posts.length; i++){
