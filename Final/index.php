@@ -80,7 +80,7 @@
               <!--</div>-->
             </div>
           </nav>
-    </div>
+    </div>    
    <div class="container">
        <form action ="index.php" class="form-inline" method="post">     
                 <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
