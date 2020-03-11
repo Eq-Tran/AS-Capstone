@@ -212,6 +212,33 @@ function addPost($post, $userid, $uname){
     return $results; 
 }
 
+/*AJAX POST*/
+function addPost2($post, $day, $userid){
+    
+    // RETURN DATA AS JSON FORMAT
+    global $db;
+    $results = [];
+    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid,  day = :day");
+    $bind = array(
+        
+        ":post" => $post,
+        ":userid" => $userid,
+        ":day"   => $day
+            
+        
+    );
+    
+    if($statement->execute([$post, $userid, $uname]) && $statement->rowCount() > 0){
+        
+        $results = "post added";
+        
+        
+    }
+    return $results; 
+}
+
+
+
 function deleteUserPost($postid){
     
     global $db;

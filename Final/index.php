@@ -18,6 +18,7 @@
     $post = filter_input(INPUT_POST, 'postbody');
     $day = filter_input(INPUT_POST, 'selectOp');
     $userid = filter_input(INPUT_POST, $_SESSION['use']);
+    
     if(!isset($_SESSION['use']))
     {
         header('Location:login.php');
@@ -159,11 +160,10 @@
                    $uname = filter_input(INPUT_POST, $uname);
                    $post = filter_input(INPUT_POST, 'posts');
                    $results = addPost($post, $userid, $uname);
-                   header("refresh: 0; url = index.php");
+                   //header("refresh: 0; url = index.php");
                    }
                    
                 ?>
->>>>>>> master
    </div>
         <div class="postscommentscontainer container">
             <div class ="posts">
@@ -205,7 +205,7 @@
                    $postid = $postid;
                    $comment = filter_input(INPUT_POST, 'comment_'.$i); 
                    $results = addComment($userid, $postid, $comment);
-                   header("refresh: 0; url = index.php");
+                   //header("refresh: 0; url = index.php");
                    }
                    
                 ?>

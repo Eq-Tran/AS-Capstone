@@ -27,7 +27,7 @@
                         
                         Ethan Tran  - Associates Student of Software Engineering at NEIT.
                         <br>
-                        Responsible for Calendar, Posts, Main Functions, Main Page, and Table Joins/Foreign Keys.
+                        Responsible for Calendar, Posts, Main Functions, Main Page, Table Joins/Foreign Keys, and Ajax Work.
                         <br>
                         <br>
                         
@@ -101,13 +101,13 @@
 
                 <tr>
                 <td><a href="">Status 8</a></td>
-                <td><a href="">Status 8</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_Status_8.pdf">Status 8</a></td>
                 <td><a href="">Status 8</a></td>
                 </tr>
 
                 <tr>
                 <td><a href="">Status 9</a></td>
-                <td><a href="">Status 9</a></td>
+                <td><a href="http://ict.neit.edu/001317108/Capstone/Shippee_Status_9.pdf">Status 9</a></td>
                 <td><a href="">Status 9</a></td>
                 </tr>
                 
@@ -151,7 +151,7 @@
                         <li><a href="https://marvelapp.com/486badd/screen/63585566">AS Capstone Prototype</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_DatabaseDesignFinal.pdf">AS Capstone Database Design</a></li>
                         <li><a href="http://ict.neit.edu/008000429/public_html/AS-Capstone/Deliverables/E_K_I_Tech_Spec.pdf">AS Technical Specification</a></li>
-                        <li><a href="">AS Capstone Implementation</a></li>
+                        <li><a href="">AS Capstone Zip File</a></li>
                     
                     
                     </div>
