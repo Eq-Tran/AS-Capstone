@@ -14,36 +14,42 @@ if($contentType === "application/json"){
     // If json decode fails
     if(is_array($decoded)){
             
-        
+            $first = $decoded["first"];
+            $middle = $decoded["middle"];
+            $last = $decoded["last"];
+            $action = $decoded['action'];
+            $id = filter_input(INPUT_POST, 'id');
+            $id = $decoded['id'];
+            
+        if($action == 'add'){
+            
+           
+            $first = $decoded["first"];
+            $middle = $decoded["middle"];
+            $last = $decoded["last"];
+            $action = $decoded['action'];
+            $results = add($first,$middle,$last);
+            echo json_encode($results);
+            
+        }elseif($action == 'delete'){
+         
+            $id = filter_input(INPUT_POST, 'id');
             $id = $decoded['id'];
             $first = $decoded["first"];
             $middle = $decoded["middle"];
             $last = $decoded["last"];
-            $action = $decoded["action"];
-            
-        if($action == "add"){
-            
-           $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $results = add($first,$middle,$last);
-            echo json_encode($results);  
-            
-        }else if($action == "delete"){
-            
-            $results = delete($id);
+            $results = delete($first,$middle,$last);
             echo json_encode($results);
-            
         }
-  
+        
+
     }else{
         
-        echo "ERROR could not make request";
+        echo "error";
         
     }
-    
 }
-
+    
 
 
 ?>

@@ -13,8 +13,9 @@ if (isset($_GET['year']) && isset($_GET['week'])) {
 $year = $dt->format('o');
 $week = $dt->format('W');
 $post = filter_input(INPUT_POST, 'post');
+$day = filter_input(INPUT_POST, 'selectOp');
 $posts = showAllUserPosts();
-$addpost = addPost($post, 6);
+$addpost = addPost($post, $day, 6);
 
 
 // Add post based from User ID
@@ -22,12 +23,16 @@ $addpost = addPost($post, 6);
 // Delete Post 
 // Calendar should only show Uname date/time
 // post list should show username post body date time
+// need to show the posts for the day chosen in the post
+// need to show the posts
+// how?
+// give a sql query search params? maube have it already looking for the days
 ?>
 <!DOCYTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script dwwtype="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <link type="text/css" rel="stylesheet" href="cal.css">
     </head>
     <body>
@@ -49,8 +54,9 @@ $addpost = addPost($post, 6);
                             ?>
 
                     <tbody>
+                        <?php foreach($posts as $row):?>
                         <tr>
-                            <td>ello</td>
+                            <td><?php echo $row['day']['Mon'];?></td>
                             <td>ello</td>
                             <td>ello</td>
                             <td>ello</td>
@@ -67,7 +73,7 @@ $addpost = addPost($post, 6);
                             <td>ello</td>
                             <td>ello</td>
                         </tr>
-
+                        <?php endforeach;?>
                 </tbody>
                 </table>
             </div>
@@ -76,14 +82,14 @@ $addpost = addPost($post, 6);
         <div class="post-box">
             <form method="POST">
                 <input type="text" name="post" >
-                <select>
-                    <option>Mon</option>
-                    <option>Tue</option>
-                    <option>Wed</option>
-                    <option>Thu</option>
-                    <option>Fri</option>
-                    <option>Sat</option>
-                    <option>Sun</option>
+                <select name="selectOp">
+                    <option value="Mon">Mon</option>
+                    <option value="Tue">Tue</option>
+                    <option value="Wed">Wed</option>
+                    <option value="Thu">Thu</option>
+                    <option value="Fri">Fri</option>
+                    <option value="Sat">Sat</option>
+                    <option value="Sun">Sun</option>
                 </select>
                 <input type="submit" name="submit" onclick="executeAjaxReq()">
             </form>
@@ -122,7 +128,9 @@ $addpost = addPost($post, 6);
          
      }
     
-    
+
+    // PEEK ERIKS GITHUB SHOWS HOW TO INSERT INTO A DB 
+
     // Example POST method implementation:
     async function postData(url = "", data = {}) {
       // Default options are marked with *
