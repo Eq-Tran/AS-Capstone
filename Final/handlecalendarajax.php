@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-include_once __DIR__ . '/../Models/model_functions.php';
-include_once __DIR__ . '/../Models/post_request_functions.php';
+include __DIR__ . '/../Models/model_functions.php';
+include __DIR__ . '/../Models/post_request_functions.php';
 
 var_dump($_SESSION['use']);
+
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
 
@@ -17,11 +18,11 @@ if($contentType === "application/json"){
     // If json decode fails
     if(is_array($decoded)){
 
-            
+             
             $post = $decoded["post"];
             $day = $decoded["day"];
             //$action = $decoded['action'];
-            $userid = $decoded['userid'];
+            $userid = $decoded["userid"];
           
             $results = addPost($post, $day, $userid);
             echo json_encode($results);

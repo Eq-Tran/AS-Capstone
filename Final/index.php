@@ -24,7 +24,7 @@
     }
     
     $i = 0 ;
-    $userid = filter_input(INPUT_GET, 'userid');
+    $userid = filter_input(INPUT_POST, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
     $email = filter_input(INPUT_GET, 'email');
     $first = filter_input(INPUT_GET, 'first');
@@ -142,7 +142,7 @@
                     <option value="Sat">Sat</option>
                     <option value="Sun">Sun</option>
                 </select>
-           <input type="hidden" name="userid" id='userid' value='<?php echo $_SESSION['use']?>'>
+           <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['use']?>">
            <input type="submit" name="add" id="add">
        </form>
    </div>
@@ -211,7 +211,7 @@ function showPosts(posts){
     
     for(var i = 0; i < posts.length; i++){
         
-        $("td").append('<td><a href="#">' + posts[i].postid + " " + posts[i].userid + '' + posts[i].post + '' + posts[i].day + '</a></td>');
+        $("tbody").append('<td><a href="#">' + posts[i].postid + " " + posts[i].userid + '' + posts[i].post + '' + posts[i].day + '</a></td>');
         
     }
     
@@ -223,7 +223,7 @@ async function addPost(){
     var post = document.querySelector("#postbody").value;
     var day = document.querySelector("#selectOp").value;
     var userid = document.querySelector("#userid").value;
-    const url = 'handlecalendarajax.php';
+    const url = 'handlecalendarajax.php?';
     const data = {post:post, day:day, userid:userid};
     
     try{
@@ -255,7 +255,7 @@ async function addPost(){
         
     }
     
-      $("<tr>").append('<td><a href="#">' + post + '' + day + '</a></td>');
+      $("tbody").append('<td><a href="#">' + post + '' + day + '</a></td>');
          document.querySelector(".container").innerHTML = "Added Name " + post + '' + day ;
     
 } // end addPost
