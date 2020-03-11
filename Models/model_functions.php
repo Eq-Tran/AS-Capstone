@@ -189,21 +189,21 @@ function deleteUsers($postid){
     return($results);
 }
 
-function addPost($post, $userid, $uname){
+function addPost($post, $userid, $day){
     
     global $db;
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = ? ,userid = ?, uname =?, day = 'monday'");
-    /*$bind = array(
+    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid, day = :day");
+    $bind = array(
         
         ":post" => $post,
         ":userid" => $userid,
-        ":uname"   => $uname
+        ":day"   => $day
             
         
-    );*/
-    
-    if($statement->execute([$post, $userid, $uname]) && $statement->rowCount() > 0){
+    );
+ 
+    if($statement->execute($bind) && $statement->rowCount() > 0){
         
         $results = "post added";
         
@@ -809,4 +809,7 @@ function checkRequest($myId, $friendId)
         return false;  
     }
 }
+
+$test = addPost ("Test", 6, "Mon");
+var_dump($test);
 ?>
