@@ -762,8 +762,8 @@ function getSentRequests($myId, $sendData)
 function checkRequest($myId, $friendId)
 {
     global $db;
-    var_dump($myId);
-    var_dump($friendId);
+    //var_dump($myId);
+    //var_dump($friendId);
     $sql = "SELECT * from friend_request where sender = ? and receiver = ? or sender = ? and receiver = ?";
     $stmt = $db ->prepare($sql);
     //binds array wasnt working
