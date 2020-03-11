@@ -213,7 +213,7 @@ function addPost($post, $userid, $day){
 }
 
 /*AJAX POST*/
-function addPost2($post, $day, $userid){
+/*function addPost2($post, $day, $userid){
     
     // RETURN DATA AS JSON FORMAT
     global $db;
@@ -235,7 +235,7 @@ function addPost2($post, $day, $userid){
         
     }
     return $results; 
-}
+}*/
 
 
 
