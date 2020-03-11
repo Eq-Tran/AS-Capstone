@@ -3,6 +3,9 @@
     include (__DIR__ . '/../Models/model_functions.php');
     include (__DIR__ . '/../Models/post_request_functions.php');
     
+    $profile = showUser($_SESSION['use']);
+    $posts = showAllUserPosts();
+    
     $dt = new DateTime;
     if (isset($_GET['year']) && isset($_GET['week'])) {
         $dt->setISODate($_GET['year'], $_GET['week']);
@@ -12,15 +15,15 @@
     
     $year = $dt->format('o');
     $week = $dt->format('W');
-    $post = filter_input(INPUT_POST, 'post');
+    $post = filter_input(INPUT_POST, 'postbody');
     $day = filter_input(INPUT_POST, 'selectOp');
-    
+    $userid = filter_input(INPUT_POST, $_SESSION['use']);
     if(!isset($_SESSION['use']))
     {
         header('Location:login.php');
     }
     
-    $i =0 ;
+    $i = 0 ;
     $userid = filter_input(INPUT_GET, 'userid');
     $uname = filter_input(INPUT_GET, 'uname');
     $email = filter_input(INPUT_GET, 'email');
@@ -29,11 +32,7 @@
     $last = filter_input(INPUT_GET, 'last');
     $profile_image = filter_input(INPUT_GET, 'profile_image');
     $postid = filter_input(INPUT_GET, 'postid');
-    
-    $profile = showUser($_SESSION['use']); 
-
-    $posts = showAllUserPosts($_SESSION['use']);
-    
+ 
       /*if(isPostRequested()){
         $userid = $_SESSION['use'];   
         $postid = $postid;
@@ -42,7 +41,8 @@
     }*/
     
     /*********************Calendar******************************/
- 
+    
+    //$calPosts = showPosts();
 
 ?>
 
@@ -102,9 +102,10 @@
             <a href="<?php echo '?week='.($week-1).'&year='.$year; ?>">Pre Week</a> <!--Previous week-->
             <a href="<?php echo '?week='.($week+1).'&year='.$year; ?>">Next Week</a> <!--Next week-->
         </div>    
-            <table class="table table-responsive">
-
-                            <?php
+            <table class="table table-responsive" style="display:block; overflow-y:scroll;">
+                <thead>
+                    
+                         <?php
 
                             do {
                                 echo "<th>" . $dt->format('l') . "<br>" . $dt->format('d M') . "</th>\n";
@@ -113,26 +114,15 @@
 
 
                             ?>
+                    
+                </thead>
+                           
 
                     <tbody>
-                        <?php foreach($posts as $row):?>
+                        <?php foreach($posts as $p):?>
                         <tr>
-                            <td><?php echo $row['day'];?></td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                        </tr>
-                        <tr>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
-                            <td>ello</td>
+                        
+                      
                         </tr>
                         <?php endforeach;?>
                 </tbody>
@@ -142,8 +132,8 @@
        </div>
        
        <form method="POST">
-           <input type="text" name="post" placeholder="Add Post">
-            <select name="selectOp">
+           <input type="text" name="postbody" placeholder="Add Post" id="postbody">
+            <select name="selectOp" id="selectOp">
                     <option value="Mon">Mon</option>
                     <option value="Tue">Tue</option>
                     <option value="Wed">Wed</option>
@@ -152,7 +142,8 @@
                     <option value="Sat">Sat</option>
                     <option value="Sun">Sun</option>
                 </select>
-           <input type="submit" name="add">
+           <input type="hidden" name="userid" id='userid' value='<?php echo $_SESSION['use']?>'>
+           <input type="submit" name="add" id="add">
        </form>
    </div>
         <div class="postscommentscontainer container">
@@ -211,14 +202,29 @@
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
 <script>
+window.addEventListener('load', loadPosts);  
+var button = document.querySelector("#add");
+button.addEventListener('click', addPost);
+    
+    
+function showPosts(posts){
+    
+    for(var i = 0; i < posts.length; i++){
+        
+        $("td").append('<td><a href="#">' + posts[i].postid + " " + posts[i].userid + '' + posts[i].post + '' + posts[i].day + '</a></td>');
+        
+    }
+    
+}
 
 async function addPost(){
     
-    var post = document.querySelector("#post").value;
-    var day = document.querySelector("selectOp").value;
-
+  //event.preventDefault();
+    var post = document.querySelector("#postbody").value;
+    var day = document.querySelector("#selectOp").value;
+    var userid = document.querySelector("#userid").value;
     const url = 'handlecalendarajax.php';
-    const data = {};
+    const data = {post:post, day:day, userid:userid};
     
     try{
         
@@ -236,18 +242,21 @@ async function addPost(){
         }).then(function(data){
             
             console.log(data);
-            
-            
+            console.log(day);
+            console.log(userid);
         });
         
-        console.log(response);
+        //console.log(response);
         const json = await response.json();
-        
+        console.log(json)
     }catch(error){
         
         console.log(error, "error");
         
     }
+    
+      $("<tr>").append('<td><a href="#">' + post + '' + day + '</a></td>');
+         document.querySelector(".container").innerHTML = "Added Name " + post + '' + day ;
     
 } // end addPost
 
@@ -262,16 +271,12 @@ async function loadPosts(){
             'method':'GET',
             
             
-        }).then(function(data){
-            
-            
-            
         });
         
         
         const json = await response.json();
         console.log(json);
-        //displayPosts;
+        showPosts(json);
         
     }catch(error){
         

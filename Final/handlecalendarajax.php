@@ -1,9 +1,12 @@
 <?php
+session_start();
 
-include_once __DIR__ . '/Models/model_functions.php';
-include_once __DIR__ . '/Models/post_request_functions.php';
+include_once __DIR__ . '/../Models/model_functions.php';
+include_once __DIR__ . '/../Models/post_request_functions.php';
 
+var_dump($_SESSION['use']);
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
 
 if($contentType === "application/json"){
     
@@ -13,35 +16,16 @@ if($contentType === "application/json"){
     
     // If json decode fails
     if(is_array($decoded)){
+
             
-            $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $action = $decoded['action'];
-            $id = filter_input(INPUT_POST, 'id');
-            $id = $decoded['id'];
-            
-        if($action == 'add'){
-            
-           
-            $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $action = $decoded['action'];
-            $results = add($first,$middle,$last);
+            $post = $decoded["post"];
+            $day = $decoded["day"];
+            //$action = $decoded['action'];
+            $userid = $decoded['userid'];
+          
+            $results = addPost($post, $day, $userid);
             echo json_encode($results);
             
-        }elseif($action == 'delete'){
-         
-            $id = filter_input(INPUT_POST, 'id');
-            $id = $decoded['id'];
-            $first = $decoded["first"];
-            $middle = $decoded["middle"];
-            $last = $decoded["last"];
-            $results = delete($first,$middle,$last);
-            echo json_encode($results);
-        }
-        
 
     }else{
         

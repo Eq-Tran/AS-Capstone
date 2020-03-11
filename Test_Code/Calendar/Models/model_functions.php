@@ -226,7 +226,7 @@ function showUserPost($userid){
     
     $results = [];
     $statement = $db->prepare("
-            SELECT posts.userid, posts.postid, posts.post, users.uname
+            SELECT posts.userid, posts.postid, posts.post, posts.day, users.uname
             FROM users
             INNER JOIN posts ON posts.userid = users.userid
             WHERE posts.userid = :userid;
@@ -250,7 +250,7 @@ function showAllUserPosts(){
     
     $results = [];
     $statement = $db->prepare("
-            SELECT posts.userid, posts.postid, posts.post, users.uname
+            SELECT posts.userid, posts.postid, posts.post, posts.day, users.uname
             FROM users
             INNER JOIN posts ON posts.userid = users.userid;
     ");
@@ -672,7 +672,12 @@ function checkRequest($myId, $friendId)
 //$showPost = showPosts();
 //var_dump($showPost);
 
-
+//foreach($showPost as $p){
+    
+  //  echo $p['day'];
+    
+    
+//}
 //$showpostUname = getPostnameById(1);
 //var_dump($showpostUname);
 
