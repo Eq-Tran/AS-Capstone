@@ -1,20 +1,21 @@
 <?php
-session_start();
+
 
 include __DIR__ . '/../Models/model_functions.php';
 include __DIR__ . '/../Models/post_request_functions.php';
 
-var_dump($_SESSION['use']);
+//var_dump($_SESSION['use']);
+;
+
 
 $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
-
 if($contentType === "application/json"){
     
-    
+
+
     $content = trim(file_get_contents("php://input"));
     $decoded = json_decode($content, true);
-    
+
     // If json decode fails
     if(is_array($decoded)){
 
@@ -23,8 +24,8 @@ if($contentType === "application/json"){
             $day = $decoded["day"];
             //$action = $decoded['action'];
             $userid = $decoded["userid"];
-          
-            $results = addPost($post, $day, $userid);
+            
+            $results = addPost($post, $userid, $day);
             echo json_encode($results);
             
 

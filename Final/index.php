@@ -144,8 +144,10 @@
                     <option value="Sun">Sun</option>
                 </select>
            <input type="hidden" name="userid" id="userid" value="<?php echo $_SESSION['use']?>">
-           <input type="submit" name="add" id="add">
+           
+               
        </form>
+<button type="button" id="add">Add this</button>
 =======
        <form action ="index.php" class="form-inline" method="post">     
                 <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
@@ -161,7 +163,7 @@
                    $uname = filter_input(INPUT_POST, $uname);
                    $post = filter_input(INPUT_POST, 'posts');
                    $results = addPost($post, $userid, $uname);
-                   header("refresh: 0; url = index.php");
+                   //header("refresh: 0; url = index.php");
                    }
                    
                 ?>
@@ -244,7 +246,7 @@ async function addPost(){
     var post = document.querySelector("#postbody").value;
     var day = document.querySelector("#selectOp").value;
     var userid = document.querySelector("#userid").value;
-    const url = 'handlecalendarajax.php?';
+    const url = 'handlecalendarajax.php';
     const data = {post:post, day:day, userid:userid};
     
     try{
@@ -260,16 +262,9 @@ async function addPost(){
             
             
             
-        }).then(function(data){
-            
-            console.log(data);
-            console.log(day);
-            console.log(userid);
         });
         
-        //console.log(response);
-        const json = await response.json();
-        console.log(json)
+        
     }catch(error){
         
         console.log(error, "error");
