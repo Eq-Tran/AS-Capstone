@@ -192,18 +192,18 @@ function deleteUsers($postid){
 function addPost($post, $userid, $uname){
     
     global $db;
-    
     $results = [];
-    $statement = $db->prepare("INSERT INTO posts SET post = :post ,userid = :userid, uname =:uname, day = 'monday'");
-    $bind = array(
+    $statement = $db->prepare("INSERT INTO posts SET post = ? ,userid = ?, uname =?, day = 'monday'");
+    /*$bind = array(
         
         ":post" => $post,
         ":userid" => $userid,
-        ":uname"   => $uname 
+        ":uname"   => $uname
+            
         
-    );
+    );*/
     
-    if($statement->execute($bind) && $statement->rowCount() > 0){
+    if($statement->execute([$post, $userid, $uname]) && $statement->rowCount() > 0){
         
         $results = "post added";
         

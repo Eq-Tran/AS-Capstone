@@ -83,20 +83,19 @@
     </div>
    <div class="container">
        <form action ="index.php" class="form-inline" method="post">     
-                <input type="text" class ="form-control" name="post" placeholder = "add a post" value="">      
+                <input type="text" class ="form-control" name="posts" placeholder = "add a post" value="">      
                 <div class ="commentbtn">   
-                <button class="btn button" type="submit" value ="">Post</button>
-                <?php if (isPostRequested())
-                    
-                   if (empty($_POST["comment_".$i])){
+                <button class="btn button" type="submit" value ="posts">Submit a Post</button>
+                <?php if (isPostRequested())  
+                  
+                   if (empty($_POST['posts'])){
                        
                    }
-                   
                    else{
                    $userid = $_SESSION['use'];   
-                   $postid = $postid;
-                   $uname = filter_input(INPUT_POST, $uname); 
-                   $results = addPost($userid, $postid, $uname);
+                   $uname = filter_input(INPUT_POST, $uname);
+                   $post = filter_input(INPUT_POST, 'posts');
+                   $results = addPost($post, $userid, $uname);
                    header("refresh: 0; url = index.php");
                    }
                    
