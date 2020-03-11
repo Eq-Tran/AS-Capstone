@@ -210,4 +210,76 @@
         </div>     
 </body>
 <footer class="iekfooter"><p>Created by: Ethan Tran, Karissa Smith, Ian Shippee</p></footer>
+<script>
+
+async function addPost(){
+    
+    var post = document.querySelector("#post").value;
+    var day = document.querySelector("selectOp").value;
+
+    const url = 'handlecalendarajax.php';
+    const data = {};
+    
+    try{
+        
+        const response = await fetch(url, {
+            
+            'method': 'POST',
+            'body': JSON.stringify(data),
+            'headers': {
+                
+                'content-type': 'application/json',  
+            }
+            
+            
+            
+        }).then(function(data){
+            
+            console.log(data);
+            
+            
+        });
+        
+        console.log(response);
+        const json = await response.json();
+        
+    }catch(error){
+        
+        console.log(error, "error");
+        
+    }
+    
+} // end addPost
+
+async function loadPosts(){
+    
+    const url = 'showcalendardata.php';
+    
+    try{
+        
+        const response = await fetch(url,{
+            
+            'method':'GET',
+            
+            
+        }).then(function(data){
+            
+            
+            
+        });
+        
+        
+        const json = await response.json();
+        console.log(json);
+        //displayPosts;
+        
+    }catch(error){
+        
+        console.error(error, 'erroor');    
+    }
+    
+}// end loadPosts
+
+
+</script>
 </html>
